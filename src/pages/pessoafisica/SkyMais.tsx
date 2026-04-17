@@ -1,4 +1,3 @@
-import React from 'react'
 import HeroSkyMais from '../../components/skymais/HeroSkyMais'
 import ApresentacaoSkyMais from '../../components/skymais/ApresentacaoSkyMais'
 import FamiliaSkyMais from '../../components/skymais/FamiliaSkyMais'

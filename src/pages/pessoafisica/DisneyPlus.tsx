@@ -1,4 +1,3 @@
-import React from 'react'
 import HeroDisneyPlus from '../../components/disneyplus/HeroDisneyPlus'
 import ApresentacaoDisneyPlus from '../../components/disneyplus/ApresentacaoDisneyPlus'
 import PlanosDisneyPlus from '../../components/disneyplus/PlanosDisneyPlus'

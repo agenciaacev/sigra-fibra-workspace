@@ -1,4 +1,3 @@
-import React from 'react'
 import HeroHboMax from '../../components/hbomax/HeroHboMax'
 import ApresentacaoHboMax from '../../components/hbomax/ApresentacaoHboMax'
 import PlanosHboMax from '../../components/hbomax/PlanosHboMax'

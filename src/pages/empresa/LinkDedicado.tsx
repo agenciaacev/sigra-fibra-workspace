@@ -1,16 +1,17 @@
+import HeroLinkDedicado from '../../components/linkdedicado/HeroLinkDedicado'
+import DiferenciaisLinkDedicado from '../../components/linkdedicado/DiferenciaisLinkDedicado'
+import InfraestruturaLinkDedicado from '../../components/linkdedicado/InfraestruturaLinkDedicado'
+import DorLinkDedicado from '../../components/linkdedicado/DorLinkDedicado'
+import CtaLinkDedicado from '../../components/linkdedicado/CtaLinkDedicado'
+
 export default function LinkDedicado() {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="text-center max-w-md mx-auto px-6" data-aos="fade-up">
-        <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6"
-          style={{ backgroundColor: '20' }}>
-          <div className="w-8 h-8 rounded-full" style={{ backgroundColor: '' }} />
-        </div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">LinkDedicado</h1>
-        <p className="text-gray-500 text-sm">
-          Página em construção. O conteúdo desta seção será adicionado em breve.
-        </p>
-      </div>
+    <div className="font-sans">
+      <HeroLinkDedicado />
+      <DiferenciaisLinkDedicado />
+      <InfraestruturaLinkDedicado />
+      <DorLinkDedicado />
+      <CtaLinkDedicado />
     </div>
   )
 }
