@@ -1,0 +1,40 @@
+import { useNavigate } from 'react-router-dom'
+
+export default function CtaBannerEmpresa() {
+  const navigate = useNavigate()
+  return (
+    <section className="py-12 md:py-20" style={{ background: '#03C2C3' }}>
+      <div className="max-w-[700px] mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p className="text-xs font-bold uppercase tracking-widest mb-4 text-white opacity-80">
+          Pronto para começar?
+        </p>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mb-5">
+          Leve sua empresa para o próximo nível.
+        </h2>
+        <p className="text-lg mb-10 text-white opacity-80">
+          Um consultor entra em contato em até 2 horas úteis para montar a solução ideal para o seu negócio.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <button
+            onClick={() => navigate('/empresa/atendimento/canais')}
+            className="font-bold px-6 sm:px-10 py-4 rounded-2xl text-sm uppercase tracking-wide bg-white transition-all duration-200"
+            style={{ color: '#03C2C3' }}
+            onMouseEnter={e => e.currentTarget.style.background = '#f0f0f0'}
+            onMouseLeave={e => e.currentTarget.style.background = '#fff'}
+          >
+            Solicitar proposta gratuita
+          </button>
+          <button
+            onClick={() => navigate('/empresa/atendimento/baixe-app')}
+            className="font-semibold px-6 sm:px-10 py-4 rounded-2xl text-sm text-white transition-all duration-200"
+            style={{ border: '2px solid rgba(255,255,255,0.5)' }}
+            onMouseEnter={e => e.currentTarget.style.borderColor = '#fff'}
+            onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.5)'}
+          >
+            Baixe nosso app
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}
