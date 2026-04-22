@@ -14,7 +14,7 @@ export default function SegmentToggle({ active, onChange }: SegmentToggleProps) 
         className="px-5 py-2 rounded-full text-xs font-semibold transition-all duration-200"
         style={active === 'pf' ? { background: '#27CAA3', color: '#fff' } : { color: '#555' }}
       >
-        Pessoa Física
+        Residencial
       </button>
       <button
         onClick={() => onChange('empresa')}
