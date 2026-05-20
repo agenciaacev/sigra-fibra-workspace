@@ -193,6 +193,8 @@ export default function HeroBanner({
               ? { transform: 'translateX(0)', transition: 'transform 0.3s ease' }
               : undefined}
           draggable={false}
+          loading="eager"
+          fetchPriority={current === 0 ? 'high' : 'auto'}
         />
 
         {showArrows && slides.length > 1 && (
