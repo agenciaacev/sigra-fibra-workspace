@@ -1,16 +1,56 @@
-# React + Vite
+# siga-fibra (Next.js)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Projeto convertido de Vite + React Router para Next.js 15 (App Router) com TypeScript.
+Design, cores, paleta, fontes e estrutura visual foram mantidos integralmente.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Next.js 15 (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS 3
+- AOS (Animate On Scroll)
 
-## React Compiler
+## Como rodar
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Aplicação em http://localhost:3000
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+npm start
+```
+
+## Estrutura
+
+```
+app/                       # App Router (rotas)
+  layout.tsx               # Layout raiz (Navbar + inicialização do AOS)
+  globals.css              # Tailwind + Montserrat
+  page.tsx                 # Rota / (PFHome)
+  pessoa-fisica/...        # Rotas /pessoa-fisica/*
+  empresa/...              # Rotas /empresa/*
+components/                # Componentes (mesma estrutura do projeto original)
+  navbar/, home/, empresa/, disneyplus/, globoplay/, hbomax/,
+  skymais/, lantolan/, linkdedicado/, shared/
+  AosInit.tsx              # Bootstrap do AOS no client
+public/img/                # Imagens dos banners (1.jpg .. 4.jpg)
+types/index.ts             # Tipos compartilhados
+```
+
+## O que mudou em relação ao projeto Vite
+
+- `react-router-dom` removido. `useNavigate` virou `useRouter` (`next/navigation`),
+  `useLocation().pathname` virou `usePathname()`, `navigate(path)` virou `router.push(path)`.
+- `BrowserRouter` + `Routes` + `Route` substituídos pelo roteamento por pastas do App Router.
+- `main.tsx` + `index.html` substituídos por `app/layout.tsx`.
+- Imagens em `src/assets/img` movidas para `public/img` e referenciadas por URL
+  (`/img/1.jpg` etc.).
+- Componentes que usam hooks ou eventos de browser ganharam diretiva `'use client'`.
+- Componentes puros (apenas render) ficam como Server Components.
+
+Nenhuma mudança de design, estilo, cores ou conteúdo foi feita.

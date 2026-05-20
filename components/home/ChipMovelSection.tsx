@@ -1,0 +1,277 @@
+'use client'
+
+import React from 'react'
+import { useRouter } from 'next/navigation'
+
+const plans = [
+  {
+    gb: 15,
+    benefits: ['WhatsApp ilimitado', '5G incluso', 'Ligações ilimitadas'],
+    price: '39,90',
+    featured: false,
+    badge: null,
+  },
+  {
+    gb: 30,
+    benefits: ['Apps ilimitados', 'Streaming sem travar', '5G incluso'],
+    price: '59,90',
+    featured: true,
+    badge: 'Mais escolhido',
+  },
+  {
+    gb: 50,
+    benefits: ['Internet para tudo', 'Roaming nacional', '5G incluso'],
+    price: '79,90',
+    featured: false,
+    badge: null,
+  },
+]
+
+const bottomBenefits = [
+  'Cobertura nacional',
+  'Portabilidade grátis',
+  'Ativação imediata',
+  'Controle pelo app',
+  'eSIM disponível',
+]
+
+const featureBadges = [
+  { icon: '⚡', label: '5G Ultra Rápido' },
+  { icon: '∞', label: 'Apps ilimitados' },
+  { icon: '🗺️', label: 'Cobertura nacional' },
+  { icon: '📲', label: 'eSIM disponível' },
+]
+
+export default function ChipMovelSection() {
+  const router = useRouter()
+
+  return (
+    <section className="relative overflow-hidden" style={{ background: '#060d0f' }}>
+      {/* Ambient glow background */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 60% at 15% 50%, rgba(39,202,163,0.10), transparent), radial-gradient(ellipse 50% 80% at 85% 20%, rgba(6,182,212,0.07), transparent)',
+        }}
+      />
+
+      <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+        {/* Main content grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-14">
+
+          {/* Left — headline + feature badges */}
+          <div className="relative" data-aos="fade-right">
+            {/* Soft glow blob */}
+            <div
+              className="absolute -top-10 -left-10 w-72 h-72 rounded-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, rgba(39,202,163,0.12) 0%, transparent 70%)',
+                filter: 'blur(48px)',
+              }}
+            />
+
+            <div className="relative z-10">
+              <p
+                className="text-xs font-bold uppercase tracking-widest mb-4"
+                style={{ color: '#27CAA3' }}
+              >
+                Siga Fibra
+              </p>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
+                Internet Móvel{' '}
+                <span
+                  style={{
+                    background: 'linear-gradient(135deg, #27CAA3, #06b6d4)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
+                  5G
+                </span>
+                ,<br />
+                Chip e Conectividade
+                <br />
+                sem limites
+              </h2>
+
+              <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-md">
+                Navegue com velocidade máxima, cobertura nacional e benefícios exclusivos para
+                usar sua internet onde quiser.
+              </p>
+
+              {/* Feature badges grid */}
+              <div className="grid grid-cols-2 gap-3 mb-8">
+                {featureBadges.map((f, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-3 rounded-xl px-4 py-3"
+                    style={{
+                      background: 'rgba(39,202,163,0.07)',
+                      border: '1px solid rgba(39,202,163,0.18)',
+                      backdropFilter: 'blur(8px)',
+                    }}
+                  >
+                    <span className="text-base">{f.icon}</span>
+                    <span className="text-sm font-semibold text-white">{f.label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Animated signal bars */}
+              <div className="flex items-end gap-1.5 mb-8 opacity-70">
+                {[18, 28, 38, 48, 58].map((h, i) => (
+                  <div
+                    key={i}
+                    className="w-3 rounded-sm transition-all"
+                    style={{
+                      height: `${h}px`,
+                      background:
+                        i < 4
+                          ? 'linear-gradient(to top, #27CAA3, #06b6d4)'
+                          : 'rgba(39,202,163,0.2)',
+                    }}
+                  />
+                ))}
+                <span className="text-xs text-gray-500 ml-2 mb-1">Sinal 5G</span>
+              </div>
+
+              <button
+                onClick={() => router.push('/pessoa-fisica/celular/pre-pago')}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
+                style={{ background: '#eab308', color: '#0d2418' }}
+              >
+                Escolher plano
+                <span>→</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Right — plan cards */}
+          <div className="flex flex-col gap-4" data-aos="fade-left" data-aos-delay="80">
+            {plans.map((plan, i) => (
+              <div
+                key={i}
+                className="relative rounded-2xl p-6 transition-all duration-200"
+                style={
+                  plan.featured
+                    ? {
+                        background:
+                          'linear-gradient(135deg, rgba(39,202,163,0.13), rgba(6,182,212,0.08))',
+                        border: '1.5px solid rgba(39,202,163,0.45)',
+                        boxShadow: '0 0 32px rgba(39,202,163,0.13)',
+                      }
+                    : {
+                        background: 'rgba(255,255,255,0.03)',
+                        border: '1px solid rgba(255,255,255,0.07)',
+                      }
+                }
+              >
+                {plan.badge && (
+                  <span
+                    className="absolute -top-3 left-6 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full"
+                    style={{ background: '#eab308', color: '#0d2418' }}
+                  >
+                    {plan.badge}
+                  </span>
+                )}
+
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-end gap-1 mb-3">
+                      <span
+                        className="font-extrabold leading-none"
+                        style={{
+                          fontSize: plan.featured ? '3.25rem' : '2.25rem',
+                          color: '#ffffff',
+                        }}
+                      >
+                        {plan.gb}
+                      </span>
+                      <span
+                        className="font-bold mb-1"
+                        style={{
+                          fontSize: plan.featured ? '1.2rem' : '1rem',
+                          color: '#27CAA3',
+                        }}
+                      >
+                        GB
+                      </span>
+                    </div>
+                    <ul className="flex flex-col gap-1.5">
+                      {plan.benefits.map((b, j) => (
+                        <li key={j} className="flex items-center gap-2 text-sm">
+                          <span style={{ color: '#27CAA3' }}>✓</span>
+                          <span className="text-gray-300">{b}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="flex flex-col items-end gap-3 flex-shrink-0">
+                    <div className="text-right">
+                      <p className="text-xs text-gray-600 mb-0.5">por mês</p>
+                      <p
+                        className="font-extrabold leading-tight"
+                        style={{
+                          fontSize: plan.featured ? '1.65rem' : '1.35rem',
+                          color: plan.featured ? '#eab308' : '#ffffff',
+                        }}
+                      >
+                        R$ {plan.price}
+                      </p>
+                    </div>
+                    <button
+                      onClick={() => router.push('/pessoa-fisica/celular/pre-pago')}
+                      className="px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
+                      style={
+                        plan.featured
+                          ? { background: '#eab308', color: '#0d2418' }
+                          : {
+                              background: 'rgba(39,202,163,0.12)',
+                              color: '#27CAA3',
+                              border: '1px solid rgba(39,202,163,0.3)',
+                            }
+                      }
+                    >
+                      Assinar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Bottom benefits strip */}
+        <div
+          className="rounded-2xl p-5 md:p-6"
+          style={{
+            background: 'rgba(255,255,255,0.025)',
+            border: '1px solid rgba(255,255,255,0.06)',
+          }}
+          data-aos="fade-up"
+          data-aos-delay="120"
+        >
+          <div className="flex flex-wrap justify-center gap-3">
+            {bottomBenefits.map((b, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium"
+                style={{
+                  background: 'rgba(39,202,163,0.07)',
+                  border: '1px solid rgba(39,202,163,0.2)',
+                  color: '#d1fae5',
+                }}
+              >
+                <span style={{ color: '#27CAA3' }}>✔</span>
+                {b}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
