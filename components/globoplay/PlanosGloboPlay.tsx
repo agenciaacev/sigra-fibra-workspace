@@ -3,7 +3,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-function MockupPlaceholder({ label, dark }) {
+function MockupPlaceholder({ label, dark }: { label: string; dark: boolean }) {
   return (
     <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden flex flex-col items-center justify-center gap-2"
       style={{

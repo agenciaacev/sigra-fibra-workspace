@@ -6,7 +6,7 @@ const titulos = [
   { nome: 'Operação Fronteira', genero: 'Thriller / Ação' },
 ]
 
-function PosterCard({ titulo, destaque }) {
+function PosterCard({ titulo, destaque }: { titulo: { nome: string; genero: string }; destaque: boolean }) {
   return (
     <div className={`rounded-2xl overflow-hidden flex flex-col items-center justify-end relative ${destaque ? 'row-span-1' : ''}`}
       style={{ aspectRatio: '2/3', background: 'linear-gradient(180deg, #1a0044 0%, #080020 100%)', border: '1px solid rgba(153,51,255,0.15)' }}>

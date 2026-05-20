@@ -12,7 +12,7 @@ const universos = [
   { label: 'Nat Geo', bg: '#ffcb05' },
 ]
 
-function PosterPlaceholder({ label, bg }) {
+function PosterPlaceholder({ label, bg }: { label: string; bg: string }) {
   return (
     <div className="aspect-[2/3] rounded-xl overflow-hidden flex flex-col items-center justify-center gap-2 relative"
       style={{ background: bg + '33', border: `1px solid ${bg}44` }}>

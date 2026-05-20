@@ -6,7 +6,7 @@ const titulos = [
   { nome: 'Transmissão Esportiva', tipo: 'Esportes ao vivo' },
 ]
 
-function ThumbCard({ titulo }) {
+function ThumbCard({ titulo }: { titulo: { nome: string; tipo: string; destaque?: boolean } }) {
   return (
     <div
       className="rounded-2xl overflow-hidden relative flex items-end"

@@ -7,7 +7,7 @@ const titulos = [
   { nome: 'Inside Out 2', universo: 'Pixar', cor: '#0063e5' },
 ]
 
-function PosterCard({ titulo, destaque }) {
+function PosterCard({ titulo, destaque }: { titulo: { nome: string; universo: string; cor: string }; destaque: boolean }) {
   return (
     <div className={`rounded-2xl overflow-hidden relative flex flex-col justify-end ${destaque ? '' : ''}`}
       style={{ aspectRatio: '2/3', background: `linear-gradient(180deg, ${titulo.cor}55 0%, #000d26 100%)`, border: '1px solid rgba(255,255,255,0.08)' }}>

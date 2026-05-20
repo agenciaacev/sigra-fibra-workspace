@@ -3,7 +3,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-function PosterPlaceholder({ title }) {
+function PosterPlaceholder({ title }: { title: string }) {
   return (
     <div className="aspect-[2/3] rounded-xl overflow-hidden flex flex-col items-center justify-center gap-2"
       style={{ background: 'linear-gradient(180deg, #1a0044 0%, #0d001f 100%)', border: '1px solid rgba(102,0,204,0.2)' }}>
