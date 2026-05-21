@@ -24,6 +24,7 @@ export const pfNavConfig: NavItem[] = [
       { label: 'Internet Fibra', to: '/internet-fibra' },
       { label: 'Fixo', to: '/fixo' },
       { label: 'Hipervelocidade', to: '/hipervelocidade' },
+      { label: 'Amigo Indica', to: '/amigo-indica', highlight: true },
     ],
   },
   {

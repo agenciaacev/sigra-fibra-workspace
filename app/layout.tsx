@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import 'aos/dist/aos.css'
 import './globals.css'
 import Navbar from '@/components/navbar/Navbar'
+import Footer from '@/components/footer/Footer'
 import AosInit from '@/components/AosInit'
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({
         <AosInit />
         <Navbar />
         <div className="pt-[67px]">{children}</div>
+        <Footer />
       </body>
     </html>
   )

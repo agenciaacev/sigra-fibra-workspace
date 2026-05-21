@@ -2,6 +2,7 @@ import HomeBanner from '@/components/home/HomeBanner'
 import QuickLinksSection from '@/components/home/QuickLinksSection'
 import PlanosInternetSection from '@/components/home/PlanosInternetSection'
 import StreamingSection from '@/components/home/StreamingSection'
+import AmigoIndicaSection from '@/components/home/AmigoIndicaSection'
 import ChipMovelSection from '@/components/home/ChipMovelSection'
 import CtaBanner from '@/components/home/CtaBanner'
 
@@ -12,6 +13,7 @@ export default function PFHome() {
       <QuickLinksSection />
       <PlanosInternetSection />
       <StreamingSection />
+      <AmigoIndicaSection />
       <ChipMovelSection />
       <CtaBanner />
     </div>
