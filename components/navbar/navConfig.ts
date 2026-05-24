@@ -55,6 +55,7 @@ export const pfNavConfig: NavItem[] = [
       { label: 'Canais de Atendimento', to: '/atendimento/canais' },
       { label: 'Suporte Técnico', to: '/atendimento/suporte-tecnico' },
       { label: 'Autoatendimento Via WhatsApp', to: '/atendimento/autoatendimento' },
+      { label: 'Teste de Velocidade', to: '/teste-velocidade', highlight: true },
     ],
   },
 ]

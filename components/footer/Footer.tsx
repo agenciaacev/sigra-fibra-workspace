@@ -120,7 +120,6 @@ export default function Footer() {
   const pathname = usePathname()
   const isEmpresa = pathname?.startsWith('/empresa')
   const columns = isEmpresa ? empresaLinks : pfLinks
-  const segment = isEmpresa ? 'empresa' : 'pessoa-física'
 
   return (
     <footer style={{ background: '#060d0f' }}>
@@ -133,7 +132,6 @@ export default function Footer() {
 
           {/* Brand column */}
           <div className="lg:col-span-1 flex flex-col gap-6">
-            {/* Logo */}
             <div>
               <div className="mb-4">
                 <Image
@@ -212,10 +210,7 @@ export default function Footer() {
             </p>
             <ul className="flex flex-col gap-4">
               <li>
-                <a
-                  href="https://wa.me/5500000000000"
-                  className="flex items-start gap-3 group"
-                >
+                <a href="https://wa.me/5500000000000" className="flex items-start gap-3 group">
                   <span
                     className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5 transition-colors duration-150"
                     style={{ background: 'rgba(39,202,163,0.1)' }}
@@ -234,10 +229,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <a
-                  href="mailto:contato@sigafibra.com.br"
-                  className="flex items-start gap-3 group"
-                >
+                <a href="mailto:contato@sigafibra.com.br" className="flex items-start gap-3 group">
                   <span
                     className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5"
                     style={{ background: 'rgba(39,202,163,0.1)' }}

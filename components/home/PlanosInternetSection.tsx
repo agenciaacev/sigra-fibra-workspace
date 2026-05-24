@@ -113,9 +113,10 @@ export default function PlanosInternetSection() {
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight"
             style={{ color: '#0f2d22' }}
           >
-            Internet Fibra, Celular e
+            Internet Fibra de verdade,
             <br className="hidden sm:block" />
-            <span style={{ color: '#27CAA3' }}> Serviços Digitais</span> Siga Fibra
+            do básico à
+            <span style={{ color: '#27CAA3' }}> Hipervelocidade</span>
           </h2>
           <p className="text-gray-500 mt-3 text-base">Escolha o plano ideal para a sua casa</p>
         </div>

@@ -46,23 +46,20 @@ export default function ChipMovelSection() {
   const router = useRouter()
 
   return (
-    <section className="relative overflow-hidden" style={{ background: '#060d0f' }}>
-      {/* Ambient glow background */}
+    <section className="relative overflow-hidden" style={{ background: '#e4f8f3' }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 15% 50%, rgba(39,202,163,0.10), transparent), radial-gradient(ellipse 50% 80% at 85% 20%, rgba(6,182,212,0.07), transparent)',
+            'radial-gradient(ellipse 80% 60% at 15% 50%, rgba(39,202,163,0.12), transparent), radial-gradient(ellipse 50% 80% at 85% 20%, rgba(6,182,212,0.08), transparent)',
         }}
       />
 
       <div className="relative max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-        {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-14">
 
           {/* Left — headline + feature badges */}
           <div className="relative" data-aos="fade-right">
-            {/* Soft glow blob */}
             <div
               className="absolute -top-10 -left-10 w-72 h-72 rounded-full pointer-events-none"
               style={{
@@ -72,14 +69,11 @@ export default function ChipMovelSection() {
             />
 
             <div className="relative z-10">
-              <p
-                className="text-xs font-bold uppercase tracking-widest mb-4"
-                style={{ color: '#27CAA3' }}
-              >
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#27CAA3' }}>
                 Siga Fibra
               </p>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4" style={{ color: '#0f2d22' }}>
                 Internet Móvel{' '}
                 <span
                   style={{
@@ -96,12 +90,11 @@ export default function ChipMovelSection() {
                 sem limites
               </h2>
 
-              <p className="text-gray-400 text-base leading-relaxed mb-8 max-w-md">
+              <p className="text-base leading-relaxed mb-8 max-w-md" style={{ color: '#3d6b56' }}>
                 Navegue com velocidade máxima, cobertura nacional e benefícios exclusivos para
                 usar sua internet onde quiser.
               </p>
 
-              {/* Feature badges grid */}
               <div className="grid grid-cols-2 gap-3 mb-8">
                 {featureBadges.map((f, i) => (
                   <div
@@ -110,21 +103,19 @@ export default function ChipMovelSection() {
                     style={{
                       background: 'rgba(39,202,163,0.07)',
                       border: '1px solid rgba(39,202,163,0.18)',
-                      backdropFilter: 'blur(8px)',
                     }}
                   >
                     <span className="text-base">{f.icon}</span>
-                    <span className="text-sm font-semibold text-white">{f.label}</span>
+                    <span className="text-sm font-semibold" style={{ color: '#0f2d22' }}>{f.label}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Animated signal bars */}
               <div className="flex items-end gap-1.5 mb-8 opacity-70">
                 {[18, 28, 38, 48, 58].map((h, i) => (
                   <div
                     key={i}
-                    className="w-3 rounded-sm transition-all"
+                    className="w-3 rounded-sm"
                     style={{
                       height: `${h}px`,
                       background:
@@ -134,13 +125,13 @@ export default function ChipMovelSection() {
                     }}
                   />
                 ))}
-                <span className="text-xs text-gray-500 ml-2 mb-1">Sinal 5G</span>
+                <span className="text-xs ml-2 mb-1" style={{ color: '#3d6b56' }}>Sinal 5G</span>
               </div>
 
               <button
                 onClick={() => router.push('/pessoa-fisica/celular/pre-pago')}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
-                style={{ background: '#eab308', color: '#0d2418' }}
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
+                style={{ background: '#27CAA3' }}
               >
                 Escolher plano
                 <span>→</span>
@@ -157,21 +148,23 @@ export default function ChipMovelSection() {
                 style={
                   plan.featured
                     ? {
-                        background:
-                          'linear-gradient(135deg, rgba(39,202,163,0.13), rgba(6,182,212,0.08))',
+                        background: 'linear-gradient(135deg, rgba(39,202,163,0.13), rgba(6,182,212,0.08))',
                         border: '1.5px solid rgba(39,202,163,0.45)',
                         boxShadow: '0 0 32px rgba(39,202,163,0.13)',
                       }
                     : {
-                        background: 'rgba(255,255,255,0.03)',
-                        border: '1px solid rgba(255,255,255,0.07)',
+                        background: 'rgba(255,255,255,0.75)',
+                        border: '1px solid rgba(39,202,163,0.25)',
                       }
                 }
               >
                 {plan.badge && (
                   <span
-                    className="absolute -top-3 left-6 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full"
-                    style={{ background: '#eab308', color: '#0d2418' }}
+                    className="absolute -top-3 left-6 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full text-white"
+                    style={{
+                      background: 'linear-gradient(135deg, #3ddcbc 0%, #27CAA3 100%)',
+                      boxShadow: '0 2px 8px rgba(39,202,163,0.4)',
+                    }}
                   >
                     {plan.badge}
                   </span>
@@ -184,7 +177,7 @@ export default function ChipMovelSection() {
                         className="font-extrabold leading-none"
                         style={{
                           fontSize: plan.featured ? '3.25rem' : '2.25rem',
-                          color: '#ffffff',
+                          color: '#0f2d22',
                         }}
                       >
                         {plan.gb}
@@ -203,7 +196,7 @@ export default function ChipMovelSection() {
                       {plan.benefits.map((b, j) => (
                         <li key={j} className="flex items-center gap-2 text-sm">
                           <span style={{ color: '#27CAA3' }}>✓</span>
-                          <span className="text-gray-300">{b}</span>
+                          <span style={{ color: '#3d6b56' }}>{b}</span>
                         </li>
                       ))}
                     </ul>
@@ -211,12 +204,12 @@ export default function ChipMovelSection() {
 
                   <div className="flex flex-col items-end gap-3 flex-shrink-0">
                     <div className="text-right">
-                      <p className="text-xs text-gray-600 mb-0.5">por mês</p>
+                      <p className="text-xs text-gray-500 mb-0.5">por mês</p>
                       <p
                         className="font-extrabold leading-tight"
                         style={{
                           fontSize: plan.featured ? '1.65rem' : '1.35rem',
-                          color: plan.featured ? '#eab308' : '#ffffff',
+                          color: '#0f2d22',
                         }}
                       >
                         R$ {plan.price}
@@ -224,16 +217,8 @@ export default function ChipMovelSection() {
                     </div>
                     <button
                       onClick={() => router.push('/pessoa-fisica/celular/pre-pago')}
-                      className="px-5 py-2.5 rounded-xl font-bold text-sm transition-all duration-200 hover:opacity-90 active:scale-95"
-                      style={
-                        plan.featured
-                          ? { background: '#eab308', color: '#0d2418' }
-                          : {
-                              background: 'rgba(39,202,163,0.12)',
-                              color: '#27CAA3',
-                              border: '1px solid rgba(39,202,163,0.3)',
-                            }
-                      }
+                      className="px-5 py-2.5 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
+                      style={{ background: '#27CAA3' }}
                     >
                       Assinar
                     </button>
@@ -248,8 +233,8 @@ export default function ChipMovelSection() {
         <div
           className="rounded-2xl p-5 md:p-6"
           style={{
-            background: 'rgba(255,255,255,0.025)',
-            border: '1px solid rgba(255,255,255,0.06)',
+            background: 'rgba(255,255,255,0.5)',
+            border: '1px solid rgba(39,202,163,0.2)',
           }}
           data-aos="fade-up"
           data-aos-delay="120"
@@ -262,7 +247,7 @@ export default function ChipMovelSection() {
                 style={{
                   background: 'rgba(39,202,163,0.07)',
                   border: '1px solid rgba(39,202,163,0.2)',
-                  color: '#d1fae5',
+                  color: '#0f2d22',
                 }}
               >
                 <span style={{ color: '#27CAA3' }}>✔</span>
