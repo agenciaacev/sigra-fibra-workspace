@@ -122,7 +122,7 @@ export default function Footer() {
   const columns = isEmpresa ? empresaLinks : pfLinks
 
   return (
-    <footer style={{ background: '#060d0f' }}>
+    <footer style={{ background: 'var(--footer-bg)', transition: 'background 0.3s' }}>
       {/* Top accent bar */}
       <div className="h-[3px]" style={{ background: 'linear-gradient(90deg, #27CAA3, #03C2C3)' }} />
 
@@ -142,7 +142,7 @@ export default function Footer() {
                   className="h-10 w-auto object-contain"
                 />
               </div>
-              <p className="text-sm text-gray-400 leading-relaxed max-w-[220px]">
+              <p className="text-sm leading-relaxed max-w-[220px]" style={{ color: 'var(--footer-text-sub)' }}>
                 Conectando pessoas e empresas com velocidade, confiança e tecnologia de ponta.
               </p>
             </div>
@@ -192,7 +192,8 @@ export default function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.to}
-                        className="text-sm text-gray-400 transition-colors duration-150 hover:text-white"
+                        className="text-sm transition-colors duration-150"
+                        style={{ color: 'var(--footer-text-sub)' }}
                       >
                         {link.label}
                       </Link>
@@ -220,8 +221,8 @@ export default function Footer() {
                     </svg>
                   </span>
                   <div>
-                    <p className="text-xs text-gray-600 mb-0.5">WhatsApp</p>
-                    <p className="text-sm font-semibold text-gray-300 group-hover:text-white transition-colors duration-150">
+                    <p className="text-xs mb-0.5" style={{ color: 'var(--footer-text-sub)' }}>WhatsApp</p>
+                    <p className="text-sm font-semibold transition-colors duration-150" style={{ color: 'var(--footer-text)' }}>
                       (00) 00000-0000
                     </p>
                   </div>
@@ -239,8 +240,8 @@ export default function Footer() {
                     </svg>
                   </span>
                   <div>
-                    <p className="text-xs text-gray-600 mb-0.5">E-mail</p>
-                    <p className="text-sm font-semibold text-gray-300 group-hover:text-white transition-colors duration-150">
+                    <p className="text-xs mb-0.5" style={{ color: 'var(--footer-text-sub)' }}>E-mail</p>
+                    <p className="text-sm font-semibold transition-colors duration-150" style={{ color: 'var(--footer-text)' }}>
                       contato@sigafibra.com.br
                     </p>
                   </div>
@@ -258,8 +259,8 @@ export default function Footer() {
                   </svg>
                 </span>
                 <div>
-                  <p className="text-xs text-gray-600 mb-0.5">Localização</p>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-xs mb-0.5" style={{ color: 'var(--footer-text-sub)' }}>Localização</p>
+                  <p className="text-sm leading-relaxed" style={{ color: 'var(--footer-text-sub)' }}>
                     Atendemos em toda a região com cobertura de fibra óptica
                   </p>
                 </div>
@@ -270,20 +271,20 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <div style={{ borderTop: '1px solid var(--footer-border)' }}>
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-gray-600">
+          <p className="text-xs" style={{ color: 'var(--footer-text-sub)' }}>
             © {new Date().getFullYear()} Siga Fibra. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-5">
-            <a href="#" className="text-xs text-gray-600 hover:text-gray-400 transition-colors duration-150">
+            <a href="#" className="text-xs transition-colors duration-150" style={{ color: 'var(--footer-text-sub)' }}>
               Política de Privacidade
             </a>
-            <span className="w-px h-3 bg-gray-800" />
-            <a href="#" className="text-xs text-gray-600 hover:text-gray-400 transition-colors duration-150">
+            <span className="w-px h-3" style={{ background: 'var(--footer-border)' }} />
+            <a href="#" className="text-xs transition-colors duration-150" style={{ color: 'var(--footer-text-sub)' }}>
               Termos de Uso
             </a>
-            <span className="w-px h-3 bg-gray-800" />
+            <span className="w-px h-3" style={{ background: 'var(--footer-border)' }} />
             <Link
               href={isEmpresa ? '/pessoa-fisica' : '/empresa'}
               className="text-xs transition-colors duration-150"

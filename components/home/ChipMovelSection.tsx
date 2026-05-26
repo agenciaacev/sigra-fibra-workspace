@@ -46,7 +46,7 @@ export default function ChipMovelSection() {
   const router = useRouter()
 
   return (
-    <section className="relative overflow-hidden" style={{ background: '#e4f8f3' }}>
+    <section className="relative overflow-hidden" style={{ background: 'var(--bg-light-alt)' }}>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -73,7 +73,7 @@ export default function ChipMovelSection() {
                 Siga Fibra
               </p>
 
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4" style={{ color: '#0f2d22' }}>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-4" style={{ color: 'var(--text-dark)' }}>
                 Internet Móvel{' '}
                 <span
                   style={{
@@ -90,7 +90,7 @@ export default function ChipMovelSection() {
                 sem limites
               </h2>
 
-              <p className="text-base leading-relaxed mb-8 max-w-md" style={{ color: '#3d6b56' }}>
+              <p className="text-base leading-relaxed mb-8 max-w-md" style={{ color: 'var(--text-mid)' }}>
                 Navegue com velocidade máxima, cobertura nacional e benefícios exclusivos para
                 usar sua internet onde quiser.
               </p>
@@ -106,7 +106,7 @@ export default function ChipMovelSection() {
                     }}
                   >
                     <span className="text-base">{f.icon}</span>
-                    <span className="text-sm font-semibold" style={{ color: '#0f2d22' }}>{f.label}</span>
+                    <span className="text-sm font-semibold" style={{ color: 'var(--text-dark)' }}>{f.label}</span>
                   </div>
                 ))}
               </div>
@@ -125,7 +125,7 @@ export default function ChipMovelSection() {
                     }}
                   />
                 ))}
-                <span className="text-xs ml-2 mb-1" style={{ color: '#3d6b56' }}>Sinal 5G</span>
+                <span className="text-xs ml-2 mb-1" style={{ color: 'var(--text-mid)' }}>Sinal 5G</span>
               </div>
 
               <button
@@ -153,7 +153,7 @@ export default function ChipMovelSection() {
                         boxShadow: '0 0 32px rgba(39,202,163,0.13)',
                       }
                     : {
-                        background: 'rgba(255,255,255,0.75)',
+                        background: 'var(--card-bg)',
                         border: '1px solid rgba(39,202,163,0.25)',
                       }
                 }
@@ -177,7 +177,7 @@ export default function ChipMovelSection() {
                         className="font-extrabold leading-none"
                         style={{
                           fontSize: plan.featured ? '3.25rem' : '2.25rem',
-                          color: '#0f2d22',
+                          color: 'var(--text-dark)',
                         }}
                       >
                         {plan.gb}
@@ -196,7 +196,7 @@ export default function ChipMovelSection() {
                       {plan.benefits.map((b, j) => (
                         <li key={j} className="flex items-center gap-2 text-sm">
                           <span style={{ color: '#27CAA3' }}>✓</span>
-                          <span style={{ color: '#3d6b56' }}>{b}</span>
+                          <span style={{ color: 'var(--text-mid)' }}>{b}</span>
                         </li>
                       ))}
                     </ul>
@@ -204,12 +204,12 @@ export default function ChipMovelSection() {
 
                   <div className="flex flex-col items-end gap-3 flex-shrink-0">
                     <div className="text-right">
-                      <p className="text-xs text-gray-500 mb-0.5">por mês</p>
+                      <p className="text-xs mb-0.5" style={{ color: 'var(--text-muted)' }}>por mês</p>
                       <p
                         className="font-extrabold leading-tight"
                         style={{
                           fontSize: plan.featured ? '1.65rem' : '1.35rem',
-                          color: '#0f2d22',
+                          color: 'var(--text-dark)',
                         }}
                       >
                         R$ {plan.price}
@@ -233,7 +233,7 @@ export default function ChipMovelSection() {
         <div
           className="rounded-2xl p-5 md:p-6"
           style={{
-            background: 'rgba(255,255,255,0.5)',
+            background: 'var(--card-bg)',
             border: '1px solid rgba(39,202,163,0.2)',
           }}
           data-aos="fade-up"
@@ -247,7 +247,7 @@ export default function ChipMovelSection() {
                 style={{
                   background: 'rgba(39,202,163,0.07)',
                   border: '1px solid rgba(39,202,163,0.2)',
-                  color: '#0f2d22',
+                  color: 'var(--text-dark)',
                 }}
               >
                 <span style={{ color: '#27CAA3' }}>✔</span>

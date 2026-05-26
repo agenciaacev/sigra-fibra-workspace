@@ -102,7 +102,7 @@ export default function PlanosInternetSection() {
   }
 
   return (
-    <section className="py-16 md:py-24" style={{ background: '#e4f8f3' }}>
+    <section className="py-16 md:py-24" style={{ background: 'var(--bg-light-alt)' }}>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-12" data-aos="fade-up">
@@ -111,14 +111,14 @@ export default function PlanosInternetSection() {
           </p>
           <h2
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight"
-            style={{ color: '#0f2d22' }}
+            style={{ color: 'var(--text-dark)' }}
           >
             Internet Fibra de verdade,
             <br className="hidden sm:block" />
             do básico à
             <span style={{ color: '#27CAA3' }}> Hipervelocidade</span>
           </h2>
-          <p className="text-gray-500 mt-3 text-base">Escolha o plano ideal para a sua casa</p>
+          <p className="mt-3 text-base" style={{ color: 'var(--text-muted)' }}>Escolha o plano ideal para a sua casa</p>
         </div>
 
         <div className="relative" data-aos="fade-up" data-aos-delay="80">
@@ -196,27 +196,27 @@ export default function PlanosInternetSection() {
                       </span>
                     </div>
 
-                    <div className="bg-white px-6 py-5 flex flex-col flex-1">
-                      <p className="text-xs text-gray-400 mb-1">A partir de</p>
+                    <div className="px-6 py-5 flex flex-col flex-1" style={{ background: 'var(--card-bg)' }}>
+                      <p className="text-xs mb-1" style={{ color: 'var(--text-muted)' }}>A partir de</p>
                       <div className="flex items-end gap-0.5 mb-5">
-                        <span className="text-sm font-bold mb-2.5" style={{ color: '#0f2d22' }}>R$</span>
-                        <span className="font-black leading-none" style={{ fontSize: '3.25rem', color: '#0f2d22' }}>
+                        <span className="text-sm font-bold mb-2.5" style={{ color: 'var(--text-dark)' }}>R$</span>
+                        <span className="font-black leading-none" style={{ fontSize: '3.25rem', color: 'var(--text-dark)' }}>
                           {plan.priceInt}
                         </span>
-                        <span className="text-xl font-bold mb-2" style={{ color: '#0f2d22' }}>
+                        <span className="text-xl font-bold mb-2" style={{ color: 'var(--text-dark)' }}>
                           {plan.priceDec}
                         </span>
-                        <span className="text-xs text-gray-400 mb-2 ml-0.5">/mês</span>
+                        <span className="text-xs mb-2 ml-0.5" style={{ color: 'var(--text-muted)' }}>/mês</span>
                       </div>
-                      <div className="rounded-xl px-3 py-2.5 mb-5" style={{ background: '#edfaf6' }}>
-                        <p className="text-xs text-gray-400">
+                      <div className="rounded-xl px-3 py-2.5 mb-5" style={{ background: 'var(--card-bg-alt)' }}>
+                        <p className="text-xs" style={{ color: 'var(--text-muted)' }}>
                           <span className="font-semibold">Após o vencimento:</span>{' '}
                           {plan.priceAfter}
                         </p>
                       </div>
                       <ul className="flex flex-col gap-2 mb-6 flex-1">
                         {plan.benefits.map((b, j) => (
-                          <li key={j} className="flex items-center gap-2 text-sm text-gray-600">
+                          <li key={j} className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-mid)' }}>
                             <span style={{ color: '#27CAA3' }}>✓</span>
                             {b}
                           </li>

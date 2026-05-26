@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useRef, useLayoutEffect, useEffect, useState } from 'react'
+import { useTheme } from '@/components/ThemeProvider'
 
 type Segment = 'pf' | 'empresa'
 
@@ -10,6 +11,7 @@ interface SegmentToggleProps {
 }
 
 export default function SegmentToggle({ active, onChange }: SegmentToggleProps) {
+  const { isDark } = useTheme()
   const pfRef = useRef<HTMLButtonElement>(null)
   const empresaRef = useRef<HTMLButtonElement>(null)
   const [pillStyle, setPillStyle] = useState({ left: 0, width: 0 })
@@ -30,7 +32,13 @@ export default function SegmentToggle({ active, onChange }: SegmentToggleProps) 
   }, [active])
 
   return (
-    <div className="relative flex items-center shrink-0 border border-gray-200 rounded-full p-0.5 bg-white">
+    <div
+      className="relative flex items-center shrink-0 rounded-full p-0.5"
+      style={{
+        background: isDark ? '#0d1821' : '#ffffff',
+        border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : '#e5e7eb'}`,
+      }}
+    >
       <div
         className="absolute top-0.5 bottom-0.5 rounded-full pointer-events-none"
         style={{
@@ -45,7 +53,7 @@ export default function SegmentToggle({ active, onChange }: SegmentToggleProps) 
         ref={pfRef}
         onClick={() => onChange('pf')}
         className="relative z-10 px-5 py-2 rounded-full text-xs font-semibold transition-colors duration-200"
-        style={{ color: active === 'pf' ? '#fff' : '#555' }}
+        style={{ color: active === 'pf' ? '#fff' : (isDark ? '#9ca3af' : '#555') }}
       >
         Residencial
       </button>
@@ -53,7 +61,7 @@ export default function SegmentToggle({ active, onChange }: SegmentToggleProps) 
         ref={empresaRef}
         onClick={() => onChange('empresa')}
         className="relative z-10 px-5 py-2 rounded-full text-xs font-semibold transition-colors duration-200"
-        style={{ color: active === 'empresa' ? '#fff' : '#555' }}
+        style={{ color: active === 'empresa' ? '#fff' : (isDark ? '#9ca3af' : '#555') }}
       >
         Empresa
       </button>

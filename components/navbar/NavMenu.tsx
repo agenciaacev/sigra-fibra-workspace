@@ -3,6 +3,7 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 import type { NavItem, NavChild } from './navConfig'
+import { useTheme } from '@/components/ThemeProvider'
 
 interface NavMenuProps {
   item: NavItem
@@ -23,15 +24,21 @@ function ChevronDown({ open }: { open: boolean }) {
 
 export default function NavMenu({ item, basePath, isOpen, onToggle, onClose }: NavMenuProps) {
   const router = useRouter()
+  const { isDark } = useTheme()
   const children = item.children as NavChild[]
+
+  const hoverBg = isDark ? 'rgba(255,255,255,0.07)' : '#f5f5f5'
+  const textColor = isDark ? '#e5e7eb' : '#333'
+  const dropdownBg = isDark ? '#0d1821' : '#ffffff'
+  const dropdownBorder = isDark ? 'rgba(255,255,255,0.08)' : '#e5e5e5'
 
   return (
     <div className="relative">
       <button
         onClick={() => onToggle(item.id)}
         className="flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-150"
-        style={isOpen ? { color: '#27CAA3', background: '#f5f5f5' } : { color: '#333' }}
-        onMouseEnter={e => { if (!isOpen) (e.currentTarget as HTMLButtonElement).style.background = '#f5f5f5' }}
+        style={isOpen ? { color: '#27CAA3', background: hoverBg } : { color: textColor }}
+        onMouseEnter={e => { if (!isOpen) (e.currentTarget as HTMLButtonElement).style.background = hoverBg }}
         onMouseLeave={e => { if (!isOpen) (e.currentTarget as HTMLButtonElement).style.background = 'transparent' }}
       >
         {item.label}
@@ -40,10 +47,11 @@ export default function NavMenu({ item, basePath, isOpen, onToggle, onClose }: N
 
       {isOpen && (
         <div
-          className="absolute top-[calc(100%+10px)] left-0 bg-white rounded-2xl z-50 flex flex-col gap-0.5 p-3 min-w-[220px]"
+          className="absolute top-[calc(100%+10px)] left-0 rounded-2xl z-50 flex flex-col gap-0.5 p-3 min-w-[220px]"
           style={{
-            boxShadow: '0 8px 32px rgba(0,0,0,0.10)',
-            border: '1px solid #e5e5e5',
+            background: dropdownBg,
+            boxShadow: isDark ? '0 8px 32px rgba(0,0,0,0.4)' : '0 8px 32px rgba(0,0,0,0.10)',
+            border: `1px solid ${dropdownBorder}`,
             animation: 'dropIn 0.16s cubic-bezier(0.16,1,0.3,1)'
           }}
         >
@@ -54,8 +62,10 @@ export default function NavMenu({ item, basePath, isOpen, onToggle, onClose }: N
             <button
               key={child.label}
               onClick={() => { router.push(basePath + child.to); onClose() }}
-              className="w-full text-left px-4 py-2.5 text-sm rounded-xl transition-colors duration-150 hover:bg-gray-50"
-              style={child.highlight ? { color: '#27CAA3', fontWeight: 600 } : { color: '#333' }}
+              className="w-full text-left px-4 py-2.5 text-sm rounded-xl transition-colors duration-150"
+              style={child.highlight ? { color: '#27CAA3', fontWeight: 600 } : { color: textColor }}
+              onMouseEnter={e => (e.currentTarget.style.background = hoverBg)}
+              onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
             >
               {child.label}
             </button>

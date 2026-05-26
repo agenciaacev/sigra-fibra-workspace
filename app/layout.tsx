@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/navbar/Navbar'
 import Footer from '@/components/footer/Footer'
 import AosInit from '@/components/AosInit'
+import ThemeProvider from '@/components/ThemeProvider'
 
 export const metadata: Metadata = {
   title: 'siga-fibra',
@@ -20,10 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AosInit />
-        <Navbar />
-        <div className="pt-[67px]">{children}</div>
-        <Footer />
+        <ThemeProvider>
+          <AosInit />
+          <Navbar />
+          <div className="pt-[67px]">{children}</div>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   )

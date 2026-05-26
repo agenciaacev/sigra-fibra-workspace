@@ -118,6 +118,33 @@ export default function AppEcosystemSection() {
         style={{ background: 'linear-gradient(to right, #04050a, transparent)' }} />
       <div className="absolute inset-y-0 right-0 w-28 pointer-events-none"
         style={{ background: 'linear-gradient(to left, #04050a, transparent)' }} />
+
+      {/* Película escura central */}
+      <div className="absolute inset-0 z-10 pointer-events-none" style={{
+        background: 'radial-gradient(ellipse 60% 55% at 50% 50%, rgba(4,5,10,0.72) 0%, rgba(4,5,10,0.35) 65%, transparent 100%)',
+      }} />
+
+      {/* Título centralizado */}
+      <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none px-4">
+        <p
+          className="text-xs font-bold uppercase tracking-widest mb-3"
+          style={{ color: 'rgba(255,255,255,0.5)' }}
+        >
+          Serviços Digitais
+        </p>
+        <h2
+          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center text-white"
+          style={{ textShadow: '0 2px 24px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.8)' }}
+        >
+          Muito mais além da internet
+        </h2>
+        <p
+          className="mt-3 text-base text-center max-w-md"
+          style={{ color: 'rgba(255,255,255,0.55)', textShadow: '0 1px 8px rgba(0,0,0,0.8)' }}
+        >
+          Adicione serviços digitais ao seu plano e aproveite ainda mais
+        </p>
+      </div>
     </section>
   )
 }

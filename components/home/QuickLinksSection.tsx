@@ -19,16 +19,17 @@ const links: Link[] = [
 export default function QuickLinksSection() {
   const router = useRouter()
   return (
-    <section className="bg-white border-b border-gray-100">
+    <section style={{ background: 'var(--bg-light)', borderBottom: '1px solid var(--border)' }}>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-center gap-2 overflow-x-auto py-3" style={{ scrollbarWidth: 'none' }}>
           {links.map((item) => (
             <button
               key={item.label}
               onClick={() => router.push(item.to)}
-              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-gray-600 whitespace-nowrap transition-all duration-150 hover:text-white flex-shrink-0"
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-150 flex-shrink-0"
+              style={{ color: 'var(--text-sub)' }}
               onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#27CAA3'; (e.currentTarget as HTMLButtonElement).style.color = '#fff' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; (e.currentTarget as HTMLButtonElement).style.color = '#4b5563' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-sub)' }}
             >
               <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#27CAA3' }} />
               {item.label}
