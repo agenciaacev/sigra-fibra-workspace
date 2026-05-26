@@ -22,18 +22,16 @@ export const pfNavConfig: NavItem[] = [
     label: 'Pra sua casa',
     children: [
       { label: 'Internet Fibra', to: '/internet-fibra' },
-      { label: 'Fixo', to: '/fixo' },
       { label: 'Hipervelocidade', to: '/hipervelocidade' },
       { label: 'Amigo Indica', to: '/amigo-indica', highlight: true },
     ],
   },
   {
-    id: 'celular',
-    label: 'Celular',
+    id: 'telefonia',
+    label: 'Telefonia',
     children: [
-      { label: 'Pré Pago', to: '/celular/pre-pago' },
-      { label: 'Recarga', to: '/celular/recarga' },
-      { label: 'Controle e Pós', to: '/celular/controle-pos' },
+      { label: 'Fixo', to: '/fixo' },
+      { label: 'Móvel', to: '/celular/pre-pago' },
     ],
   },
   {
@@ -78,7 +76,7 @@ export const empresaNavConfig: NavItem[] = [
     label: 'Telefonia',
     children: [
       { label: 'Fixo', to: '/telefonia/fixo' },
-      { label: 'Celular', to: '/telefonia/celular' },
+      { label: 'Móvel', to: '/telefonia/celular' },
     ],
   },
   {

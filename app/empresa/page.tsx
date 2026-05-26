@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation'
 import HeroBanner, { BannerSlide } from '@/components/shared/HeroBanner'
 import QuickLinksEmpresa from '@/components/empresa/QuickLinksEmpresa'
+import PlanosInternetEmpresaSection from '@/components/empresa/PlanosInternetEmpresaSection'
 import CtaBannerEmpresa from '@/components/empresa/CtaBannerEmpresa'
 const banner1 = '/img/1.jpg'
 const banner2 = '/img/2.jpg'
@@ -42,6 +43,7 @@ export default function EmpresaHome() {
     <div className="font-sans">
       <HeroBanner slides={slides} accentColor="#03C2C3" autoPlayInterval={6000} showArrows={false} />
       <QuickLinksEmpresa />
+      <PlanosInternetEmpresaSection />
       <CtaBannerEmpresa />
     </div>
   )

@@ -5,41 +5,41 @@ import { useRouter } from 'next/navigation'
 
 const plans = [
   {
-    gb: 15,
-    benefits: ['WhatsApp ilimitado', '5G incluso', 'Ligações ilimitadas'],
-    price: '39,90',
+    gb: 5,
+    benefits: ['Ligações ilimitadas', 'WhatsApp liberado', 'Waze liberado'],
+    price: '34,99',
     featured: false,
     badge: null,
   },
   {
-    gb: 30,
-    benefits: ['Apps ilimitados', 'Streaming sem travar', '5G incluso'],
-    price: '59,90',
+    gb: 19,
+    benefits: ['Ligações ilimitadas', 'WhatsApp liberado', 'Waze liberado'],
+    price: '59,99',
     featured: true,
     badge: 'Mais escolhido',
   },
   {
-    gb: 50,
-    benefits: ['Internet para tudo', 'Roaming nacional', '5G incluso'],
-    price: '79,90',
+    gb: 45,
+    benefits: ['Ligações ilimitadas', 'WhatsApp liberado', 'Waze liberado'],
+    price: '89,99',
     featured: false,
     badge: null,
   },
 ]
 
 const bottomBenefits = [
-  'Cobertura nacional',
-  'Portabilidade grátis',
-  'Ativação imediata',
-  'Controle pelo app',
-  'eSIM disponível',
+  'Ligações ilimitadas para qualquer operadora',
+  'WhatsApp liberado',
+  'Waze liberado',
+  'Portabilidade gratuita',
+  'Qualquer fixo ou móvel',
 ]
 
 const featureBadges = [
-  { icon: '⚡', label: '5G Ultra Rápido' },
-  { icon: '∞', label: 'Apps ilimitados' },
-  { icon: '🗺️', label: 'Cobertura nacional' },
-  { icon: '📲', label: 'eSIM disponível' },
+  { icon: '📞', label: 'Ligações ilimitadas' },
+  { icon: '💬', label: 'WhatsApp liberado' },
+  { icon: '🗺️', label: 'Waze liberado' },
+  { icon: '🔄', label: 'Portabilidade grátis' },
 ]
 
 export default function ChipMovelSection() {
@@ -105,30 +105,12 @@ export default function ChipMovelSection() {
                       border: '1px solid rgba(39,202,163,0.18)',
                     }}
                   >
-                    <span className="text-base">{f.icon}</span>
                     <span className="text-sm font-semibold" style={{ color: 'var(--text-dark)' }}>{f.label}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="flex items-end gap-1.5 mb-8 opacity-70">
-                {[18, 28, 38, 48, 58].map((h, i) => (
-                  <div
-                    key={i}
-                    className="w-3 rounded-sm"
-                    style={{
-                      height: `${h}px`,
-                      background:
-                        i < 4
-                          ? 'linear-gradient(to top, #27CAA3, #06b6d4)'
-                          : 'rgba(39,202,163,0.2)',
-                    }}
-                  />
-                ))}
-                <span className="text-xs ml-2 mb-1" style={{ color: 'var(--text-mid)' }}>Sinal 5G</span>
-              </div>
-
-              <button
+<button
                 onClick={() => router.push('/pessoa-fisica/celular/pre-pago')}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
                 style={{ background: '#27CAA3' }}
@@ -228,6 +210,11 @@ export default function ChipMovelSection() {
             ))}
           </div>
         </div>
+
+        {/* Disclaimer */}
+        <p className="text-xs text-center mb-6" style={{ color: 'var(--text-muted)' }}>
+          * Franquia + chip com contratação de uma internet banda larga. O plano móvel é exclusivo para clientes Siga Fibra com internet banda larga ativa.
+        </p>
 
         {/* Bottom benefits strip */}
         <div
