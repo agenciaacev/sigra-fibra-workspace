@@ -73,14 +73,14 @@ export default function DiferenciaisInternetFibraEmpresa() {
       />
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(39,202,163,0.07), transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse, rgba(37,99,235,0.07), transparent 70%)' }}
       />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
 
         {/* Part 1: Comparison */}
         <div className="text-center mb-14" data-aos="fade-up">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#2563eb' }}>
             Tecnologia
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
@@ -101,9 +101,9 @@ export default function DiferenciaisInternetFibraEmpresa() {
           <div className="px-5 py-4" style={{ background: 'rgba(255,255,255,0.03)' }}>
             <p className="text-xs font-bold uppercase tracking-widest text-gray-500">Característica</p>
           </div>
-          <div className="px-5 py-4 flex items-center gap-2" style={{ background: 'rgba(39,202,163,0.1)', borderLeft: '1px solid rgba(39,202,163,0.2)', borderRight: '1px solid rgba(39,202,163,0.2)' }}>
-            <span className="w-2 h-2 rounded-full" style={{ background: '#27CAA3' }} />
-            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#27CAA3' }}>Fibra Siga Empresarial</p>
+          <div className="px-5 py-4 flex items-center gap-2" style={{ background: 'rgba(37,99,235,0.1)', borderLeft: '1px solid rgba(37,99,235,0.2)', borderRight: '1px solid rgba(37,99,235,0.2)' }}>
+            <span className="w-2 h-2 rounded-full" style={{ background: '#2563eb' }} />
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#2563eb' }}>Fibra Siga Empresarial</p>
           </div>
           <div className="px-5 py-4" style={{ background: 'rgba(255,255,255,0.03)' }}>
             <p className="text-xs font-bold uppercase tracking-widest text-gray-600">Link Convencional</p>
@@ -126,8 +126,8 @@ export default function DiferenciaisInternetFibraEmpresa() {
               <div className="px-5 py-4" style={{ background: 'rgba(255,255,255,0.015)' }}>
                 <p className="text-sm font-semibold text-gray-300">{row.feature}</p>
               </div>
-              <div className="px-5 py-4 flex items-center gap-2" style={{ background: 'rgba(39,202,163,0.05)', borderLeft: '1px solid rgba(39,202,163,0.15)', borderRight: '1px solid rgba(39,202,163,0.15)' }}>
-                <span className="text-base flex-shrink-0" style={{ color: '#27CAA3' }}>✓</span>
+              <div className="px-5 py-4 flex items-center gap-2" style={{ background: 'rgba(37,99,235,0.05)', borderLeft: '1px solid rgba(37,99,235,0.15)', borderRight: '1px solid rgba(37,99,235,0.15)' }}>
+                <span className="text-base flex-shrink-0" style={{ color: '#2563eb' }}>✓</span>
                 <p className="text-sm text-white">{row.fibra}</p>
               </div>
               <div className="px-5 py-4 flex items-center gap-2" style={{ background: 'rgba(255,255,255,0.01)' }}>
@@ -146,10 +146,10 @@ export default function DiferenciaisInternetFibraEmpresa() {
                 <p className="text-xs font-bold uppercase tracking-widest text-gray-400">{row.feature}</p>
               </div>
               <div className="grid grid-cols-2">
-                <div className="px-4 py-3 flex flex-col gap-1" style={{ background: 'rgba(39,202,163,0.05)', borderRight: '1px solid rgba(39,202,163,0.15)' }}>
-                  <p className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: '#27CAA3' }}>Fibra Siga</p>
+                <div className="px-4 py-3 flex flex-col gap-1" style={{ background: 'rgba(37,99,235,0.05)', borderRight: '1px solid rgba(37,99,235,0.15)' }}>
+                  <p className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: '#2563eb' }}>Fibra Siga</p>
                   <div className="flex items-start gap-1.5">
-                    <span className="flex-shrink-0 mt-0.5 text-xs" style={{ color: '#27CAA3' }}>✓</span>
+                    <span className="flex-shrink-0 mt-0.5 text-xs" style={{ color: '#2563eb' }}>✓</span>
                     <p className="text-xs text-white leading-relaxed">{row.fibra}</p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export default function DiferenciaisInternetFibraEmpresa() {
 
         {/* Part 2: Steps */}
         <div className="text-center mb-14" data-aos="fade-up">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#2563eb' }}>
             Instalação
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-4">
@@ -187,7 +187,7 @@ export default function DiferenciaisInternetFibraEmpresa() {
               {i < steps.length - 1 && (
                 <div
                   className="hidden lg:block absolute top-10 left-full w-full h-px z-0"
-                  style={{ background: 'linear-gradient(90deg, rgba(39,202,163,0.4), rgba(39,202,163,0.05))', width: 'calc(100% - 2.5rem)', left: '80%' }}
+                  style={{ background: 'linear-gradient(90deg, rgba(37,99,235,0.4), rgba(37,99,235,0.05))', width: 'calc(100% - 2.5rem)', left: '80%' }}
                 />
               )}
               <div
@@ -199,7 +199,7 @@ export default function DiferenciaisInternetFibraEmpresa() {
               >
                 <div
                   className="w-12 h-12 rounded-2xl flex items-center justify-center mb-5 font-black text-sm"
-                  style={{ background: 'linear-gradient(135deg, #3ddcbc 0%, #27CAA3 100%)', color: '#0c3a2a' }}
+                  style={{ background: 'linear-gradient(135deg, #60a5fa 0%, #2563eb 100%)', color: '#0c1a40' }}
                 >
                   {step.n}
                 </div>
@@ -215,7 +215,7 @@ export default function DiferenciaisInternetFibraEmpresa() {
           <button
             onClick={() => router.push('/empresa/atendimento/canais')}
             className="inline-flex items-center gap-2 font-bold px-10 py-4 rounded-2xl text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
-            style={{ background: '#27CAA3' }}
+            style={{ background: '#2563eb' }}
           >
             Falar com consultor
             <span>→</span>

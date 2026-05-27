@@ -120,7 +120,7 @@ export default function PlanosInternetEmpresaSection() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-12" data-aos="fade-up">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#2563eb' }}>
             Siga Fibra Empresarial
           </p>
           <h2
@@ -128,7 +128,7 @@ export default function PlanosInternetEmpresaSection() {
             style={{ color: 'var(--text-dark)' }}
           >
             Internet Fibra para
-            <span style={{ color: '#27CAA3' }}> Empresas</span>
+            <span style={{ color: '#2563eb' }}> Empresas</span>
           </h2>
           <p className="mt-3 text-base" style={{ color: 'var(--text-muted)' }}>
             Planos dedicados com IP fixo, SLA e suporte 24h para o seu negócio
@@ -142,7 +142,7 @@ export default function PlanosInternetEmpresaSection() {
               onClick={() => scroll('left')}
               disabled={!canScrollLeft}
               className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
-              style={{ background: '#27CAA3' }}
+              style={{ background: '#2563eb' }}
               aria-label="Anterior"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -172,7 +172,7 @@ export default function PlanosInternetEmpresaSection() {
                       style={{
                         top: '0px',
                         transform: 'translate(-50%, -50%)',
-                        background: '#0c3a2a',
+                        background: '#0c1a40',
                         boxShadow: '0 2px 10px rgba(0,0,0,0.25)',
                       }}
                     >
@@ -184,13 +184,13 @@ export default function PlanosInternetEmpresaSection() {
                     className="flex flex-col rounded-2xl overflow-hidden flex-1"
                     style={{
                       boxShadow: plan.featured
-                        ? '0 8px 32px rgba(39,202,163,0.28)'
+                        ? '0 8px 32px rgba(37,99,235,0.28)'
                         : '0 4px 20px rgba(0,0,0,0.08)',
                     }}
                   >
                     <div
                       className="relative px-6 pt-5 pb-6"
-                      style={{ background: 'linear-gradient(135deg, #3ddcbc 0%, #27CAA3 100%)' }}
+                      style={{ background: 'linear-gradient(135deg, #60a5fa 0%, #2563eb 100%)' }}
                     >
                       <p className="text-xs font-bold uppercase tracking-widest text-white/70 mb-1">
                         {plan.name}
@@ -227,11 +227,11 @@ export default function PlanosInternetEmpresaSection() {
 
                       <div className="flex gap-2 mb-5">
                         <div className="flex-1 rounded-xl px-3 py-2 text-center" style={{ background: 'var(--card-bg-alt)' }}>
-                          <p className="text-xs font-semibold" style={{ color: '#27CAA3' }}>24 meses</p>
+                          <p className="text-xs font-semibold" style={{ color: '#2563eb' }}>24 meses</p>
                           <p className="text-sm font-black" style={{ color: 'var(--text-dark)' }}>5% OFF</p>
                         </div>
                         <div className="flex-1 rounded-xl px-3 py-2 text-center" style={{ background: 'var(--card-bg-alt)' }}>
-                          <p className="text-xs font-semibold" style={{ color: '#27CAA3' }}>36 meses</p>
+                          <p className="text-xs font-semibold" style={{ color: '#2563eb' }}>36 meses</p>
                           <p className="text-sm font-black" style={{ color: 'var(--text-dark)' }}>10% OFF</p>
                         </div>
                       </div>
@@ -239,7 +239,7 @@ export default function PlanosInternetEmpresaSection() {
                       <ul className="flex flex-col gap-2 mb-6 flex-1">
                         {plan.benefits.map((b, j) => (
                           <li key={j} className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-mid)' }}>
-                            <span style={{ color: '#27CAA3' }}>✓</span>
+                            <span style={{ color: '#2563eb' }}>✓</span>
                             {b}
                           </li>
                         ))}
@@ -247,7 +247,7 @@ export default function PlanosInternetEmpresaSection() {
                       <button
                         onClick={() => router.push('/empresa/internet/fibra')}
                         className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
-                        style={{ background: '#27CAA3' }}
+                        style={{ background: '#2563eb' }}
                       >
                         Contratar agora
                       </button>
@@ -261,7 +261,7 @@ export default function PlanosInternetEmpresaSection() {
               onClick={() => scroll('right')}
               disabled={!canScrollRight}
               className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
-              style={{ background: '#27CAA3' }}
+              style={{ background: '#2563eb' }}
               aria-label="Próximo"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -277,7 +277,7 @@ export default function PlanosInternetEmpresaSection() {
             <div
               key={i}
               className="h-1.5 rounded-full transition-all duration-300"
-              style={{ background: '#27CAA3', opacity: i === activeDot ? 1 : 0.3, width: i === activeDot ? 24 : 6 }}
+              style={{ background: '#2563eb', opacity: i === activeDot ? 1 : 0.3, width: i === activeDot ? 24 : 6 }}
             />
           ))}
         </div>
