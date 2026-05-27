@@ -5,6 +5,7 @@ import StreamingSection from '@/components/home/StreamingSection'
 import AppEcosystemSection from '@/components/home/AppEcosystemSection'
 import AmigoIndicaSection from '@/components/home/AmigoIndicaSection'
 import ChipMovelSection from '@/components/home/ChipMovelSection'
+import FixoHomeSection from '@/components/home/FixoHomeSection'
 import CtaBanner from '@/components/home/CtaBanner'
 
 export default function PFHome() {
@@ -17,6 +18,7 @@ export default function PFHome() {
       <AppEcosystemSection />
       <AmigoIndicaSection />
       <ChipMovelSection />
+      <FixoHomeSection />
       <CtaBanner />
     </div>
   )
