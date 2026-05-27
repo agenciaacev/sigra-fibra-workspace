@@ -91,11 +91,11 @@ export default function DiferenciaisInternetFibraEmpresa() {
           </p>
         </div>
 
-        {/* Table header */}
+        {/* Table header — desktop only */}
         <div
           data-aos="fade-up"
           data-aos-delay="60"
-          className="grid grid-cols-3 gap-0 rounded-t-2xl overflow-hidden"
+          className="hidden sm:grid grid-cols-3 gap-0 rounded-t-2xl overflow-hidden"
           style={{ border: '1px solid rgba(255,255,255,0.07)', borderBottom: 'none' }}
         >
           <div className="px-5 py-4" style={{ background: 'rgba(255,255,255,0.03)' }}>
@@ -110,11 +110,11 @@ export default function DiferenciaisInternetFibraEmpresa() {
           </div>
         </div>
 
-        {/* Table rows */}
+        {/* Table rows — desktop */}
         <div
           data-aos="fade-up"
           data-aos-delay="80"
-          className="rounded-b-2xl overflow-hidden"
+          className="hidden sm:block rounded-b-2xl overflow-hidden"
           style={{ border: '1px solid rgba(255,255,255,0.07)' }}
         >
           {comparisons.map((row, i) => (
@@ -126,20 +126,40 @@ export default function DiferenciaisInternetFibraEmpresa() {
               <div className="px-5 py-4" style={{ background: 'rgba(255,255,255,0.015)' }}>
                 <p className="text-sm font-semibold text-gray-300">{row.feature}</p>
               </div>
-              <div
-                className="px-5 py-4 flex items-center gap-2"
-                style={{
-                  background: 'rgba(39,202,163,0.05)',
-                  borderLeft: '1px solid rgba(39,202,163,0.15)',
-                  borderRight: '1px solid rgba(39,202,163,0.15)',
-                }}
-              >
+              <div className="px-5 py-4 flex items-center gap-2" style={{ background: 'rgba(39,202,163,0.05)', borderLeft: '1px solid rgba(39,202,163,0.15)', borderRight: '1px solid rgba(39,202,163,0.15)' }}>
                 <span className="text-base flex-shrink-0" style={{ color: '#27CAA3' }}>✓</span>
                 <p className="text-sm text-white">{row.fibra}</p>
               </div>
               <div className="px-5 py-4 flex items-center gap-2" style={{ background: 'rgba(255,255,255,0.01)' }}>
                 <span className="text-base flex-shrink-0 text-gray-600">✗</span>
                 <p className="text-sm text-gray-500">{row.cabo}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Cards — mobile only */}
+        <div className="flex flex-col gap-3 sm:hidden" data-aos="fade-up" data-aos-delay="80">
+          {comparisons.map((row, i) => (
+            <div key={i} className="rounded-2xl overflow-hidden" style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
+              <div className="px-4 py-3" style={{ background: 'rgba(255,255,255,0.03)' }}>
+                <p className="text-xs font-bold uppercase tracking-widest text-gray-400">{row.feature}</p>
+              </div>
+              <div className="grid grid-cols-2">
+                <div className="px-4 py-3 flex flex-col gap-1" style={{ background: 'rgba(39,202,163,0.05)', borderRight: '1px solid rgba(39,202,163,0.15)' }}>
+                  <p className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: '#27CAA3' }}>Fibra Siga</p>
+                  <div className="flex items-start gap-1.5">
+                    <span className="flex-shrink-0 mt-0.5 text-xs" style={{ color: '#27CAA3' }}>✓</span>
+                    <p className="text-xs text-white leading-relaxed">{row.fibra}</p>
+                  </div>
+                </div>
+                <div className="px-4 py-3 flex flex-col gap-1" style={{ background: 'rgba(255,255,255,0.01)' }}>
+                  <p className="text-[10px] font-bold uppercase tracking-widest text-gray-600 mb-1">Convencional</p>
+                  <div className="flex items-start gap-1.5">
+                    <span className="flex-shrink-0 mt-0.5 text-xs text-gray-600">✗</span>
+                    <p className="text-xs text-gray-500 leading-relaxed">{row.cabo}</p>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

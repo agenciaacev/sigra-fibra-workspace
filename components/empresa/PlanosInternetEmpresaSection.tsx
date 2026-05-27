@@ -56,6 +56,10 @@ export default function PlanosInternetEmpresaSection() {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [activeDot, setActiveDot] = useState(0)
+  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 640
 
   const checkScrollButtons = () => {
     const el = scrollRef.current
@@ -66,15 +70,41 @@ export default function PlanosInternetEmpresaSection() {
     setActiveDot(Math.round(el.scrollLeft / cardWidth))
   }
 
+  const startAutoScroll = () => {
+    if (autoRef.current) clearInterval(autoRef.current)
+    autoRef.current = setInterval(() => {
+      const el = scrollRef.current
+      if (!el || !isMobile()) return
+      const cardWidth = el.scrollWidth / plans.length
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1
+      if (atEnd) {
+        el.scrollLeft = 0
+      } else {
+        el.scrollBy({ left: cardWidth, behavior: 'smooth' })
+      }
+    }, 3500)
+  }
+
+  const pauseAndResume = () => {
+    if (autoRef.current) clearInterval(autoRef.current)
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
+    resumeTimeoutRef.current = setTimeout(() => startAutoScroll(), 2000)
+  }
+
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
     checkScrollButtons()
     el.addEventListener('scroll', checkScrollButtons)
     window.addEventListener('resize', checkScrollButtons)
+    el.addEventListener('touchstart', pauseAndResume, { passive: true })
+    startAutoScroll()
     return () => {
       el.removeEventListener('scroll', checkScrollButtons)
       window.removeEventListener('resize', checkScrollButtons)
+      el.removeEventListener('touchstart', pauseAndResume)
+      if (autoRef.current) clearInterval(autoRef.current)
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
     }
   }, [])
 
@@ -111,7 +141,7 @@ export default function PlanosInternetEmpresaSection() {
             <button
               onClick={() => scroll('left')}
               disabled={!canScrollLeft}
-              className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
+              className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
               style={{ background: '#27CAA3' }}
               aria-label="Anterior"
             >
@@ -120,17 +150,21 @@ export default function PlanosInternetEmpresaSection() {
               </svg>
             </button>
 
-            <style>{`.carousel-emp-hide-scroll::-webkit-scrollbar { display: none; }`}</style>
+            <style>{`
+              .carousel-emp-hide-scroll::-webkit-scrollbar { display: none; }
+              .plano-emp-card { width: 100%; scroll-snap-align: start; }
+              @media(min-width: 640px) { .plano-emp-card { width: calc(25% - 15px); min-width: 220px; } }
+            `}</style>
             <div
               ref={scrollRef}
-              className="carousel-emp-hide-scroll flex gap-5 overflow-x-auto scroll-smooth flex-1"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingBottom: '4px', paddingTop: '20px' }}
+              className="carousel-emp-hide-scroll flex gap-0 sm:gap-5 overflow-x-auto scroll-smooth flex-1"
+              style={{ scrollbarWidth: 'none', paddingBottom: '4px', paddingTop: '20px', scrollSnapType: 'x mandatory' }}
             >
               {plans.map((plan, i) => (
                 <div
                   key={i}
-                  className="flex-shrink-0 flex flex-col"
-                  style={{ width: 'calc(25% - 15px)', minWidth: '220px', position: 'relative' }}
+                  className="plano-emp-card flex-shrink-0 flex flex-col"
+                  style={{ position: 'relative' }}
                 >
                   {plan.badge && (
                     <span
@@ -154,7 +188,6 @@ export default function PlanosInternetEmpresaSection() {
                         : '0 4px 20px rgba(0,0,0,0.08)',
                     }}
                   >
-                    {/* Header verde */}
                     <div
                       className="relative px-6 pt-5 pb-6"
                       style={{ background: 'linear-gradient(135deg, #3ddcbc 0%, #27CAA3 100%)' }}
@@ -179,7 +212,6 @@ export default function PlanosInternetEmpresaSection() {
                       </span>
                     </div>
 
-                    {/* Body */}
                     <div className="px-6 py-5 flex flex-col flex-1" style={{ background: 'var(--card-bg)' }}>
                       <p className="text-xs mb-1" style={{ color: 'var(--text-muted)' }}>Valor s/ desconto</p>
                       <div className="flex items-end gap-0.5 mb-4">
@@ -193,7 +225,6 @@ export default function PlanosInternetEmpresaSection() {
                         <span className="text-xs mb-2 ml-0.5" style={{ color: 'var(--text-muted)' }}>/mês</span>
                       </div>
 
-                      {/* Descontos fidelidade */}
                       <div className="flex gap-2 mb-5">
                         <div className="flex-1 rounded-xl px-3 py-2 text-center" style={{ background: 'var(--card-bg-alt)' }}>
                           <p className="text-xs font-semibold" style={{ color: '#27CAA3' }}>24 meses</p>
@@ -229,7 +260,7 @@ export default function PlanosInternetEmpresaSection() {
             <button
               onClick={() => scroll('right')}
               disabled={!canScrollRight}
-              className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
+              className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
               style={{ background: '#27CAA3' }}
               aria-label="Próximo"
             >
@@ -241,7 +272,6 @@ export default function PlanosInternetEmpresaSection() {
           </div>
         </div>
 
-        {/* Dots */}
         <div className="flex justify-center gap-2 mt-8">
           {plans.map((_, i) => (
             <div
@@ -252,7 +282,6 @@ export default function PlanosInternetEmpresaSection() {
           ))}
         </div>
 
-        {/* Nota de rodapé */}
         <p className="text-center text-xs mt-6" style={{ color: 'var(--text-muted)' }}>
           * Distância máxima de 300m. Se ultrapassar: R$ 2,00 por metro excedente.
         </p>

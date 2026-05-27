@@ -65,6 +65,10 @@ export default function PlanosLinkDedicado() {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [activeDot, setActiveDot] = useState(0)
+  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 640
 
   const checkScroll = () => {
     const el = scrollRef.current
@@ -74,15 +78,41 @@ export default function PlanosLinkDedicado() {
     setActiveDot(Math.round(el.scrollLeft / (el.scrollWidth / plans.length)))
   }
 
+  const startAutoScroll = () => {
+    if (autoRef.current) clearInterval(autoRef.current)
+    autoRef.current = setInterval(() => {
+      const el = scrollRef.current
+      if (!el || !isMobile()) return
+      const cardWidth = el.scrollWidth / plans.length
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1
+      if (atEnd) {
+        el.scrollLeft = 0
+      } else {
+        el.scrollBy({ left: cardWidth, behavior: 'smooth' })
+      }
+    }, 3500)
+  }
+
+  const pauseAndResume = () => {
+    if (autoRef.current) clearInterval(autoRef.current)
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
+    resumeTimeoutRef.current = setTimeout(() => startAutoScroll(), 2000)
+  }
+
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
     checkScroll()
     el.addEventListener('scroll', checkScroll)
     window.addEventListener('resize', checkScroll)
+    el.addEventListener('touchstart', pauseAndResume, { passive: true })
+    startAutoScroll()
     return () => {
       el.removeEventListener('scroll', checkScroll)
       window.removeEventListener('resize', checkScroll)
+      el.removeEventListener('touchstart', pauseAndResume)
+      if (autoRef.current) clearInterval(autoRef.current)
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
     }
   }, [])
 
@@ -96,7 +126,6 @@ export default function PlanosLinkDedicado() {
     <section className="py-16 md:py-24" style={{ background: 'var(--bg-light-alt)' }}>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Header */}
         <div className="text-center mb-10" data-aos="fade-up">
           <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
             Planos — 12 meses
@@ -109,7 +138,6 @@ export default function PlanosLinkDedicado() {
             Conectividade exclusiva com SLA garantido. Escolha a redundância ideal para sua operação.
           </p>
 
-          {/* Toggle 1 FO / 2 FO */}
           <div
             data-aos="fade-up"
             data-aos-delay="60"
@@ -145,14 +173,13 @@ export default function PlanosLinkDedicado() {
           )}
         </div>
 
-        {/* Cards carousel */}
         <div className="relative" data-aos="fade-up" data-aos-delay="80">
           <div className="flex items-center gap-3">
 
             <button
               onClick={() => scroll('left')}
               disabled={!canScrollLeft}
-              className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
+              className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
               style={{ background: '#27CAA3' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -160,19 +187,23 @@ export default function PlanosLinkDedicado() {
               </svg>
             </button>
 
-            <style>{`.planos-ld-scroll::-webkit-scrollbar { display: none; }`}</style>
+            <style>{`
+              .planos-ld-scroll::-webkit-scrollbar { display: none; }
+              .plano-ld-card { width: 100%; scroll-snap-align: start; }
+              @media(min-width: 640px) { .plano-ld-card { width: calc(25% - 15px); min-width: 220px; } }
+            `}</style>
             <div
               ref={scrollRef}
-              className="planos-ld-scroll flex gap-5 overflow-x-auto scroll-smooth flex-1"
-              style={{ scrollbarWidth: 'none', paddingBottom: '4px', paddingTop: '20px' }}
+              className="planos-ld-scroll flex gap-0 sm:gap-5 overflow-x-auto scroll-smooth flex-1"
+              style={{ scrollbarWidth: 'none', paddingBottom: '4px', paddingTop: '20px', scrollSnapType: 'x mandatory' }}
             >
               {plans.map((plan, i) => {
                 const price = fo === '1fo' ? plan.price1fo : plan.price2fo
                 return (
                   <div
                     key={i}
-                    className="flex-shrink-0 flex flex-col"
-                    style={{ width: 'calc(25% - 15px)', minWidth: '220px', position: 'relative' }}
+                    className="plano-ld-card flex-shrink-0 flex flex-col"
+                    style={{ position: 'relative' }}
                   >
                     {plan.badge && (
                       <span
@@ -196,7 +227,6 @@ export default function PlanosLinkDedicado() {
                           : '0 4px 20px rgba(0,0,0,0.08)',
                       }}
                     >
-                      {/* Card header */}
                       <div
                         className="relative px-6 pt-5 pb-6"
                         style={{ background: 'linear-gradient(135deg, #3ddcbc 0%, #27CAA3 100%)' }}
@@ -210,9 +240,7 @@ export default function PlanosLinkDedicado() {
                           </span>
                           <span className="text-2xl font-extrabold text-white mb-1.5">{plan.unit}</span>
                         </div>
-                        <p className="text-white/65 text-sm mt-0.5">
-                          {plan.updown}
-                        </p>
+                        <p className="text-white/65 text-sm mt-0.5">{plan.updown}</p>
                         <span
                           className="absolute bottom-3 right-4 text-xs font-black tracking-widest uppercase select-none"
                           style={{ color: 'rgba(255,255,255,0.18)' }}
@@ -221,7 +249,6 @@ export default function PlanosLinkDedicado() {
                         </span>
                       </div>
 
-                      {/* Card body */}
                       <div className="px-6 py-5 flex flex-col flex-1" style={{ background: 'var(--card-bg)' }}>
                         <p className="text-xs mb-1" style={{ color: 'var(--text-muted)' }}>
                           {fo === '1fo' ? '1 Fibra Óptica — por mês' : '2 Fibras Ópticas — por mês'}
@@ -236,7 +263,6 @@ export default function PlanosLinkDedicado() {
                           </span>
                         </div>
 
-                        {/* Fidelidade */}
                         <div className="flex gap-2 mb-5">
                           <div className="flex-1 rounded-xl px-2 py-2 text-center" style={{ background: 'var(--card-bg-alt)' }}>
                             <p className="text-xs font-semibold" style={{ color: '#27CAA3' }}>24 meses</p>
@@ -274,7 +300,7 @@ export default function PlanosLinkDedicado() {
             <button
               onClick={() => scroll('right')}
               disabled={!canScrollRight}
-              className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
+              className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
               style={{ background: '#27CAA3' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -284,7 +310,6 @@ export default function PlanosLinkDedicado() {
           </div>
         </div>
 
-        {/* Dots */}
         <div className="flex justify-center gap-2 mt-8">
           {plans.map((_, i) => (
             <div
@@ -295,7 +320,6 @@ export default function PlanosLinkDedicado() {
           ))}
         </div>
 
-        {/* Rodapé */}
         <p className="text-center text-xs mt-6" style={{ color: 'var(--text-muted)' }}>
           * Distância até 1.000 metros isenta. Se ultrapassar: R$ 2,00 por metro excedente. Preços referentes a contratos de 12 meses.
         </p>

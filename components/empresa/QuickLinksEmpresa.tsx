@@ -3,40 +3,30 @@
 import React from 'react'
 import { useRouter } from 'next/navigation'
 
-interface Link { label: string; desc: string; to: string }
-
-const links: Link[] = [
-  { label: 'Internet', desc: 'Fibra, link dedicado e Lan To Lan', to: '/empresa/internet/fibra' },
-  { label: 'Telefonia', desc: 'Fixo e celular corporativo', to: '/empresa/telefonia/fixo' },
-  { label: 'Serviços Digitais', desc: 'Segurança e produtividade', to: '/empresa/servicos-digitais/kaspersky' },
-  { label: 'Atendimento', desc: 'Suporte dedicado para empresas', to: '/empresa/atendimento/canais' },
+const links = [
+  { label: 'Internet', to: '/empresa/internet/fibra' },
+  { label: 'Telefonia', to: '/empresa/telefonia/fixo' },
+  { label: 'Serviços Digitais', to: '/empresa/servicos-digitais/kaspersky' },
+  { label: 'Atendimento', to: '/empresa/atendimento/canais' },
 ]
 
 export default function QuickLinksEmpresa() {
   const router = useRouter()
   return (
-    <section className="py-12 md:py-20 lg:py-24 bg-white">
+    <section className="hidden sm:block" style={{ background: 'var(--bg-light)', borderBottom: '1px solid var(--border)' }}>
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <p data-aos="fade-up" className="text-center text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#03C2C3' }}>
-          Para o seu negócio
-        </p>
-        <h2 data-aos="fade-up" data-aos-delay="60" className="text-center text-2xl sm:text-3xl font-extrabold mb-14 text-gray-900">
-          Soluções completas para empresas
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {links.map((item, i) => (
+        <div className="flex items-center justify-center gap-2 py-3">
+          {links.map((item) => (
             <button
               key={item.label}
-              data-aos="fade-up"
-              data-aos-delay={i * 80}
               onClick={() => router.push(item.to)}
-              className="group text-left p-5 sm:p-7 rounded-2xl border-2 border-gray-100 bg-white transition-all duration-200"
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#03C2C3'; (e.currentTarget as HTMLButtonElement).style.boxShadow = '0 8px 24px rgba(3,194,195,0.12)' }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.borderColor = '#f3f4f6'; (e.currentTarget as HTMLButtonElement).style.boxShadow = 'none' }}
+              className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-150 flex-shrink-0"
+              style={{ color: 'var(--text-sub)' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#27CAA3'; (e.currentTarget as HTMLButtonElement).style.color = '#fff' }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-sub)' }}
             >
-              <div className="w-10 h-10 rounded-xl mb-5" style={{ background: '#03C2C3' }} />
-              <p className="font-bold text-base mb-1.5 text-gray-900">{item.label}</p>
-              <p className="text-sm text-gray-500">{item.desc}</p>
+              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#27CAA3' }} />
+              {item.label}
             </button>
           ))}
         </div>

@@ -157,19 +157,13 @@ export default function ChipMovelSection() {
                     <div className="flex items-end gap-1 mb-3">
                       <span
                         className="font-extrabold leading-none"
-                        style={{
-                          fontSize: plan.featured ? '3.25rem' : '2.25rem',
-                          color: 'var(--text-dark)',
-                        }}
+                        style={{ fontSize: '2.25rem', color: 'var(--text-dark)' }}
                       >
                         {plan.gb}
                       </span>
                       <span
                         className="font-bold mb-1"
-                        style={{
-                          fontSize: plan.featured ? '1.2rem' : '1rem',
-                          color: '#27CAA3',
-                        }}
+                        style={{ fontSize: '1rem', color: '#27CAA3' }}
                       >
                         GB
                       </span>
@@ -190,7 +184,7 @@ export default function ChipMovelSection() {
                       <p
                         className="font-extrabold leading-tight"
                         style={{
-                          fontSize: plan.featured ? '1.65rem' : '1.35rem',
+                          fontSize: '1.35rem',
                           color: 'var(--text-dark)',
                         }}
                       >

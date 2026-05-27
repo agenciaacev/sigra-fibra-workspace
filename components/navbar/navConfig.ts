@@ -63,12 +63,9 @@ export const empresaNavConfig: NavItem[] = [
     id: 'internet',
     label: 'Internet',
     children: [
-      { label: 'Internet Fibra', to: '/internet/fibra' },
-      { label: 'Fixo', to: '/internet/fixo' },
-      { label: 'Hipervelocidade', to: '/internet/hipervelocidade' },
+      { label: 'Hipervelocidade', to: '/internet/fibra' },
       { label: 'Link Dedicado', to: '/internet/link-dedicado' },
       { label: 'Lan To Lan', to: '/internet/lan-to-lan' },
-      { label: 'Apps dos Planos Empresariais', to: '/internet/apps-planos' },
     ],
   },
   {

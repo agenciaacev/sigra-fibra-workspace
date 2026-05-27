@@ -17,7 +17,7 @@ const services = [
     icon: '/img/icons-digitais/globoplay.png',
     bg: '#991b1b',
     tagline: 'Séries, filmes e ao vivo da Globo',
-    to: '/pessoa-fisica/servicos-digitais',
+    to: '/pessoa-fisica/servicos-digitais/globoplay',
     accentColor: '#ef4444',
   },
   {
@@ -25,7 +25,7 @@ const services = [
     icon: '/img/icons-digitais/hbo.webp',
     bg: '#1c1c2e',
     tagline: 'As melhores séries e filmes exclusivos',
-    to: '/pessoa-fisica/servicos-digitais',
+    to: '/pessoa-fisica/servicos-digitais/hbo-max',
     accentColor: '#a855f7',
   },
   {
@@ -33,7 +33,7 @@ const services = [
     icon: '/img/icons-digitais/sky+.png',
     bg: '#0c4a6e',
     tagline: 'Canais ao vivo, filmes e séries',
-    to: '/pessoa-fisica/servicos-digitais',
+    to: '/pessoa-fisica/servicos-digitais/sky-mais',
     accentColor: '#0ea5e9',
   },
   {
@@ -41,7 +41,7 @@ const services = [
     icon: '/img/icons-digitais/prime-video.png',
     bg: '#00a8e0',
     tagline: 'Séries e filmes Amazon Originals',
-    to: '/pessoa-fisica/servicos-digitais',
+    to: '/pessoa-fisica/servicos-digitais/veja-mais',
     accentColor: '#3b82f6',
   },
 ]
@@ -70,38 +70,42 @@ export default function StreamingSection() {
           </p>
         </div>
 
+        <style>{`
+          @media(max-width: 639px) {
+            .streaming-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+          }
+        `}</style>
         <div
-          className="flex flex-nowrap justify-center gap-4 lg:gap-8"
+          className="flex flex-col sm:flex-row sm:flex-nowrap sm:justify-center gap-6 sm:gap-4 lg:gap-8"
           data-aos="fade-up"
           data-aos-delay="80"
         >
           {services.map((s, i) => (
             <div
               key={i}
-              className="flex flex-col items-center gap-4 cursor-pointer group"
+              className="streaming-card flex flex-col items-center gap-4 cursor-pointer group w-full sm:w-auto rounded-2xl sm:rounded-none p-4 sm:p-0 transition-all duration-200"
               onClick={() => router.push(s.to)}
             >
-              {/* Ícone */}
-              <div
-                className="overflow-hidden transition-transform duration-300 group-hover:scale-105"
-                style={{
-                  width: 185,
-                  height: 185,
-                  borderRadius: 44,
-                  boxShadow: 'rgba(0,0,0,0.4) 0px 2px 4px, rgba(0,0,0,0.3) 0px 7px 13px -3px, rgba(0,0,0,0.2) 0px -3px 0px inset',
-                }}
-              >
-                <img
-                  src={s.icon}
-                  alt={s.name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                />
-              </div>
+              <div className="flex flex-row sm:flex-col items-center gap-4 w-full">
+                {/* Ícone */}
+                <div
+                  className="w-16 h-16 sm:w-[185px] sm:h-[185px] flex-shrink-0 overflow-hidden transition-transform duration-300 group-hover:scale-105"
+                  style={{
+                    borderRadius: 16,
+                    boxShadow: 'rgba(0,0,0,0.4) 0px 2px 4px, rgba(0,0,0,0.3) 0px 7px 13px -3px',
+                  }}
+                >
+                  <img src={s.icon} alt={s.name} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                </div>
 
-              {/* Texto */}
-              <p className="text-xs text-center leading-relaxed max-w-[160px]" style={{ color: 'rgba(255,255,255,0.45)' }}>
-                {s.tagline}
-              </p>
+                {/* Texto */}
+                <div className="flex flex-col sm:items-center flex-1">
+                  <p className="text-sm font-semibold text-white mb-1">{s.name}</p>
+                  <p className="text-xs leading-relaxed sm:text-center sm:max-w-[160px]" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                    {s.tagline}
+                  </p>
+                </div>
+              </div>
             </div>
           ))}
         </div>

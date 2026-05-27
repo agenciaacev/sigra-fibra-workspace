@@ -24,7 +24,7 @@ export default function AmigoIndicaSection() {
           <div className="p-8 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
 
             {/* Left */}
-            <div>
+            <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-3 py-1.5 rounded-full mb-5"
                 style={{ background: 'rgba(39,202,163,0.12)', border: '1px solid rgba(39,202,163,0.25)', color: '#27CAA3' }}>
                 <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#27CAA3', animation: 'pulse 2s infinite' }} />
@@ -42,7 +42,7 @@ export default function AmigoIndicaSection() {
                 </span>
               </h2>
 
-              <p className="text-gray-400 leading-relaxed mb-8 max-w-md">
+              <p className="text-gray-400 leading-relaxed mb-8 max-w-md lg:mx-0 mx-auto">
                 A cada amigo que contratar a Siga Fibra pela sua indicação, você recebe{' '}
                 <strong className="text-white">100% de desconto</strong> em uma mensalidade. Sem complicação.
               </p>

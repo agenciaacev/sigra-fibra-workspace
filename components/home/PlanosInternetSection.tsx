@@ -72,6 +72,9 @@ export default function PlanosInternetSection() {
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
   const [activeDot, setActiveDot] = useState(0)
+  const autoRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 640
 
   const checkScrollButtons = () => {
     const el = scrollRef.current
@@ -82,15 +85,43 @@ export default function PlanosInternetSection() {
     setActiveDot(Math.round(el.scrollLeft / cardWidth))
   }
 
+  const startAutoScroll = () => {
+    if (autoRef.current) clearInterval(autoRef.current)
+    autoRef.current = setInterval(() => {
+      const el = scrollRef.current
+      if (!el || !isMobile()) return
+      const cardWidth = el.scrollWidth / plans.length
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 1
+      if (atEnd) {
+        el.scrollLeft = 0
+      } else {
+        el.scrollBy({ left: cardWidth, behavior: 'smooth' })
+      }
+    }, 3500)
+  }
+
+  const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const pauseAndResume = () => {
+    if (autoRef.current) clearInterval(autoRef.current)
+    if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
+    resumeTimeoutRef.current = setTimeout(() => startAutoScroll(), 2000)
+  }
+
   useEffect(() => {
     const el = scrollRef.current
     if (!el) return
     checkScrollButtons()
     el.addEventListener('scroll', checkScrollButtons)
     window.addEventListener('resize', checkScrollButtons)
+    el.addEventListener('touchstart', pauseAndResume, { passive: true })
+    startAutoScroll()
     return () => {
       el.removeEventListener('scroll', checkScrollButtons)
       window.removeEventListener('resize', checkScrollButtons)
+      el.removeEventListener('touchstart', pauseAndResume)
+      if (autoRef.current) clearInterval(autoRef.current)
+      if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current)
     }
   }, [])
 
@@ -124,11 +155,11 @@ export default function PlanosInternetSection() {
         <div className="relative" data-aos="fade-up" data-aos-delay="80">
           <div className="flex items-center gap-3">
 
-            {/* Left arrow */}
+            {/* Left arrow — hidden on mobile */}
             <button
               onClick={() => scroll('left')}
               disabled={!canScrollLeft}
-              className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
+              className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
               style={{ background: '#27CAA3' }}
               aria-label="Anterior"
             >
@@ -138,17 +169,21 @@ export default function PlanosInternetSection() {
             </button>
 
             {/* Scroll track */}
-            <style>{`.carousel-hide-scroll::-webkit-scrollbar { display: none; }`}</style>
+            <style>{`
+              .carousel-hide-scroll::-webkit-scrollbar { display: none; }
+              .plano-card { width: 100%; scroll-snap-align: start; }
+              @media(min-width: 640px) { .plano-card { width: calc(25% - 15px); min-width: 220px; } }
+            `}</style>
             <div
               ref={scrollRef}
-              className="carousel-hide-scroll flex gap-5 overflow-x-auto scroll-smooth flex-1"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', paddingBottom: '4px', paddingTop: '20px' }}
+              className="carousel-hide-scroll flex gap-0 sm:gap-5 overflow-x-auto scroll-smooth flex-1"
+              style={{ scrollbarWidth: 'none', paddingBottom: '4px', paddingTop: '20px', scrollSnapType: 'x mandatory' }}
             >
               {plans.map((plan, i) => (
                 <div
                   key={i}
-                  className="flex-shrink-0 flex flex-col"
-                  style={{ width: 'calc(25% - 15px)', minWidth: '220px', position: 'relative' }}
+                  className="plano-card flex-shrink-0 flex flex-col"
+                  style={{ position: 'relative' }}
                 >
                   {plan.badge && (
                     <span
@@ -235,11 +270,11 @@ export default function PlanosInternetSection() {
               ))}
             </div>
 
-            {/* Right arrow */}
+            {/* Right arrow — hidden on mobile */}
             <button
               onClick={() => scroll('right')}
               disabled={!canScrollRight}
-              className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
+              className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
               style={{ background: '#27CAA3' }}
               aria-label="Próximo"
             >
