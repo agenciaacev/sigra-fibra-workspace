@@ -26,12 +26,12 @@ export default function InfraestruturaLanToLan() {
               <span className="text-sm text-gray-400">Foto de infraestrutura de fibra / datacenter</span>
             </div>
             <div className="absolute -bottom-6 -left-6 w-32 h-32 rounded-3xl -z-10"
-              style={{ background: '#27CAA3', opacity: 0.12 }} />
+              style={{ background: '#03C2C3', opacity: 0.12 }} />
           </div>
 
           {/* Right: copy + stats */}
           <div>
-            <p data-aos="fade-up" className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
+            <p data-aos="fade-up" className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#03C2C3' }}>
               Nossa infraestrutura
             </p>
             <h2 data-aos="fade-up" data-aos-delay="60"
@@ -51,7 +51,7 @@ export default function InfraestruturaLanToLan() {
                   <p className="text-2xl font-extrabold text-gray-900">{s.num}</p>
                   <p className="text-xs text-gray-400 mt-1">{s.label}</p>
                   <div className="w-8 h-0.5 mt-2 rounded-full"
-                    style={{ background: i % 2 === 0 ? '#03C2C3' : '#27CAA3' }} />
+                    style={{ background: i % 2 === 0 ? '#03C2C3' : '#03C2C3' }} />
                 </div>
               ))}
             </div>

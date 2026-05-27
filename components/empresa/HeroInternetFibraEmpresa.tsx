@@ -11,8 +11,8 @@ const chips = [
 ]
 
 const planBars = [
-  { name: 'BUSINESS', speed: '1 Gb',  pct: 25,  color: '#2563eb' },
-  { name: 'BUSINESS', speed: '2 Gb',  pct: 50,  color: '#2563eb' },
+  { name: 'BUSINESS', speed: '1 Gb',  pct: 25,  color: '#03C2C3' },
+  { name: 'BUSINESS', speed: '2 Gb',  pct: 50,  color: '#03C2C3' },
   { name: 'BUSINESS', speed: '3 Gb',  pct: 75,  color: '#06b6d4' },
   { name: 'ENTERPRISE', speed: '4 Gb', pct: 100, color: '#818cf8' },
 ]
@@ -36,7 +36,7 @@ export default function HeroInternetFibraEmpresa() {
       {/* Glows */}
       <div
         className="absolute -top-20 right-0 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.18), transparent 65%)' }}
+        style={{ background: 'radial-gradient(circle, rgba(3,194,195,0.18), transparent 65%)' }}
       />
       <div
         className="absolute bottom-0 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none"
@@ -51,9 +51,9 @@ export default function HeroInternetFibraEmpresa() {
             <div
               data-aos="fade-up"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6 text-white"
-              style={{ background: 'rgba(37,99,235,0.1)', border: '1px solid rgba(37,99,235,0.22)' }}
+              style={{ background: 'rgba(3,194,195,0.1)', border: '1px solid rgba(3,194,195,0.22)' }}
             >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#2563eb' }} />
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#03C2C3' }} />
               Siga Fibra — Internet Empresarial
             </div>
 
@@ -65,7 +65,7 @@ export default function HeroInternetFibraEmpresa() {
               Conectividade{' '}
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #60a5fa, #2563eb)',
+                  background: 'linear-gradient(135deg, #3ddcde, #03C2C3)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                 }}
@@ -95,8 +95,8 @@ export default function HeroInternetFibraEmpresa() {
                   key={i}
                   className="flex items-center gap-2.5 px-4 py-3 rounded-xl"
                   style={{
-                    background: 'rgba(37,99,235,0.07)',
-                    border: '1px solid rgba(37,99,235,0.15)',
+                    background: 'rgba(3,194,195,0.07)',
+                    border: '1px solid rgba(3,194,195,0.15)',
                   }}
                 >
                   <span className="text-base">{c.icon}</span>
@@ -111,13 +111,13 @@ export default function HeroInternetFibraEmpresa() {
                   document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })
                 }}
                 className="font-bold px-8 py-4 rounded-2xl text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
-                style={{ background: '#2563eb' }}
+                style={{ background: '#03C2C3' }}
               >
                 Ver planos e preços
               </button>
               <button
                 onClick={() => router.push('/empresa/atendimento/canais')}
-                className="font-semibold px-8 py-4 rounded-2xl text-sm text-gray-300 transition-all duration-200 hover:border-[#2563eb] hover:text-[#2563eb]"
+                className="font-semibold px-8 py-4 rounded-2xl text-sm text-gray-300 transition-all duration-200 hover:border-[#03C2C3] hover:text-[#03C2C3]"
                 style={{ border: '1px solid rgba(255,255,255,0.15)' }}
               >
                 Falar com consultor
@@ -138,7 +138,7 @@ export default function HeroInternetFibraEmpresa() {
               >
                 <p
                   className="text-xs font-bold uppercase tracking-widest mb-6"
-                  style={{ color: '#2563eb' }}
+                  style={{ color: '#03C2C3' }}
                 >
                   Escolha sua velocidade
                 </p>
@@ -178,7 +178,7 @@ export default function HeroInternetFibraEmpresa() {
                   <button
                     onClick={() => document.getElementById('planos')?.scrollIntoView({ behavior: 'smooth' })}
                     className="px-5 py-2.5 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90"
-                    style={{ background: '#2563eb' }}
+                    style={{ background: '#03C2C3' }}
                   >
                     Ver planos →
                   </button>
@@ -187,16 +187,16 @@ export default function HeroInternetFibraEmpresa() {
 
               <div
                 className="absolute -top-4 -right-4 text-xs font-bold px-4 py-1.5 rounded-full text-white"
-                style={{ background: 'linear-gradient(135deg, #60a5fa, #2563eb)' }}
+                style={{ background: 'linear-gradient(135deg, #3ddcde, #03C2C3)' }}
               >
                 IP fixo incluso
               </div>
               <div
                 className="absolute -bottom-4 -left-4 text-xs font-bold px-4 py-1.5 rounded-full"
                 style={{
-                  background: '#0c1a40',
-                  border: '1px solid rgba(37,99,235,0.3)',
-                  color: '#60a5fa',
+                  background: '#062a2a',
+                  border: '1px solid rgba(3,194,195,0.3)',
+                  color: '#03C2C3',
                 }}
               >
                 SLA garantido
@@ -220,7 +220,7 @@ export default function HeroInternetFibraEmpresa() {
             <div key={i} className={`text-center ${i < 2 ? 'border-r' : ''}`} style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
               <div className="flex items-baseline justify-center gap-1">
                 <span className="text-2xl sm:text-3xl font-extrabold text-white">{s.value}</span>
-                {s.unit && <span className="text-lg font-bold" style={{ color: '#2563eb' }}>{s.unit}</span>}
+                {s.unit && <span className="text-lg font-bold" style={{ color: '#03C2C3' }}>{s.unit}</span>}
               </div>
               <p className="text-xs text-gray-500 mt-1">{s.label}</p>
             </div>

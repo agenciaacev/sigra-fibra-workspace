@@ -43,7 +43,7 @@ export default function InfraestruturaLinkDedicado() {
                 style={{ border: '1px solid #efefef' }}>
                 <p className="text-xs text-gray-400 font-medium mb-1">{spec.label}</p>
                 <p className="text-lg font-extrabold text-gray-900">{spec.value}</p>
-                <div className="w-8 h-0.5 mt-2 rounded-full" style={{ background: i % 2 === 0 ? '#27CAA3' : '#03C2C3' }} />
+                <div className="w-8 h-0.5 mt-2 rounded-full" style={{ background: i % 2 === 0 ? '#03C2C3' : '#03C2C3' }} />
               </div>
             ))}
           </div>
@@ -63,7 +63,7 @@ export default function InfraestruturaLinkDedicado() {
               onClick={() => router.push('/empresa/atendimento/canais')}
               className="w-full font-bold py-4 rounded-2xl text-sm uppercase tracking-wide text-white transition-all duration-200"
               style={{ background: '#03C2C3' }}
-              onMouseEnter={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#27CAA3'}
+              onMouseEnter={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#03C2C3'}
               onMouseLeave={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#03C2C3'}
             >
               Saiba mais

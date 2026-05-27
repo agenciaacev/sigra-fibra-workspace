@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(grep -n '#27CAA3\\\\|rgba\\(39,202,163,' /c/Users/emanu/Documents/GitHub/sigra-fibra-workspace/components/lantolan/__TRACKED_VAR__.tsx)"
+    ]
+  }
+}

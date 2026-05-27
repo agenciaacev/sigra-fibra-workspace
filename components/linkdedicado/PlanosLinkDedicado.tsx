@@ -127,12 +127,12 @@ export default function PlanosLinkDedicado() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-10" data-aos="fade-up">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#03C2C3' }}>
             Planos — 12 meses
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3" style={{ color: 'var(--text-dark)' }}>
             Link Dedicado{' '}
-            <span style={{ color: '#27CAA3' }}>Empresarial</span>
+            <span style={{ color: '#03C2C3' }}>Empresarial</span>
           </h2>
           <p className="text-base mb-8" style={{ color: 'var(--text-muted)' }}>
             Conectividade exclusiva com SLA garantido. Escolha a redundância ideal para sua operação.
@@ -142,13 +142,13 @@ export default function PlanosLinkDedicado() {
             data-aos="fade-up"
             data-aos-delay="60"
             className="inline-flex items-center rounded-full p-1 gap-1"
-            style={{ background: 'var(--card-bg)', border: '1px solid rgba(39,202,163,0.2)' }}
+            style={{ background: 'var(--card-bg)', border: '1px solid rgba(3,194,195,0.2)' }}
           >
             <button
               onClick={() => setFo('1fo')}
               className="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-200"
               style={fo === '1fo'
-                ? { background: 'linear-gradient(135deg, #27CAA3, #03C2C3)', color: '#fff' }
+                ? { background: 'linear-gradient(135deg, #03C2C3, #03C2C3)', color: '#fff' }
                 : { color: 'var(--text-muted)', background: 'transparent' }
               }
             >
@@ -158,7 +158,7 @@ export default function PlanosLinkDedicado() {
               onClick={() => setFo('2fo')}
               className="px-6 py-2.5 rounded-full text-sm font-bold transition-all duration-200"
               style={fo === '2fo'
-                ? { background: 'linear-gradient(135deg, #27CAA3, #03C2C3)', color: '#fff' }
+                ? { background: 'linear-gradient(135deg, #03C2C3, #03C2C3)', color: '#fff' }
                 : { color: 'var(--text-muted)', background: 'transparent' }
               }
             >
@@ -167,7 +167,7 @@ export default function PlanosLinkDedicado() {
           </div>
 
           {fo === '2fo' && (
-            <p className="text-xs mt-3" style={{ color: '#27CAA3' }}>
+            <p className="text-xs mt-3" style={{ color: '#03C2C3' }}>
               ✓ Redundância total — duas rotas independentes de fibra
             </p>
           )}
@@ -180,7 +180,7 @@ export default function PlanosLinkDedicado() {
               onClick={() => scroll('left')}
               disabled={!canScrollLeft}
               className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
-              style={{ background: '#27CAA3' }}
+              style={{ background: '#03C2C3' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="15 18 9 12 15 6" />
@@ -223,13 +223,13 @@ export default function PlanosLinkDedicado() {
                       className="flex flex-col rounded-2xl overflow-hidden flex-1"
                       style={{
                         boxShadow: plan.featured
-                          ? '0 8px 32px rgba(39,202,163,0.28)'
+                          ? '0 8px 32px rgba(3,194,195,0.28)'
                           : '0 4px 20px rgba(0,0,0,0.08)',
                       }}
                     >
                       <div
                         className="relative px-6 pt-5 pb-6"
-                        style={{ background: 'linear-gradient(135deg, #3ddcbc 0%, #27CAA3 100%)' }}
+                        style={{ background: 'linear-gradient(135deg, #3ddcbc 0%, #03C2C3 100%)' }}
                       >
                         <p className="text-xs font-bold uppercase tracking-widest text-white/70 mb-1">
                           Link Dedicado
@@ -265,11 +265,11 @@ export default function PlanosLinkDedicado() {
 
                         <div className="flex gap-2 mb-5">
                           <div className="flex-1 rounded-xl px-2 py-2 text-center" style={{ background: 'var(--card-bg-alt)' }}>
-                            <p className="text-xs font-semibold" style={{ color: '#27CAA3' }}>24 meses</p>
+                            <p className="text-xs font-semibold" style={{ color: '#03C2C3' }}>24 meses</p>
                             <p className="text-sm font-black" style={{ color: 'var(--text-dark)' }}>5% OFF</p>
                           </div>
                           <div className="flex-1 rounded-xl px-2 py-2 text-center" style={{ background: 'var(--card-bg-alt)' }}>
-                            <p className="text-xs font-semibold" style={{ color: '#27CAA3' }}>36 meses</p>
+                            <p className="text-xs font-semibold" style={{ color: '#03C2C3' }}>36 meses</p>
                             <p className="text-sm font-black" style={{ color: 'var(--text-dark)' }}>10% OFF</p>
                           </div>
                         </div>
@@ -277,7 +277,7 @@ export default function PlanosLinkDedicado() {
                         <ul className="flex flex-col gap-2 mb-6 flex-1">
                           {benefits.map((b, j) => (
                             <li key={j} className="flex items-center gap-2 text-sm" style={{ color: 'var(--text-mid)' }}>
-                              <span style={{ color: '#27CAA3' }}>✓</span>
+                              <span style={{ color: '#03C2C3' }}>✓</span>
                               {b}
                             </li>
                           ))}
@@ -286,7 +286,7 @@ export default function PlanosLinkDedicado() {
                         <button
                           onClick={() => router.push('/empresa/atendimento/canais')}
                           className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
-                          style={{ background: '#27CAA3' }}
+                          style={{ background: '#03C2C3' }}
                         >
                           Solicitar proposta
                         </button>
@@ -301,7 +301,7 @@ export default function PlanosLinkDedicado() {
               onClick={() => scroll('right')}
               disabled={!canScrollRight}
               className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
-              style={{ background: '#27CAA3' }}
+              style={{ background: '#03C2C3' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
@@ -315,7 +315,7 @@ export default function PlanosLinkDedicado() {
             <div
               key={i}
               className="h-1.5 rounded-full transition-all duration-300"
-              style={{ background: '#27CAA3', opacity: i === activeDot ? 1 : 0.3, width: i === activeDot ? 24 : 6 }}
+              style={{ background: '#03C2C3', opacity: i === activeDot ? 1 : 0.3, width: i === activeDot ? 24 : 6 }}
             />
           ))}
         </div>

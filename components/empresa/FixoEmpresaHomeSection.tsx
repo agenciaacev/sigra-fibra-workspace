@@ -28,23 +28,19 @@ export default function FixoEmpresaHomeSection() {
         backgroundSize: '28px 28px',
       }} />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, rgba(39,202,163,0.08), transparent 70%)' }} />
+        style={{ background: 'radial-gradient(ellipse, rgba(3,194,195,0.08), transparent 70%)' }} />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Left */}
           <div data-aos="fade-right">
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#27CAA3' }}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: '#03C2C3' }}>
               Siga Fibra Empresarial
             </p>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-4">
               Telefone Fixo para{' '}
-              <span style={{
-                background: 'linear-gradient(135deg, #27CAA3, #06b6d4)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
+              <span style={{ color: '#03C2C3' }}>
                 empresas
               </span>
               ,<br />sem limites de chamadas.
@@ -56,7 +52,7 @@ export default function FixoEmpresaHomeSection() {
             <div className="grid grid-cols-2 gap-3 mb-8">
               {diferenciais.map((f, i) => (
                 <div key={i} className="flex items-center gap-3 rounded-xl px-4 py-3"
-                  style={{ background: 'rgba(39,202,163,0.07)', border: '1px solid rgba(39,202,163,0.15)' }}
+                  style={{ background: 'rgba(3,194,195,0.07)', border: '1px solid rgba(3,194,195,0.15)' }}
                 >
                   <span className="text-base">{f.icon}</span>
                   <span className="text-sm font-semibold text-white">{f.label}</span>
@@ -68,15 +64,15 @@ export default function FixoEmpresaHomeSection() {
               <button
                 onClick={() => router.push('/empresa/telefonia/fixo')}
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
-                style={{ background: '#27CAA3' }}
+                style={{ background: '#03C2C3' }}
               >
                 Saber mais sobre o Siga Fixo
                 <span>→</span>
               </button>
               <a
                 href="tel:8531989555"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-200 hover:text-[#27CAA3]"
-                style={{ border: '1px solid rgba(39,202,163,0.3)', color: '#27CAA3' }}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-200 hover:text-[#03C2C3]"
+                style={{ border: '1px solid rgba(3,194,195,0.3)', color: '#03C2C3' }}
               >
                 (85) 3198-9555
               </a>
@@ -91,7 +87,7 @@ export default function FixoEmpresaHomeSection() {
                 border: '1px solid rgba(255,255,255,0.08)',
               }}
             >
-              <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#27CAA3' }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#03C2C3' }}>
                 Siga Fixo Empresarial
               </p>
               <h3 className="text-2xl font-extrabold text-white mb-1">
@@ -102,7 +98,7 @@ export default function FixoEmpresaHomeSection() {
               <ul className="flex flex-col gap-3 mb-8">
                 {benefits.map((f, i) => (
                   <li key={i} className="flex items-center gap-3">
-                    <span className="flex-shrink-0" style={{ color: '#27CAA3' }}>✓</span>
+                    <span className="flex-shrink-0" style={{ color: '#03C2C3' }}>✓</span>
                     <span className="text-sm font-semibold text-white">{f.label}</span>
                   </li>
                 ))}
@@ -114,14 +110,14 @@ export default function FixoEmpresaHomeSection() {
                 <button
                   onClick={() => router.push('/empresa/telefonia/fixo')}
                   className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90"
-                  style={{ background: '#27CAA3' }}
+                  style={{ background: '#03C2C3' }}
                 >
                   Ver detalhes do Siga Fixo →
                 </button>
                 <a
                   href="tel:8531989555"
-                  className="w-full py-3 rounded-xl font-semibold text-sm text-center transition-all duration-200 hover:text-[#27CAA3]"
-                  style={{ border: '1px solid rgba(39,202,163,0.25)', color: '#27CAA3' }}
+                  className="w-full py-3 rounded-xl font-semibold text-sm text-center transition-all duration-200 hover:text-[#03C2C3]"
+                  style={{ border: '1px solid rgba(3,194,195,0.25)', color: '#03C2C3' }}
                 >
                   Falar com consultor
                 </a>

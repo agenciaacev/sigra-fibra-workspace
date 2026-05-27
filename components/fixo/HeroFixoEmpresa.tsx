@@ -13,7 +13,7 @@ export default function HeroFixoEmpresa() {
         backgroundSize: '28px 28px',
       }} />
       <div className="absolute -top-20 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(39,202,163,0.14), transparent 65%)' }} />
+        style={{ background: 'radial-gradient(circle, rgba(3,194,195,0.14), transparent 65%)' }} />
       <div className="absolute bottom-0 -left-20 w-[400px] h-[400px] rounded-full pointer-events-none"
         style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.08), transparent 65%)' }} />
 
@@ -24,9 +24,9 @@ export default function HeroFixoEmpresa() {
           <div>
             <div data-aos="fade-up"
               className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6 text-white"
-              style={{ background: 'rgba(39,202,163,0.1)', border: '1px solid rgba(39,202,163,0.22)' }}
+              style={{ background: 'rgba(3,194,195,0.1)', border: '1px solid rgba(3,194,195,0.22)' }}
             >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#27CAA3' }} />
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: '#03C2C3' }} />
               Siga Fibra Empresarial — Telefonia Fixa
             </div>
 
@@ -34,11 +34,7 @@ export default function HeroFixoEmpresa() {
               className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-[1.08] mb-5"
             >
               Telefonia fixa{' '}
-              <span style={{
-                background: 'linear-gradient(135deg, #27CAA3, #06b6d4)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
+              <span style={{ color: '#03C2C3' }}>
                 para o seu negócio.
               </span>
             </h1>
@@ -57,9 +53,9 @@ export default function HeroFixoEmpresa() {
                 { label: 'Portabilidade gratuita' },
               ].map((c, i) => (
                 <div key={i} className="flex items-center gap-2.5 px-4 py-3 rounded-xl"
-                  style={{ background: 'rgba(39,202,163,0.07)', border: '1px solid rgba(39,202,163,0.15)' }}
+                  style={{ background: 'rgba(3,194,195,0.07)', border: '1px solid rgba(3,194,195,0.15)' }}
                 >
-                  <span className="flex-shrink-0" style={{ color: '#27CAA3' }}>✓</span>
+                  <span className="flex-shrink-0" style={{ color: '#03C2C3' }}>✓</span>
                   <span className="text-sm font-semibold text-white">{c.label}</span>
                 </div>
               ))}
@@ -69,13 +65,13 @@ export default function HeroFixoEmpresa() {
               <button
                 onClick={() => router.push('/empresa/atendimento/canais')}
                 className="font-bold px-8 py-4 rounded-2xl text-sm text-white transition-all duration-200 hover:opacity-90 hover:scale-[1.02] active:scale-95"
-                style={{ background: '#27CAA3' }}
+                style={{ background: '#03C2C3' }}
               >
                 Falar com consultor
               </button>
               <a
                 href="tel:851319895555"
-                className="font-semibold px-8 py-4 rounded-2xl text-sm text-gray-300 transition-all duration-200 hover:border-[#27CAA3] hover:text-[#27CAA3] text-center"
+                className="font-semibold px-8 py-4 rounded-2xl text-sm text-gray-300 transition-all duration-200 hover:border-[#03C2C3] hover:text-[#03C2C3] text-center"
                 style={{ border: '1px solid rgba(255,255,255,0.15)' }}
               >
                 (85) 3198-9555
@@ -91,7 +87,7 @@ export default function HeroFixoEmpresa() {
                 border: '1px solid rgba(255,255,255,0.08)',
                 backdropFilter: 'blur(12px)',
               }}>
-                <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: '#27CAA3' }}>
+                <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: '#03C2C3' }}>
                   Canal empresarial
                 </p>
 
@@ -102,7 +98,7 @@ export default function HeroFixoEmpresa() {
                     { label: 'Requer internet Siga', value: 'Fibra empresarial', sub: 'Necessário ter serviço de internet ativo' },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <span className="mt-0.5 flex-shrink-0" style={{ color: '#27CAA3' }}>✓</span>
+                      <span className="mt-0.5 flex-shrink-0" style={{ color: '#03C2C3' }}>✓</span>
                       <div>
                         <p className="text-xs text-gray-500">{item.label}</p>
                         <p className="text-sm font-semibold text-white">{item.value}</p>
@@ -115,14 +111,14 @@ export default function HeroFixoEmpresa() {
                 <button
                   onClick={() => router.push('/empresa/atendimento/canais')}
                   className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90"
-                  style={{ background: '#27CAA3' }}
+                  style={{ background: '#03C2C3' }}
                 >
                   Solicitar proposta →
                 </button>
               </div>
 
               <div className="absolute -top-4 -right-4 text-xs font-bold px-4 py-1.5 rounded-full text-white"
-                style={{ background: 'linear-gradient(135deg, #27CAA3, #06b6d4)' }}
+                style={{ background: '#03C2C3' }}
               >
                 Canal empresarial
               </div>

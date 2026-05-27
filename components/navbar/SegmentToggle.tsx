@@ -44,9 +44,13 @@ export default function SegmentToggle({ active, onChange }: SegmentToggleProps) 
         style={{
           left: pillStyle.left,
           width: pillStyle.width,
-          background: 'linear-gradient(135deg, #27CAA3, #03C2C3)',
-          boxShadow: '0 2px 8px rgba(39,202,163,0.45)',
-          transition: 'left 0.32s cubic-bezier(0.4, 0, 0.2, 1), width 0.32s cubic-bezier(0.4, 0, 0.2, 1)',
+          background: active === 'empresa'
+            ? '#03C2C3'
+            : 'linear-gradient(135deg, #27CAA3, #3ddcbc)',
+          boxShadow: active === 'empresa'
+            ? '0 2px 8px rgba(3,194,195,0.45)'
+            : '0 2px 8px rgba(39,202,163,0.45)',
+          transition: 'left 0.32s cubic-bezier(0.4, 0, 0.2, 1), width 0.32s cubic-bezier(0.4, 0, 0.2, 1), background 0.32s ease',
         }}
       />
       <button

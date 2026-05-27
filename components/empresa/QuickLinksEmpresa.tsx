@@ -22,10 +22,10 @@ export default function QuickLinksEmpresa() {
               onClick={() => router.push(item.to)}
               className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-150 flex-shrink-0"
               style={{ color: 'var(--text-sub)' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#27CAA3'; (e.currentTarget as HTMLButtonElement).style.color = '#fff' }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = '#03C2C3'; (e.currentTarget as HTMLButtonElement).style.color = '#fff' }}
               onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; (e.currentTarget as HTMLButtonElement).style.color = 'var(--text-sub)' }}
             >
-              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#27CAA3' }} />
+              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#03C2C3' }} />
               {item.label}
             </button>
           ))}

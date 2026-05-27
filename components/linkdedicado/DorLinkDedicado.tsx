@@ -24,18 +24,18 @@ export default function DorLinkDedicado() {
 
             {/* Glow accent */}
             <div className="absolute -bottom-8 -left-8 w-48 h-48 rounded-full opacity-20 pointer-events-none"
-              style={{ background: 'radial-gradient(circle, #27CAA3, transparent 70%)' }} />
+              style={{ background: 'radial-gradient(circle, #03C2C3, transparent 70%)' }} />
           </div>
 
           {/* Right: copy */}
           <div>
-            <p data-aos="fade-up" className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
+            <p data-aos="fade-up" className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#03C2C3' }}>
               Reconhece essa situação?
             </p>
             <h2 data-aos="fade-up" data-aos-delay="60"
               className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-6">
               A lentidão na internet está{' '}
-              <span style={{ color: '#27CAA3' }}>custando dinheiro</span>{' '}
+              <span style={{ color: '#03C2C3' }}>custando dinheiro</span>{' '}
               para a sua empresa?
             </h2>
             <p data-aos="fade-up" data-aos-delay="120"
@@ -53,8 +53,8 @@ export default function DorLinkDedicado() {
               ].map((pain, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-                    style={{ background: 'rgba(39,202,163,0.15)', border: '1px solid rgba(39,202,163,0.3)' }}>
-                    <svg className="w-3 h-3" fill="none" stroke="#27CAA3" viewBox="0 0 24 24">
+                    style={{ background: 'rgba(3,194,195,0.15)', border: '1px solid rgba(3,194,195,0.3)' }}>
+                    <svg className="w-3 h-3" fill="none" stroke="#03C2C3" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </div>
@@ -67,9 +67,9 @@ export default function DorLinkDedicado() {
               <button
                 onClick={() => router.push('/empresa/atendimento/canais')}
                 className="font-bold px-8 py-4 rounded-2xl text-sm uppercase tracking-wide text-white transition-all duration-200"
-                style={{ background: '#27CAA3' }}
+                style={{ background: '#03C2C3' }}
                 onMouseEnter={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#03C2C3'}
-                onMouseLeave={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#27CAA3'}
+                onMouseLeave={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#03C2C3'}
               >
                 Falar com um consultor
               </button>

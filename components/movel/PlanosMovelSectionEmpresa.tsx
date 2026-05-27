@@ -20,7 +20,7 @@ const includedAll = [
   'Portabilidade gratuita',
 ]
 
-export default function PlanosMovelSection() {
+export default function PlanosMovelSectionEmpresa() {
   const router = useRouter()
   const scrollRef = useRef<HTMLDivElement>(null)
   const [canScrollLeft, setCanScrollLeft]   = useState(false)
@@ -88,12 +88,12 @@ export default function PlanosMovelSection() {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-12" data-aos="fade-up">
-          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#03C2C3' }}>
             Planos Chip Móvel
           </p>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3" style={{ color: 'var(--text-dark)' }}>
             Escolha seu{' '}
-            <span style={{ color: '#27CAA3' }}>plano ideal</span>
+            <span style={{ color: '#03C2C3' }}>plano ideal</span>
           </h2>
           <p className="text-base mb-6" style={{ color: 'var(--text-muted)' }}>
             Todos os planos incluem ligações ilimitadas, WhatsApp e Waze liberados
@@ -102,7 +102,7 @@ export default function PlanosMovelSection() {
           <div className="flex flex-wrap justify-center gap-2">
             {includedAll.map((item, i) => (
               <span key={i} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold"
-                style={{ background: 'rgba(39,202,163,0.1)', border: '1px solid rgba(39,202,163,0.25)', color: '#27CAA3' }}
+                style={{ background: 'rgba(3,194,195,0.1)', border: '1px solid rgba(3,194,195,0.25)', color: '#03C2C3' }}
               >
                 <span>✓</span>{item}
               </span>
@@ -115,7 +115,7 @@ export default function PlanosMovelSection() {
 
             <button onClick={() => scroll('left')} disabled={!canScrollLeft}
               className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
-              style={{ background: '#27CAA3' }}
+              style={{ background: '#03C2C3' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="15 18 9 12 15 6" />
@@ -142,10 +142,10 @@ export default function PlanosMovelSection() {
                   )}
 
                   <div className="flex flex-col rounded-2xl overflow-hidden flex-1"
-                    style={{ boxShadow: plan.featured ? '0 8px 32px rgba(39,202,163,0.28)' : '0 4px 20px rgba(0,0,0,0.08)' }}
+                    style={{ boxShadow: plan.featured ? '0 8px 32px rgba(3,194,195,0.28)' : '0 4px 20px rgba(0,0,0,0.08)' }}
                   >
                     <div className="relative px-6 pt-5 pb-6"
-                      style={{ background: 'linear-gradient(135deg, #3ddcbc 0%, #27CAA3 100%)' }}
+                      style={{ background: 'linear-gradient(135deg, #3ddcbc 0%, #03C2C3 100%)' }}
                     >
                       <p className="text-xs font-bold uppercase tracking-widest text-white/70 mb-1">Chip Móvel</p>
                       <div className="flex items-end gap-0.5 mt-1">
@@ -175,7 +175,7 @@ export default function PlanosMovelSection() {
                       <ul className="flex flex-col gap-2 mb-6 flex-1">
                         {includedAll.map((b, j) => (
                           <li key={j} className="flex items-start gap-2 text-xs" style={{ color: 'var(--text-mid)' }}>
-                            <span className="mt-0.5 flex-shrink-0" style={{ color: '#27CAA3' }}>✓</span>
+                            <span className="mt-0.5 flex-shrink-0" style={{ color: '#03C2C3' }}>✓</span>
                             {b}
                           </li>
                         ))}
@@ -184,7 +184,7 @@ export default function PlanosMovelSection() {
                       <button
                         onClick={() => router.push('/pessoa-fisica/atendimento/canais')}
                         className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
-                        style={{ background: '#27CAA3' }}
+                        style={{ background: '#03C2C3' }}
                       >
                         Assinar agora
                       </button>
@@ -196,7 +196,7 @@ export default function PlanosMovelSection() {
 
             <button onClick={() => scroll('right')} disabled={!canScrollRight}
               className="hidden sm:flex flex-shrink-0 w-11 h-11 rounded-full items-center justify-center shadow-lg transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed hover:scale-110"
-              style={{ background: '#27CAA3' }}
+              style={{ background: '#03C2C3' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
@@ -208,7 +208,7 @@ export default function PlanosMovelSection() {
         <div className="flex justify-center gap-2 mt-8">
           {plans.map((_, i) => (
             <div key={i} className="h-1.5 rounded-full transition-all duration-300"
-              style={{ background: '#27CAA3', opacity: i === activeDot ? 1 : 0.3, width: i === activeDot ? 24 : 6 }}
+              style={{ background: '#03C2C3', opacity: i === activeDot ? 1 : 0.3, width: i === activeDot ? 24 : 6 }}
             />
           ))}
         </div>

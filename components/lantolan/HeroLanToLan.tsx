@@ -14,7 +14,7 @@ export default function HeroLanToLan() {
       <div className="absolute -top-32 right-0 w-[600px] h-[600px] rounded-full opacity-20 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #03C2C3, transparent 70%)' }} />
       <div className="absolute bottom-0 -left-20 w-[400px] h-[400px] rounded-full opacity-10 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #27CAA3, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, #03C2C3, transparent 70%)' }} />
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10">
 
@@ -44,7 +44,7 @@ export default function HeroLanToLan() {
               onClick={() => router.push('/empresa/atendimento/canais')}
               className="font-bold px-4 sm:px-6 lg:px-8 py-4 rounded-2xl text-sm uppercase tracking-wide text-white transition-all duration-200"
               style={{ background: '#03C2C3' }}
-              onMouseEnter={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#27CAA3'}
+              onMouseEnter={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#03C2C3'}
               onMouseLeave={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#03C2C3'}
             >
               Quero contratar agora
@@ -73,7 +73,7 @@ export default function HeroLanToLan() {
               <p className="text-xl font-extrabold text-white">5.000 km</p>
             </div>
             <div className="absolute top-6 right-6 px-4 py-3 rounded-2xl"
-              style={{ background: 'rgba(39,202,163,0.15)', border: '1px solid rgba(39,202,163,0.3)', backdropFilter: 'blur(8px)' }}>
+              style={{ background: 'rgba(3,194,195,0.15)', border: '1px solid rgba(3,194,195,0.3)', backdropFilter: 'blur(8px)' }}>
               <p className="text-xs text-gray-400">Rede</p>
               <p className="text-xl font-extrabold text-white">100% fibra</p>
             </div>

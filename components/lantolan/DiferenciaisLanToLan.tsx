@@ -15,7 +15,7 @@ const features = [
   {
     title: 'Comunicação ponto a ponto',
     desc: 'Conexão direta entre unidades, sem passar por redes públicas ou terceiros.',
-    color: '#27CAA3',
+    color: '#03C2C3',
   },
   {
     title: 'Conexão segura',
@@ -25,7 +25,7 @@ const features = [
   {
     title: 'Alta performance',
     desc: 'Velocidade e estabilidade que eliminam gargalos e mantêm a operação fluindo.',
-    color: '#27CAA3',
+    color: '#03C2C3',
   },
 ]
 

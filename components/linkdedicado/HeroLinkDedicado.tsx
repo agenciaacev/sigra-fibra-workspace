@@ -15,7 +15,7 @@ export default function HeroLinkDedicado() {
 
       {/* Glow */}
       <div className="absolute -top-32 right-0 w-[600px] h-[600px] rounded-full opacity-20 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #27CAA3, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, #03C2C3, transparent 70%)' }} />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full opacity-10 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #03C2C3, transparent 70%)' }} />
 
@@ -26,7 +26,7 @@ export default function HeroLinkDedicado() {
           <div data-aos="fade-up">
             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-8 text-white"
               style={{ background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)' }}>
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#27CAA3' }} />
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: '#03C2C3' }} />
               Link Dedicado Empresarial
             </span>
           </div>
@@ -34,7 +34,7 @@ export default function HeroLinkDedicado() {
           <h1 data-aos="fade-up" data-aos-delay="80"
             className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-[1.1] mb-6">
             Internet exclusiva para a sua empresa.{' '}
-            <span style={{ color: '#27CAA3' }}>Sem compartilhamento, sem limites.</span>
+            <span style={{ color: '#03C2C3' }}>Sem compartilhamento, sem limites.</span>
           </h1>
 
           <p data-aos="fade-up" data-aos-delay="140"
@@ -46,9 +46,9 @@ export default function HeroLinkDedicado() {
             <button
               onClick={() => router.push('/empresa/atendimento/canais')}
               className="font-bold px-4 sm:px-6 lg:px-8 py-4 rounded-2xl text-sm uppercase tracking-wide text-white transition-all duration-200"
-              style={{ background: '#27CAA3' }}
+              style={{ background: '#03C2C3' }}
               onMouseEnter={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#03C2C3'}
-              onMouseLeave={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#27CAA3'}
+              onMouseLeave={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#03C2C3'}
             >
               Quero contratar agora
             </button>
@@ -73,7 +73,7 @@ export default function HeroLinkDedicado() {
 
             {/* Floating stat cards */}
             <div className="absolute bottom-6 left-6 px-4 py-3 rounded-2xl"
-              style={{ background: 'rgba(39,202,163,0.15)', border: '1px solid rgba(39,202,163,0.3)', backdropFilter: 'blur(8px)' }}>
+              style={{ background: 'rgba(3,194,195,0.15)', border: '1px solid rgba(3,194,195,0.3)', backdropFilter: 'blur(8px)' }}>
               <p className="text-xs text-gray-400">Velocidade</p>
               <p className="text-xl font-extrabold text-white">10 Gbps</p>
             </div>

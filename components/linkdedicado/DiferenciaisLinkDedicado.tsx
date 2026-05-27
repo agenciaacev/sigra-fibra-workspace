@@ -65,12 +65,12 @@ export default function DiferenciaisLinkDedicado() {
 
             {/* Accent block */}
             <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-3xl -z-10"
-              style={{ background: '#27CAA3', opacity: 0.15 }} />
+              style={{ background: '#03C2C3', opacity: 0.15 }} />
           </div>
 
           {/* Right: copy */}
           <div>
-            <p data-aos="fade-up" className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#27CAA3' }}>
+            <p data-aos="fade-up" className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#03C2C3' }}>
               Diferenciais técnicos
             </p>
             <h2 data-aos="fade-up" data-aos-delay="60"
@@ -85,7 +85,7 @@ export default function DiferenciaisLinkDedicado() {
             {/* Badges */}
             <div data-aos="fade-up" data-aos-delay="140" className="flex flex-wrap gap-2 mb-10">
               {badges.map(b => (
-                <span key={b} className="text-xs font-semibold px-4 py-2 rounded-full text-white" style={{ background: '#27CAA3' }}>
+                <span key={b} className="text-xs font-semibold px-4 py-2 rounded-full text-white" style={{ background: '#03C2C3' }}>
                   {b}
                 </span>
               ))}
@@ -97,7 +97,7 @@ export default function DiferenciaisLinkDedicado() {
                 <div key={item.title} data-aos="fade-up" data-aos-delay={180 + i * 60}
                   className="flex items-start gap-3 p-4 rounded-2xl bg-gray-50">
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 text-white"
-                    style={{ background: i % 2 === 0 ? '#27CAA3' : '#03C2C3' }}>
+                    style={{ background: i % 2 === 0 ? '#03C2C3' : '#03C2C3' }}>
                     {item.icon}
                   </div>
                   <div>

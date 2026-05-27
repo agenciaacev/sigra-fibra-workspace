@@ -29,7 +29,7 @@ export default function HeroEmpresa() {
       <div className="absolute -top-20 right-0 w-[300px] h-[300px] md:w-[600px] md:h-[600px] rounded-full opacity-15 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #03C2C3, transparent 70%)' }} />
       <div className="absolute bottom-0 -left-20 w-[250px] h-[250px] md:w-[400px] md:h-[400px] rounded-full opacity-10 pointer-events-none"
-        style={{ background: 'radial-gradient(circle, #27CAA3, transparent 70%)' }} />
+        style={{ background: 'radial-gradient(circle, #03C2C3, transparent 70%)' }} />
 
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10">
         <div>
@@ -57,7 +57,7 @@ export default function HeroEmpresa() {
               onClick={() => router.push('/empresa/internet/fibra')}
               className="font-bold px-6 py-3.5 rounded-2xl text-sm uppercase tracking-wide text-white transition-all duration-200"
               style={{ background: '#03C2C3' }}
-              onMouseEnter={e => (e.currentTarget.style.background = '#27CAA3')}
+              onMouseEnter={e => (e.currentTarget.style.background = '#03C2C3')}
               onMouseLeave={e => (e.currentTarget.style.background = '#03C2C3')}
             >
               Ver soluções de internet
@@ -96,7 +96,7 @@ export default function HeroEmpresa() {
               </p>
               {solutions.map((item, i) => (
                 <div key={item.label} className={`flex items-center gap-4 py-4 ${i < 3 ? 'border-b border-white/8' : ''}`}>
-                  <div className="w-2 h-2 rounded-full shrink-0" style={{ background: i % 2 === 0 ? '#27CAA3' : '#03C2C3' }} />
+                  <div className="w-2 h-2 rounded-full shrink-0" style={{ background: i % 2 === 0 ? '#03C2C3' : '#03C2C3' }} />
                   <div>
                     <p className="text-white font-semibold text-sm">{item.label}</p>
                     <p className="text-xs mt-0.5 text-gray-500">{item.desc}</p>
@@ -107,13 +107,13 @@ export default function HeroEmpresa() {
                 onClick={() => router.push('/empresa/atendimento/canais')}
                 className="w-full mt-6 font-bold py-3 rounded-xl text-sm text-white transition-all duration-200"
                 style={{ background: '#03C2C3' }}
-                onMouseEnter={e => (e.currentTarget.style.background = '#27CAA3')}
+                onMouseEnter={e => (e.currentTarget.style.background = '#03C2C3')}
                 onMouseLeave={e => (e.currentTarget.style.background = '#03C2C3')}
               >
                 Solicitar proposta
               </button>
             </div>
-            <div className="absolute -top-4 -right-4 text-xs font-bold px-3 py-1.5 rounded-full text-white" style={{ background: '#27CAA3' }}>
+            <div className="absolute -top-4 -right-4 text-xs font-bold px-3 py-1.5 rounded-full text-white" style={{ background: '#03C2C3' }}>
               Contrato flexível
             </div>
           </div>

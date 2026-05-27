@@ -14,7 +14,7 @@ export default function CtaLanToLan() {
   const router = useRouter()
 
   return (
-    <section className="py-14 md:py-24 relative overflow-hidden" style={{ background: '#27CAA3' }}>
+    <section className="py-14 md:py-24 relative overflow-hidden" style={{ background: '#03C2C3' }}>
 
       <div className="absolute inset-0 pointer-events-none opacity-10"
         style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
@@ -43,7 +43,7 @@ export default function CtaLanToLan() {
               <button
                 onClick={() => router.push('/empresa/atendimento/autoatendimento')}
                 className="font-bold px-8 py-4 rounded-2xl text-sm uppercase tracking-wide bg-white transition-all duration-200"
-                style={{ color: '#27CAA3' }}
+                style={{ color: '#03C2C3' }}
                 onMouseEnter={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#f0f0f0'}
                 onMouseLeave={(e: React.MouseEvent<HTMLElement>) => (e.currentTarget as HTMLElement).style.background = '#fff'}
               >
