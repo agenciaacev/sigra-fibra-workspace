@@ -136,7 +136,7 @@ export default function AppEcosystemSection() {
           className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center text-white"
           style={{ textShadow: '0 2px 24px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.8)' }}
         >
-          Muito mais além da internet
+          Mais que uma internet
         </h2>
         <p
           className="mt-3 text-base text-center max-w-md"
