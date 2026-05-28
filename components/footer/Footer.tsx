@@ -28,7 +28,7 @@ const pfLinks = [
       { label: 'Globoplay', to: '/pessoa-fisica/servicos-digitais/globoplay' },
       { label: 'HBO Max', to: '/pessoa-fisica/servicos-digitais/hbo-max' },
       { label: 'SKY+', to: '/pessoa-fisica/servicos-digitais/sky-mais' },
-      { label: 'Deezer', to: '/pessoa-fisica/servicos-digitais/deezer' },
+      { label: 'Prime Video', to: '/pessoa-fisica/servicos-digitais/deezer' },
     ],
   },
   {

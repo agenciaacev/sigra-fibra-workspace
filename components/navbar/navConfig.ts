@@ -39,7 +39,7 @@ export const pfNavConfig: NavItem[] = [
     label: 'Serviços Digitais',
     children: [
       { label: 'Disney+', to: '/servicos-digitais/disney-plus' },
-      { label: 'Deezer', to: '/servicos-digitais/deezer' },
+      { label: 'Prime Video', to: '/servicos-digitais/deezer' },
       { label: 'GloboPlay', to: '/servicos-digitais/globoplay' },
       { label: 'Sky+', to: '/servicos-digitais/sky-mais' },
       { label: 'HBO Max', to: '/servicos-digitais/hbo-max' },

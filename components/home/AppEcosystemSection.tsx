@@ -13,7 +13,7 @@ const ICONS = [
   { src: '/img/icons-digitais/PlayKids Learning_App Icon.png', bg: '#6d28d9', fit: 'cover'   },
   { src: '/img/icons-digitais/docway-1.webp',                  bg: '#5cb84c', fit: 'cover'   },
   { src: '/img/icons-digitais/STANDARD-PNG.png',               bg: '#0369a1', fit: 'contain' },
-  { src: '/img/icons-digitais/Deezer App Icon.png',            bg: '#0a0a0a', fit: 'cover'   },
+  { src: '/img/icons-digitais/prime-video.png',                 bg: '#0a0a0a', fit: 'cover'   },
   { src: '/img/icons-digitais/ICON (2).png',                   bg: '#1c1f2e', fit: 'cover'   },
   { src: '/img/icons-digitais/PLUS-PNG.png',                   bg: '#5b21b6', fit: 'contain' },
   { src: '/img/icons-digitais/service-hotgo-1.webp',           bg: '#1a1a1a', fit: 'cover'   },
