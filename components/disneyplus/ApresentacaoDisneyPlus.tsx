@@ -1,27 +1,29 @@
 'use client'
 
 import React from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 const universos = [
-  { label: 'Disney', bg: '#001f5c' },
-  { label: 'Marvel', bg: '#e23636' },
-  { label: 'Pixar', bg: '#0063e5' },
-  { label: 'Star Wars', bg: '#1a1a1a' },
-  { label: 'ESPN', bg: '#cc0000' },
-  { label: 'Nat Geo', bg: '#ffcb05' },
+  { label: 'Disney',    logo: '/img/disney/DISNEY_LOGO.png',    bg: '#001f5c', invert: true  },
+  { label: 'Marvel',    logo: '/img/disney/MARVEL_LOGO.png',    bg: '#e23636', invert: false },
+  { label: 'Pixar',     logo: '/img/disney/PIXAR_LOGO.png',     bg: '#0063e5', invert: true  },
+  { label: 'Star Wars', logo: '/img/disney/STARWARS_LOGO.png',  bg: '#1a1a1a', invert: true  },
+  { label: 'ESPN',      logo: '/img/disney/ESPN_LOGO.png',      bg: '#cc0000', invert: false },
+  { label: 'Nat Geo',   logo: '/img/disney/NTAGEO_LOGO.png',    bg: '#ffcb05', invert: false },
 ]
 
-function PosterPlaceholder({ label, bg }: { label: string; bg: string }) {
+function FranquiaCard({ label, logo, invert }: { label: string; logo: string; bg: string; invert: boolean }) {
   return (
-    <div className="aspect-[2/3] rounded-xl overflow-hidden flex flex-col items-center justify-center gap-2 relative"
-      style={{ background: bg + '33', border: `1px solid ${bg}44` }}>
-      <svg className="w-7 h-7 opacity-20" fill="none" stroke="white" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-          d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
-      </svg>
-      <span className="text-xs text-gray-600 text-center px-2">{label}</span>
-      <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: bg }} />
+    <div className="flex items-center justify-center py-4">
+      <Image
+        src={logo}
+        alt={label}
+        width={280}
+        height={140}
+        className="object-contain"
+        style={{ maxHeight: 160, width: 'auto', filter: invert ? 'brightness(0) invert(1)' : 'none' }}
+      />
     </div>
   )
 }
@@ -37,7 +39,7 @@ export default function ApresentacaoDisneyPlus() {
           {/* Left: mosaico de capas */}
           <div data-aos="fade-right" className="grid grid-cols-3 gap-3">
             {universos.map((u, i) => (
-              <PosterPlaceholder key={i} label={`Pôster ${u.label}`} bg={u.bg} />
+              <FranquiaCard key={i} label={u.label} logo={u.logo} bg={u.bg} invert={u.invert} />
             ))}
           </div>
 

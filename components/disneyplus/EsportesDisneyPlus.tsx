@@ -1,7 +1,14 @@
 'use client'
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+
+const slides = [
+  { desktop: '/img/disney/NBA-1X1.png',     mobile: '/img/disney/NBA-9X16.png',     label: 'NBA' },
+  { desktop: '/img/disney/PREMIER-1X1.png', mobile: '/img/disney/PREMIER-9X16.png', label: 'Premier League' },
+  { desktop: '/img/disney/SERIEB-1X1.png',  mobile: '/img/disney/SERIEB-9X16.png',  label: 'Série B' },
+]
 
 const esportes = [
   { label: 'Futebol', icon: '⚽' },
@@ -14,28 +21,65 @@ const esportes = [
 
 export default function EsportesDisneyPlus() {
   const router = useRouter()
+  const [current, setCurrent] = useState(0)
+  const [fade, setFade] = useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFade(false)
+      setTimeout(() => {
+        setCurrent(prev => (prev + 1) % slides.length)
+        setFade(true)
+      }, 150)
+    }, 4500)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <section className="py-14 md:py-24 bg-white overflow-hidden">
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-[3fr_2fr] gap-8 lg:gap-12 items-center">
 
-          {/* Left: foto esportiva placeholder */}
-          <div data-aos="fade-right" className="relative">
-            <div className="w-full aspect-square rounded-3xl overflow-hidden flex flex-col items-center justify-center gap-3"
-              style={{ background: 'linear-gradient(135deg, #000d26, #001f5c)', border: '2px dashed rgba(0,99,229,0.3)' }}>
-              <svg className="w-16 h-16 opacity-20" fill="none" stroke="white" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-                  d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <span className="text-xs text-gray-600 text-center px-6">Foto esportiva ao vivo — estádio ou atleta em ação com overlay ESPN/Disney+</span>
+          {/* Left: slideshow */}
+          <div data-aos="fade-right" className="relative inline-block w-full">
+
+            {/* Desktop — altura fixa baseada no Premier (16/9) */}
+            <div className="hidden sm:block w-full rounded-3xl overflow-hidden"
+              style={{ aspectRatio: '16/9', transition: 'opacity 0.15s ease', opacity: fade ? 1 : 0, position: 'relative' }}>
+              <Image
+                src={slides[current].desktop}
+                alt={slides[current].label}
+                fill
+                className="object-cover"
+                sizes="(max-width: 1200px) 50vw, 560px"
+                priority
+              />
             </div>
-            {/* ESPN badge */}
-            <div className="absolute top-5 left-5 px-4 py-2 rounded-xl text-white text-xs font-black uppercase tracking-widest"
-              style={{ background: 'rgba(204,0,0,0.9)', border: '1px solid rgba(204,0,0,0.5)', backdropFilter: 'blur(8px)' }}>
-              ESPN
+
+            {/* Mobile — 9x16 */}
+            <div className="block sm:hidden w-full" style={{ transition: 'opacity 0.15s ease', opacity: fade ? 1 : 0 }}>
+              <Image
+                src={slides[current].mobile}
+                alt={slides[current].label}
+                width={400}
+                height={711}
+                className="w-full h-auto rounded-3xl"
+                sizes="100vw"
+                priority
+              />
             </div>
-            {/* Accent */}
+
+
+            {/* Indicadores */}
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex gap-2">
+              {slides.map((_, i) => (
+                <button key={i} onClick={() => { setFade(false); setTimeout(() => { setCurrent(i); setFade(true) }, 300) }}
+                  className="rounded-full transition-all duration-300"
+                  style={{ width: i === current ? 20 : 6, height: 6, background: i === current ? '#fff' : 'rgba(255,255,255,0.45)' }}
+                />
+              ))}
+            </div>
+
             <div className="absolute -bottom-4 -right-4 w-24 h-24 rounded-2xl -z-10"
               style={{ background: '#27CAA3', opacity: 0.15 }} />
           </div>
@@ -54,9 +98,8 @@ export default function EsportesDisneyPlus() {
               Futebol, NBA, NFL, MMA e muito mais ao vivo pela ESPN e CastTV — com a estabilidade da Siga Fibra para não perder nenhum lance.
             </p>
 
-            {/* Esportes grid */}
             <div data-aos="fade-up" data-aos-delay="160" className="grid grid-cols-3 gap-3 mb-10">
-              {esportes.map((e, i) => (
+              {esportes.map((e) => (
                 <div key={e.label} className="flex items-center gap-2 p-3 rounded-xl bg-gray-50" style={{ border: '1px solid #efefef' }}>
                   <span className="text-lg">{e.icon}</span>
                   <p className="text-sm font-semibold text-gray-700">{e.label}</p>
@@ -76,6 +119,7 @@ export default function EsportesDisneyPlus() {
               </button>
             </div>
           </div>
+
         </div>
       </div>
     </section>

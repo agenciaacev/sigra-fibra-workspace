@@ -1,41 +1,20 @@
-import React from 'react'
-const titulos = [
-  { nome: 'Capitão América', universo: 'Marvel', cor: '#e23636' },
-  { nome: 'Branca de Neve', universo: 'Disney', cor: '#0063e5' },
-  { nome: 'Percy Jackson', universo: 'Disney+', cor: '#001f5c' },
-  { nome: 'The Mandalorian', universo: 'Star Wars', cor: '#1a1a1a' },
-  { nome: 'Inside Out 2', universo: 'Pixar', cor: '#0063e5' },
-]
+'use client'
 
-function PosterCard({ titulo, destaque }: { titulo: { nome: string; universo: string; cor: string }; destaque: boolean }) {
-  return (
-    <div className={`rounded-2xl overflow-hidden relative flex flex-col justify-end ${destaque ? '' : ''}`}
-      style={{ aspectRatio: '2/3', background: `linear-gradient(180deg, ${titulo.cor}55 0%, #000d26 100%)`, border: '1px solid rgba(255,255,255,0.08)' }}>
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-        <svg className="w-8 h-8 opacity-15" fill="none" stroke="white" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5}
-            d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
-        </svg>
-        <span className="text-xs text-gray-700 text-center px-2">Pôster {titulo.nome}</span>
-      </div>
-      <div className="absolute bottom-0 left-0 right-0 p-4"
-        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%)' }}>
-        <p className="text-white font-bold text-sm">{titulo.nome}</p>
-        <p className="text-xs mt-0.5" style={{ color: titulo.cor }}>{titulo.universo}</p>
-      </div>
-      {destaque && (
-        <div className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white" style={{ background: '#27CAA3' }}>
-          Destaque
-        </div>
-      )}
-    </div>
-  )
-}
+import React from 'react'
+import Image from 'next/image'
+
+const titulos = [
+  { slug: 'demolidor', nome: 'Demolidor',  universo: 'Marvel',     cor: '#e23636' },
+  { slug: 'tron',      nome: 'Tron: Ares', universo: 'Disney+',    cor: '#00A8E1' },
+  { slug: 'percy',     nome: 'Percy Jackson', universo: 'Disney+', cor: '#0063e5', ext9x16: 'png' },
+  { slug: 'starwars',  nome: 'Star Wars',  universo: 'Star Wars',  cor: '#fbbf24' },
+  { slug: 'zootopia',  nome: 'Zootopia 2', universo: 'Disney',     cor: '#0063e5' },
+]
 
 export default function CatalogoDisneyPlus() {
   return (
     <section className="py-12 md:py-20 lg:py-24" style={{ background: '#000d26' }}>
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="text-center mb-14">
           <p data-aos="fade-up" className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: '#0063e5' }}>
@@ -50,8 +29,44 @@ export default function CatalogoDisneyPlus() {
           </p>
         </div>
 
-        <div data-aos="fade-up" data-aos-delay="140" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-          {titulos.map((t, i) => <PosterCard key={t.nome} titulo={t} destaque={i === 0} />)}
+        <div data-aos="fade-up" data-aos-delay="140" className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {titulos.map((t, i) => {
+            const ext9x16 = t.ext9x16 ?? 'jpeg'
+            return (
+              <div key={t.slug} className="relative rounded-2xl overflow-hidden max-w-[280px] mx-auto w-full sm:max-w-none"
+                style={{ border: '1px solid rgba(255,255,255,0.08)' }}>
+
+                {/* Desktop lg+ — 9x16 portrait */}
+                <div className="hidden lg:block relative" style={{ aspectRatio: '9/16' }}>
+                  <Image
+                    src={`/img/disney/${t.slug}-9x16.${ext9x16}`}
+                    alt={t.nome}
+                    fill
+                    className="object-cover"
+                    sizes="20vw"
+                  />
+                </div>
+
+                {/* Mobile e tablet — 1x1 square */}
+                <div className="block lg:hidden relative" style={{ aspectRatio: '1/1' }}>
+                  <Image
+                    src={`/img/disney/${t.slug}-1x1.jpeg`}
+                    alt={t.nome}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 33vw, 100vw"
+                  />
+                </div>
+
+                {i === 0 && (
+                  <div className="absolute top-3 left-3 text-xs font-bold px-2.5 py-1 rounded-full text-white"
+                    style={{ background: '#27CAA3' }}>
+                    Destaque
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
 
       </div>
