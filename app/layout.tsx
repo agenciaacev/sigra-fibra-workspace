@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import 'aos/dist/aos.css'
 import './globals.css'
-import Navbar from '@/components/navbar/Navbar'
-import Footer from '@/components/footer/Footer'
+import LayoutShell from '@/components/LayoutShell'
 import AosInit from '@/components/AosInit'
 import ThemeProvider from '@/components/ThemeProvider'
 
@@ -23,9 +22,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <AosInit />
-          <Navbar />
-          <div className="pt-[67px]">{children}</div>
-          <Footer />
+          <LayoutShell>{children}</LayoutShell>
         </ThemeProvider>
       </body>
     </html>

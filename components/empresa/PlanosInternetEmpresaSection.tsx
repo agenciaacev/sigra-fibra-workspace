@@ -44,7 +44,7 @@ const plans = [
     upload: '4Gb',
     priceInt: '399',
     priceDec: ',90',
-    benefits: [ 'Suporte empresarial'],
+    benefits: [ 'Suporte empresarial'], 
     featured: false,
     badge: null,
   },

@@ -44,6 +44,14 @@ const services = [
     to: '/pessoa-fisica/servicos-digitais/veja-mais',
     accentColor: '#3b82f6',
   },
+  {
+    name: 'Deezer',
+    icon: '/img/icons-digitais/deezer.png',
+    bg: '#1a1a1a',
+    tagline: 'Músicas, podcasts e audiolivros',
+    to: '/pessoa-fisica/internet-fibra#planos',
+    accentColor: '#27CAA3',
+  },
 ]
 
 export default function StreamingSection() {
@@ -63,7 +71,7 @@ export default function StreamingSection() {
             Entretenimento Digital
           </p>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-white">
-            Globoplay, Disney+, HBO MAX, SKY+, Prime Video
+            Globoplay, Disney+, HBO MAX, SKY+, Prime Video, Deezer
           </h2>
           <p className="mt-3 text-base" style={{ color: 'rgba(255,255,255,0.4)' }}>
             Contrate junto com seu plano e economize

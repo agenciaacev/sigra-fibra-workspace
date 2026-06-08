@@ -13,6 +13,7 @@ const ICONS = [
   { src: '/img/icons-digitais/docway-1.webp',            bg: '#16a34a', fit: 'cover'   },
   { src: '/img/icons-digitais/disney+.png',              bg: '#001f5c', fit: 'cover'   },
   { src: '/img/icons-digitais/prime-video.png',          bg: '#0a0a0a', fit: 'cover'   },
+  { src: '/img/icons-digitais/deezer.png',               bg: '#1a1a1a', fit: 'cover'   },
   { src: '/img/icons-digitais/socialcomics.png',         bg: '#1c1f2e', fit: 'cover'   },
   { src: '/img/icons-digitais/PLUS-PNG.png',             bg: '#5b21b6', fit: 'contain' },
   { src: '/img/icons-digitais/hotgo.webp',               bg: '#1a1a1a', fit: 'cover'   },
@@ -23,12 +24,12 @@ const ICONS = [
   { src: '/img/icons-digitais/ojornalista.png',          bg: '#111111', fit: 'cover'   },
 ]
 
-const COLS = 18                       // ícones únicos por set
+const COLS = 19                       // ícones únicos por set
 const SETS = 3                        // 3× garante sem espaço preto durante animação
 const ROWS = 10
 const CARD = 92
 const GAP = 12
-const ROW_OFFSET = COLS * (CARD + GAP) // 1872px
+const ROW_OFFSET = COLS * (CARD + GAP) // 1976px
 
 // ~40% mais lento que antes
 const SPEEDS = [76, 110, 68, 124, 90, 105, 71, 119, 85, 100]
