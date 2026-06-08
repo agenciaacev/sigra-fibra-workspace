@@ -2,26 +2,25 @@
 
 import React from 'react'
 
-// 18 ícones reais em ordem aleatória (cores variadas para dar ritmo visual)
 const ICONS = [
-  { src: '/img/icons-digitais/exitlag.png',                    bg: '#0a0a0a', fit: 'cover'   },
-  { src: '/img/icons-digitais/qnutri.png',                     bg: '#ea580c', fit: 'cover'   },
-  { src: '/img/icons-digitais/Looke-Google-Apple-1.webp',      bg: '#1d4ed8', fit: 'cover'   },
-  { src: '/img/icons-digitais/ICON (4).png',                   bg: '#4c1d95', fit: 'cover'   },
-  { src: '/img/icons-digitais/ICON.png',                       bg: '#27a89a', fit: 'cover'   },
-  { src: '/img/icons-digitais/curtaon.png',                    bg: '#0a0a0a', fit: 'cover'   },
-  { src: '/img/icons-digitais/PlayKids Learning_App Icon.png', bg: '#6d28d9', fit: 'cover'   },
-  { src: '/img/icons-digitais/docway-1.webp',                  bg: '#5cb84c', fit: 'cover'   },
-  { src: '/img/icons-digitais/STANDARD-PNG.png',               bg: '#0369a1', fit: 'contain' },
-  { src: '/img/icons-digitais/prime-video.png',                 bg: '#0a0a0a', fit: 'cover'   },
-  { src: '/img/icons-digitais/ICON (2).png',                   bg: '#1c1f2e', fit: 'cover'   },
-  { src: '/img/icons-digitais/PLUS-PNG.png',                   bg: '#5b21b6', fit: 'contain' },
-  { src: '/img/icons-digitais/service-hotgo-1.webp',           bg: '#1a1a1a', fit: 'cover'   },
-  { src: '/img/icons-digitais/+LEITURA_ICON.png',              bg: '#b91c1c', fit: 'cover'   },
-  { src: '/img/icons-digitais/ICON (3).png',                   bg: '#1a8fd1', fit: 'cover'   },
-  { src: '/img/icons-digitais/Kaspersky_App Icon.png',         bg: '#2a2a2a', fit: 'cover'   },
-  { src: '/img/icons-digitais/logo_fluid_bg.png',              bg: '#0891b2', fit: 'contain' },
-  { src: '/img/icons-digitais/ICON (1).png',                   bg: '#000000', fit: 'cover'   },
+  { src: '/img/icons-digitais/exitlag.png',              bg: '#0a0a0a', fit: 'cover'   },
+  { src: '/img/icons-digitais/qnutri.png',               bg: '#ea580c', fit: 'cover'   },
+  { src: '/img/icons-digitais/!looke.webp',              bg: '#1d4ed8', fit: 'cover'   },
+  { src: '/img/icons-digitais/playlist.png',             bg: '#4c1d95', fit: 'cover'   },
+  { src: '/img/icons-digitais/ubookgo.png',              bg: '#27a89a', fit: 'cover'   },
+  { src: '/img/icons-digitais/curtaon.png',              bg: '#0a0a0a', fit: 'cover'   },
+  { src: '/img/icons-digitais/playkids.png',             bg: '#6d28d9', fit: 'cover'   },
+  { src: '/img/icons-digitais/docway-1.webp',            bg: '#16a34a', fit: 'cover'   },
+  { src: '/img/icons-digitais/disney+.png',              bg: '#001f5c', fit: 'cover'   },
+  { src: '/img/icons-digitais/prime-video.png',          bg: '#0a0a0a', fit: 'cover'   },
+  { src: '/img/icons-digitais/socialcomics.png',         bg: '#1c1f2e', fit: 'cover'   },
+  { src: '/img/icons-digitais/PLUS-PNG.png',             bg: '#5b21b6', fit: 'contain' },
+  { src: '/img/icons-digitais/hotgo.webp',               bg: '#1a1a1a', fit: 'cover'   },
+  { src: '/img/icons-digitais/leitura360.png',           bg: '#b91c1c', fit: 'cover'   },
+  { src: '/img/icons-digitais/hubvantagens.jpg',         bg: '#1a8fd1', fit: 'cover'   },
+  { src: '/img/icons-digitais/Kaspersky_App Icon.png',  bg: '#2a2a2a', fit: 'cover'   },
+  { src: '/img/icons-digitais/fluid.png',                bg: '#0891b2', fit: 'cover'   },
+  { src: '/img/icons-digitais/ojornalista.png',          bg: '#111111', fit: 'cover'   },
 ]
 
 const COLS = 18                       // ícones únicos por set
