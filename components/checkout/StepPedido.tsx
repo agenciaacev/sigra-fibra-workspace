@@ -5,6 +5,7 @@ import { CartAddon, CartState } from './CheckoutFlow'
 import {
   CheckoutAddonCategory,
   InternetPlan,
+  StreamingTier,
   CHIP_PLANS,
   STREAMING_TIERS,
 } from '@/lib/plans'
@@ -76,6 +77,8 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
 
   const [openCategory, setOpenCategory] = useState<string | null>(getInitialOpen)
   const [planOpen, setPlanOpen] = useState(false)
+  const [selectedApps, setSelectedApps] = useState<Record<string, string>>({})
+  const [expandedMoreTier, setExpandedMoreTier] = useState<string | null>(null)
 
   const toggleOpen = (id: string) => {
     setOpenCategory(prev => (prev === id ? null : id))
@@ -83,7 +86,26 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
 
   const isSimpleAdded = (id: string) => cart.addons.some(a => a.id === id)
   const selectedChipId = cart.addons.find(a => a.id.startsWith('movel-'))?.id
-  const selectedStreamingId = cart.addons.find(a => a.id.startsWith('entretenimento-'))?.id
+  const isStreamingAdded = (id: string) => cart.addons.some(a => a.id === id)
+  const selectedStreamingTiers = cart.addons.filter(a => a.id.startsWith('entretenimento-'))
+
+  const handleAppClick = (tier: StreamingTier, appName: string) => {
+    const currentApp = selectedApps[tier.id]
+    const tierInCart = isStreamingAdded(tier.id)
+
+    if (currentApp === appName) {
+      // mesma seleção → deseleciona e remove o tier do carrinho
+      setSelectedApps(prev => { const next = { ...prev }; delete next[tier.id]; return next })
+      onToggleAddon({ id: tier.id, name: `Playhub ${tier.name}`, price: tier.price })
+    } else {
+      // novo app selecionado
+      setSelectedApps(prev => ({ ...prev, [tier.id]: appName }))
+      if (!tierInCart) {
+        onToggleAddon({ id: tier.id, name: `Playhub ${tier.name}`, price: tier.price })
+      }
+      setExpandedMoreTier(null)
+    }
+  }
 
   return (
     <div className="flex flex-col gap-4">
@@ -191,7 +213,7 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                 ? isSimpleAdded(cat.id)
                 : cat.type === 'chip'
                 ? !!selectedChipId
-                : !!selectedStreamingId
+                : selectedStreamingTiers.length > 0
 
             return (
               <div
@@ -227,9 +249,11 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                           style={{ background: 'rgba(3,194,195,0.1)', color: '#03C2C3' }}
                         >
                           {cat.type === 'chip'
-                            ? CHIP_PLANS.find(c => c.id === selectedChipId)?.name.replace('Chip Móvel ', '') + ' GB selecionado'
+                            ? CHIP_PLANS.find(c => c.id === selectedChipId)?.name.replace('Chip Móvel ', '') + ' GB'
                             : cat.type === 'streaming'
-                            ? STREAMING_TIERS.find(t => t.id === selectedStreamingId)?.name + ' selecionado'
+                            ? selectedStreamingTiers.length === 1
+                              ? selectedStreamingTiers[0].name.replace('Playhub ', '') + ' selecionado'
+                              : `${selectedStreamingTiers.length} tiers selecionados`
                             : 'Adicionado'}
                         </span>
                       )}
@@ -302,10 +326,10 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                             return (
                               <button
                                 key={chip.id}
-                                onClick={() => onSelectExclusive(
-                                  { id: chip.id, name: chip.name, price: chip.price },
-                                  'movel-'
-                                )}
+                                onClick={() => {
+                                  onSelectExclusive({ id: chip.id, name: chip.name, price: chip.price }, 'movel-')
+                                  setOpenCategory(null)
+                                }}
                                 className="relative flex flex-col items-center gap-1 rounded-xl py-3 px-2 transition-all duration-150 border-2"
                                 style={selected
                                   ? { borderColor: '#03C2C3', background: 'rgba(3,194,195,0.08)' }
@@ -345,20 +369,21 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                           <svg className="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          Escolha um tier — só pode escolher um app por categoria.
+                          Escolha um app por categoria — só pode escolher um de cada.
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                           {STREAMING_TIERS.map(tier => {
-                            const selected = selectedStreamingId === tier.id
+                            const tierSelected = isStreamingAdded(tier.id)
+                            const chosenApp = selectedApps[tier.id]
+                            const featuredApps = tier.apps.slice(0, 4)
+                            const moreApps = tier.apps.slice(4)
+                            const moreOpen = expandedMoreTier === tier.id
+
                             return (
-                              <button
+                              <div
                                 key={tier.id}
-                                onClick={() => onSelectExclusive(
-                                  { id: tier.id, name: `Playhub ${tier.name}`, price: tier.price },
-                                  'entretenimento-'
-                                )}
-                                className="flex flex-col gap-3 rounded-xl p-4 text-left transition-all duration-150 border-2"
-                                style={selected
+                                className="flex flex-col gap-3 rounded-xl p-4 transition-all duration-150 border-2"
+                                style={tierSelected
                                   ? { borderColor: tier.color, background: `rgba(${hexToRgb(tier.color)},0.05)` }
                                   : { borderColor: '#e5e7eb', background: '#fafafa' }
                                 }
@@ -371,7 +396,7 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                                   >
                                     {tier.name}
                                   </span>
-                                  <div className="text-right">
+                                  <div>
                                     <span className="text-sm font-extrabold text-gray-900">
                                       R$ {tier.price.toFixed(2).replace('.', ',')}
                                     </span>
@@ -379,47 +404,129 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                                   </div>
                                 </div>
 
-                                {/* App icons */}
-                                <div className="flex items-end gap-2 flex-wrap">
-                                  {tier.apps.map((app, i) => (
-                                    <div key={i} className="flex flex-col items-center gap-1">
-                                      <div
-                                        className="w-11 h-11 rounded-xl overflow-hidden shrink-0"
-                                        style={{ boxShadow: '0 1px 4px rgba(0,0,0,0.12)' }}
+                                {/* Featured app icons + more button */}
+                                <div className="flex items-start gap-2 flex-wrap">
+                                  {featuredApps.map((app) => {
+                                    const appChosen = chosenApp === app.name
+                                    return (
+                                      <button
+                                        key={app.name}
+                                        onClick={() => handleAppClick(tier, app.name)}
+                                        className="flex flex-col items-center gap-1 transition-all duration-150"
                                       >
-                                        <img
-                                          src={app.icon}
-                                          alt={app.name}
-                                          className="w-full h-full object-cover"
-                                        />
-                                      </div>
-                                      {app.hasAds && (
-                                        <span
-                                          className="text-[9px] font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap"
-                                          style={{ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }}
+                                        <div
+                                          className="w-11 h-11 rounded-xl overflow-hidden shrink-0 transition-all duration-150"
+                                          style={{
+                                            boxShadow: appChosen
+                                              ? `0 0 0 2.5px ${tier.color}`
+                                              : '0 1px 4px rgba(0,0,0,0.12)',
+                                            opacity: tierSelected && !appChosen ? 0.4 : 1,
+                                          }}
                                         >
-                                          c/ anúncio
+                                          <img src={app.icon} alt={app.name} className="w-full h-full object-cover" />
+                                        </div>
+                                        <div className="h-4 flex items-center justify-center">
+                                          {app.hasAds && (
+                                            <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap"
+                                              style={{ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }}>
+                                              c/ anúncio
+                                            </span>
+                                          )}
+                                        </div>
+                                      </button>
+                                    )
+                                  })}
+
+                                  {/* +X more button */}
+                                  {moreApps.length > 0 && (
+                                    <button
+                                      onClick={() => setExpandedMoreTier(moreOpen ? null : tier.id)}
+                                      className="flex flex-col items-center gap-1"
+                                    >
+                                      <div
+                                        className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-150"
+                                        style={{
+                                          background: moreOpen ? `rgba(${hexToRgb(tier.color)},0.12)` : '#f3f4f6',
+                                          color: moreOpen ? tier.color : '#6B7280',
+                                        }}
+                                      >
+                                        <span className="text-xs font-bold">
+                                          {moreOpen ? '▲' : `+${moreApps.length}`}
                                         </span>
-                                      )}
-                                    </div>
-                                  ))}
-                                  {tier.extraCount && (
-                                    <span className="text-xs text-gray-400 mb-1 self-center">
-                                      +{tier.extraCount} apps
-                                    </span>
+                                      </div>
+                                      <div className="h-4 flex items-center">
+                                        <span className="text-[9px] text-gray-400">
+                                          {moreOpen ? 'fechar' : 'apps'}
+                                        </span>
+                                      </div>
+                                    </button>
                                   )}
                                 </div>
 
-                                {/* Selected indicator */}
-                                {selected && (
-                                  <div className="flex items-center gap-1 text-xs font-bold" style={{ color: tier.color }}>
+                                {/* More apps panel */}
+                                <div style={{
+                                  display: 'grid',
+                                  gridTemplateRows: moreOpen ? '1fr' : '0fr',
+                                  transition: 'grid-template-rows 260ms cubic-bezier(0.4,0,0.2,1)',
+                                }}>
+                                  <div style={{ overflow: 'hidden' }}>
+                                    <div className="pt-3 border-t border-gray-100 flex flex-wrap gap-2">
+                                      {moreApps.map((app) => {
+                                        const appChosen = chosenApp === app.name
+                                        return app.icon ? (
+                                          <button
+                                            key={app.name}
+                                            onClick={() => handleAppClick(tier, app.name)}
+                                            className="flex flex-col items-center gap-1 transition-all duration-150"
+                                          >
+                                            <div
+                                              className="w-11 h-11 rounded-xl overflow-hidden shrink-0"
+                                              style={{
+                                                boxShadow: appChosen
+                                                  ? `0 0 0 2.5px ${tier.color}`
+                                                  : '0 1px 4px rgba(0,0,0,0.12)',
+                                                opacity: tierSelected && !appChosen ? 0.4 : 1,
+                                              }}
+                                            >
+                                              <img src={app.icon} alt={app.name} className="w-full h-full object-cover" />
+                                            </div>
+                                            <div className="h-4 flex items-center justify-center">
+                                              {app.hasAds && (
+                                                <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full whitespace-nowrap"
+                                                  style={{ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }}>
+                                                  c/ anúncio
+                                                </span>
+                                              )}
+                                            </div>
+                                          </button>
+                                        ) : (
+                                          <button
+                                            key={app.name}
+                                            onClick={() => handleAppClick(tier, app.name)}
+                                            className="flex items-center px-3 py-2 rounded-xl text-xs font-semibold border-2 transition-all duration-150"
+                                            style={appChosen
+                                              ? { borderColor: tier.color, color: tier.color, background: `rgba(${hexToRgb(tier.color)},0.06)` }
+                                              : { borderColor: '#e5e7eb', color: '#374151', background: '#fafafa' }
+                                            }
+                                          >
+                                            {app.name}
+                                          </button>
+                                        )
+                                      })}
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {/* Selected app indicator */}
+                                {chosenApp && (
+                                  <div className="flex items-center gap-1.5 text-xs font-semibold" style={{ color: tier.color }}>
                                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                                     </svg>
-                                    Selecionado — clique para remover
+                                    {chosenApp} selecionado
                                   </div>
                                 )}
-                              </button>
+                              </div>
                             )
                           })}
                         </div>

@@ -55,7 +55,6 @@ export interface StreamingTier {
   price: number
   color: string
   apps: StreamingApp[]
-  extraCount?: number
 }
 
 export const STREAMING_TIERS: StreamingTier[] = [
@@ -65,12 +64,23 @@ export const STREAMING_TIERS: StreamingTier[] = [
     price: 9.90,
     color: '#27CAA3',
     apps: [
-      { name: 'Sky+',     icon: '/img/icons-digitais/sky+.png' },
-      { name: 'Playkids', icon: '/img/icons-digitais/playkids.png' },
-      { name: 'Looke',    icon: '/img/icons-digitais/!looke.webp' },
-      { name: 'Ubook',    icon: '/img/icons-digitais/ubookgo.png' },
+      { name: 'Sky+',              icon: '/img/icons-digitais/sky+.png' },
+      { name: 'Playkids',          icon: '/img/icons-digitais/playkids.png' },
+      { name: 'Looke',             icon: '/img/icons-digitais/!looke.webp' },
+      { name: 'Ubook',             icon: '/img/icons-digitais/ubookgo.png' },
+      { name: 'Estuda+',           icon: '/img/icons-digitais/estuda+.png' },
+      { name: 'Playlist',          icon: '/img/icons-digitais/playlist.png' },
+      { name: 'Kiddle Pass',       icon: '/img/icons-digitais/kiddlepass.png' },
+      { name: 'Hub Vantagens',     icon: '/img/icons-digitais/hubvantagens.jpg' },
+      { name: 'Social Comics',     icon: '/img/icons-digitais/socialcomics.png' },
+      { name: 'Kaspersky 1 Lic',   icon: '/img/icons-digitais/kasperskystandard1lic.png' },
+      { name: 'Qnutri',            icon: '/img/icons-digitais/qnutri.png' },
+      { name: 'Hub Revistas',      icon: '/img/icons-digitais/revistaria.png' },
+      { name: 'Fluid',             icon: '/img/icons-digitais/fluid.png' },
+      { name: '+Leitura',          icon: '/img/icons-digitais/+LEITURA_ICON.png' },
+      { name: 'Noping' },
+      { name: 'enwellness' },
     ],
-    extraCount: 12,
   },
   {
     id: 'entretenimento-advanced',
@@ -78,12 +88,14 @@ export const STREAMING_TIERS: StreamingTier[] = [
     price: 14.90,
     color: '#03C2C3',
     apps: [
-      { name: 'Sky+',      icon: '/img/icons-digitais/sky+.png' },
-      { name: 'Globoplay', icon: '/img/icons-digitais/globoplay.png' },
-      { name: 'HotGo',     icon: '/img/icons-digitais/hotgo.webp' },
-      { name: 'Curta On',  icon: '/img/icons-digitais/curtaon.png' },
+      { name: 'Sky+',            icon: '/img/icons-digitais/sky+.png' },
+      { name: 'Globoplay',       icon: '/img/icons-digitais/globoplay.png' },
+      { name: 'HotGo',           icon: '/img/icons-digitais/hotgo.webp' },
+      { name: 'Curta On',        icon: '/img/icons-digitais/curtaon.png' },
+      { name: 'DocWay',          icon: '/img/icons-digitais/docway-1.webp' },
+      { name: 'Kaspersky 3 Lic', icon: '/img/icons-digitais/kasperskystandard3lic.png' },
+      { name: 'O Jornalista',    icon: '/img/icons-digitais/ojornalista.png' },
     ],
-    extraCount: 6,
   },
   {
     id: 'entretenimento-top',
@@ -91,10 +103,12 @@ export const STREAMING_TIERS: StreamingTier[] = [
     price: 29.90,
     color: '#f59e0b',
     apps: [
-      { name: 'Disney+',     icon: '/img/icons-digitais/disney+.png',     hasAds: true },
-      { name: 'HBO Max',     icon: '/img/icons-digitais/hbo.webp',         hasAds: true },
-      { name: 'Prime Video', icon: '/img/icons-digitais/prime-video.png' },
-      { name: 'Globoplay',   icon: '/img/icons-digitais/globoplay.png' },
+      { name: 'Disney+',          icon: '/img/icons-digitais/disney+.png',     hasAds: true },
+      { name: 'HBO Max',          icon: '/img/icons-digitais/hbo.webp',         hasAds: true },
+      { name: 'Prime Video',      icon: '/img/icons-digitais/prime-video.png' },
+      { name: 'Globoplay',        icon: '/img/icons-digitais/globoplay.png' },
+      { name: 'Pequenos Leitores',icon: '/img/icons-digitais/pequenosleitores.png' },
+      { name: 'CINDIE',           icon: '/img/icons-digitais/cindie.png' },
     ],
   },
   {
@@ -106,8 +120,11 @@ export const STREAMING_TIERS: StreamingTier[] = [
       { name: 'Disney+',    icon: '/img/icons-digitais/disney+.png' },
       { name: 'HBO Max',    icon: '/img/icons-digitais/hbo.webp' },
       { name: 'Kaspersky',  icon: '/img/icons-digitais/Kaspersky_App Icon.png' },
+      { name: 'Leitura 360',icon: '/img/icons-digitais/leitura360.png' },
+      { name: 'Smart Content' },
+      { name: 'Ritual Fit' },
+      { name: 'Queima Diária' },
     ],
-    extraCount: 4,
   },
 ]
 
