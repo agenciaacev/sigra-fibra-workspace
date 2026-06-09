@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import StepPedido from './StepPedido'
 import StepConfiguracao from './StepConfiguracao'
 import OrderSidebar from './OrderSidebar'
+import { getPlanById, CHIP_PLANS, CHECKOUT_CATEGORIES, INTERNET_PLANS, type InternetPlan } from '@/lib/plans'
 
 const STEPS = ['Pedido', 'Configuração', 'Verificação', 'Conclusão']
 
@@ -26,15 +27,9 @@ export interface CartState {
   autoDebitDiscount: number
 }
 
-const INITIAL_CART: CartState = {
-  plan: {
-    name: 'Internet fibra',
-    detail: '600 Mega',
-    price: 109.90,
-  },
-  addons: [],
-  coupon: '',
-  autoDebitDiscount: 10,
+interface Props {
+  planId?: string
+  preAddonId?: string
 }
 
 function StepIndicator({ steps, current }: { steps: string[]; current: number }) {
@@ -46,7 +41,7 @@ function StepIndicator({ steps, current }: { steps: string[]; current: number })
             <div
               className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all"
               style={{
-                background: i < current ? '#03C2C3' : i === current ? '#03C2C3' : '#e5e7eb',
+                background: i <= current ? '#03C2C3' : '#e5e7eb',
                 color: i <= current ? 'white' : '#9ca3af',
               }}
             >
@@ -66,10 +61,7 @@ function StepIndicator({ steps, current }: { steps: string[]; current: number })
           {i < steps.length - 1 && (
             <div
               className="h-0.5 mx-1 mb-4 transition-all"
-              style={{
-                width: 36,
-                background: i < current ? '#03C2C3' : '#e5e7eb',
-              }}
+              style={{ width: 36, background: i < current ? '#03C2C3' : '#e5e7eb' }}
             />
           )}
         </React.Fragment>
@@ -78,10 +70,38 @@ function StepIndicator({ steps, current }: { steps: string[]; current: number })
   )
 }
 
-export default function CheckoutFlow() {
-  const [step, setStep] = useState(0)
-  const [cart, setCart] = useState<CartState>(INITIAL_CART)
+export default function CheckoutFlow({ planId, preAddonId }: Props) {
+  const internetPlan = getPlanById(planId)
 
+  const initialAddons: CartAddon[] = useMemo(() => {
+    if (!preAddonId) return []
+    if (preAddonId.startsWith('movel-')) {
+      const chip = CHIP_PLANS.find(c => c.id === preAddonId)
+      if (chip) return [{ id: chip.id, name: chip.name, price: chip.price }]
+    }
+    return []
+  }, [preAddonId])
+
+  const [step, setStep] = useState(0)
+  const [cart, setCart] = useState<CartState>({
+    plan: {
+      name: internetPlan.name,
+      detail: internetPlan.detail,
+      price: internetPlan.price,
+    },
+    addons: initialAddons,
+    coupon: '',
+    autoDebitDiscount: 10,
+  })
+
+  const changePlan = (plan: InternetPlan) => {
+    setCart(prev => ({
+      ...prev,
+      plan: { name: plan.name, detail: plan.detail, price: plan.price },
+    }))
+  }
+
+  // Toggle a simple addon (add/remove)
   const toggleAddon = (addon: CartAddon) => {
     setCart(prev => ({
       ...prev,
@@ -89,6 +109,19 @@ export default function CheckoutFlow() {
         ? prev.addons.filter(a => a.id !== addon.id)
         : [...prev.addons, addon],
     }))
+  }
+
+  // Select an exclusive addon within a category (replaces any addon with same prefix)
+  const selectExclusive = (addon: CartAddon, prefix: string) => {
+    setCart(prev => {
+      const alreadySelected = prev.addons.find(a => a.id === addon.id)
+      return {
+        ...prev,
+        addons: alreadySelected
+          ? prev.addons.filter(a => a.id !== addon.id)
+          : [...prev.addons.filter(a => !a.id.startsWith(prefix)), addon],
+      }
+    })
   }
 
   const total =
@@ -99,20 +132,13 @@ export default function CheckoutFlow() {
   return (
     <div style={{ background: '#f4f5f7', minHeight: '100vh' }}>
 
-      {/* Checkout header */}
       <header
         className="bg-white border-b border-gray-100 sticky top-0 z-50"
         style={{ boxShadow: '0 1px 6px rgba(0,0,0,0.06)' }}
       >
         <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
           <Link href="/" className="shrink-0">
-            <Image
-              src="/img/logosiga.png"
-              alt="Siga Fibra"
-              width={110}
-              height={36}
-              className="h-8 w-auto object-contain"
-            />
+            <Image src="/img/logosiga.png" alt="Siga Fibra" width={110} height={36} className="h-8 w-auto object-contain" />
           </Link>
           <div className="flex items-center gap-1.5 text-sm font-semibold" style={{ color: '#03C2C3' }}>
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -124,14 +150,10 @@ export default function CheckoutFlow() {
         </div>
       </header>
 
-      {/* Content */}
       <div className="max-w-[1100px] mx-auto px-4 sm:px-6 py-8">
         <div className="flex gap-6 items-start">
 
-          {/* Left: steps */}
           <div className="flex-1 min-w-0">
-
-            {/* Step title + indicator */}
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
               <h1 className="text-2xl font-extrabold text-gray-900">
                 {step === 0 ? 'Personalize seu pedido' : 'Configure seu pedido'}
@@ -144,16 +166,18 @@ export default function CheckoutFlow() {
             {step === 0 && (
               <StepPedido
                 cart={cart}
+                internetPlans={INTERNET_PLANS}
+                categories={CHECKOUT_CATEGORIES}
+                preAddonId={preAddonId}
+                onChangePlan={changePlan}
                 onToggleAddon={toggleAddon}
+                onSelectExclusive={selectExclusive}
                 onNext={() => setStep(1)}
               />
             )}
 
             {step === 1 && (
-              <StepConfiguracao
-                onBack={() => setStep(0)}
-                onNext={() => setStep(2)}
-              />
+              <StepConfiguracao onBack={() => setStep(0)} onNext={() => setStep(2)} />
             )}
 
             {step >= 2 && (
@@ -163,7 +187,6 @@ export default function CheckoutFlow() {
             )}
           </div>
 
-          {/* Right: order sidebar */}
           <div className="w-[290px] shrink-0 hidden lg:block sticky top-[72px]">
             <OrderSidebar
               cart={cart}
@@ -173,10 +196,8 @@ export default function CheckoutFlow() {
               onCouponChange={(coupon) => setCart(prev => ({ ...prev, coupon }))}
             />
           </div>
-
         </div>
 
-        {/* Mobile sidebar (bottom) */}
         <div className="lg:hidden mt-6">
           <OrderSidebar
             cart={cart}

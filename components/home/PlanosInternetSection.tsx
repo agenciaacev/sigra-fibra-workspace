@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 
 const plans = [
   {
+    id: 'nitro-600',
     name: 'SIGA NITRO',
     speed: '600',
     unit: 'Mb',
@@ -17,6 +18,7 @@ const plans = [
     badge: null,
   },
   {
+    id: 'nitro-800',
     name: 'SIGA NITRO',
     speed: '800',
     unit: 'Mb',
@@ -29,6 +31,7 @@ const plans = [
     badge: 'MAIS POPULAR',
   },
   {
+    id: 'nitro-1g',
     name: 'SIGA NITRO',
     speed: '1',
     unit: 'Gb',
@@ -41,6 +44,7 @@ const plans = [
     badge: null,
   },
   {
+    id: 'hiper-flow',
     name: 'SIGA HIPER FLOW',
     speed: '2',
     unit: 'Gb',
@@ -53,6 +57,7 @@ const plans = [
     badge: null,
   },
   {
+    id: 'hiper-max',
     name: 'SIGA HIPER MAX',
     speed: '2.5',
     unit: 'Gb',
@@ -258,7 +263,7 @@ export default function PlanosInternetSection() {
                         ))}
                       </ul>
                       <button
-                        onClick={() => router.push('/pessoa-fisica/internet-fibra')}
+                        onClick={() => router.push(`/pessoa-fisica/checkout?plan=${plan.id}`)}
                         className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
                         style={{ background: '#27CAA3' }}
                       >

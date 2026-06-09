@@ -4,13 +4,13 @@ import React, { useRef, useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 const plans = [
-  { gb: 5,  price: '34,99', featured: false, badge: null },
-  { gb: 8,  price: '44,99', featured: false, badge: null },
-  { gb: 12, price: '55,99', featured: false, badge: null },
-  { gb: 19, price: '59,99', featured: true,  badge: 'MAIS POPULAR' },
-  { gb: 30, price: '69,99', featured: false, badge: null },
-  { gb: 40, price: '79,99', featured: false, badge: null },
-  { gb: 45, price: '89,99', featured: false, badge: null },
+  { id: 'movel-5gb',  gb: 5,  price: '34,99', featured: false, badge: null },
+  { id: 'movel-8gb',  gb: 8,  price: '44,99', featured: false, badge: null },
+  { id: 'movel-12gb', gb: 12, price: '55,99', featured: false, badge: null },
+  { id: 'movel-19gb', gb: 19, price: '59,99', featured: true,  badge: 'MAIS POPULAR' },
+  { id: 'movel-30gb', gb: 30, price: '69,99', featured: false, badge: null },
+  { id: 'movel-40gb', gb: 40, price: '79,99', featured: false, badge: null },
+  { id: 'movel-45gb', gb: 45, price: '89,99', featured: false, badge: null },
 ]
 
 const includedAll = [
@@ -182,7 +182,7 @@ export default function PlanosMovelSection() {
                       </ul>
 
                       <button
-                        onClick={() => router.push('/pessoa-fisica/atendimento/canais')}
+                        onClick={() => router.push(`/pessoa-fisica/checkout?addon=${plan.id}`)}
                         className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
                         style={{ background: '#27CAA3' }}
                       >

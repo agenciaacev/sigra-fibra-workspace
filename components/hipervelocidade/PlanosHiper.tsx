@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 
 const plans = [
   {
+    id: 'hiper-flow',
     name: 'SIGA HIPER FLOW',
     speed: '2',
     unit: 'Gb',
@@ -25,6 +26,7 @@ const plans = [
     badgeBg: '',
   },
   {
+    id: 'hiper-max',
     name: 'SIGA HIPER MAX',
     speed: '2.5',
     unit: 'Gb',
@@ -172,7 +174,7 @@ export default function PlanosHiper() {
                   </ul>
 
                   <button
-                    onClick={() => router.push('/pessoa-fisica/atendimento/canais')}
+                    onClick={() => router.push(`/pessoa-fisica/checkout?plan=${plan.id}`)}
                     className="w-full py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:opacity-90 active:scale-95"
                     style={{ background: plan.gradientTop }}
                   >
