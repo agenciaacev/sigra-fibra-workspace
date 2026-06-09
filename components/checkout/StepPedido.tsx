@@ -103,7 +103,6 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
       if (!tierInCart) {
         onToggleAddon({ id: tier.id, name: `Playhub ${tier.name}`, price: tier.price })
       }
-      setExpandedMoreTier(null)
     }
   }
 
@@ -375,8 +374,14 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                           {STREAMING_TIERS.map(tier => {
                             const tierSelected = isStreamingAdded(tier.id)
                             const chosenApp = selectedApps[tier.id]
-                            const featuredApps = tier.apps.slice(0, 4)
-                            const moreApps = tier.apps.slice(4)
+                            const orderedApps = chosenApp
+                              ? [
+                                  tier.apps.find(a => a.name === chosenApp)!,
+                                  ...tier.apps.filter(a => a.name !== chosenApp),
+                                ]
+                              : tier.apps
+                            const featuredApps = orderedApps.slice(0, 4)
+                            const moreApps = orderedApps.slice(4)
                             const moreOpen = expandedMoreTier === tier.id
 
                             return (
@@ -445,18 +450,18 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                                     >
                                       <div
                                         className="w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-150"
-                                        style={{
-                                          background: moreOpen ? `rgba(${hexToRgb(tier.color)},0.12)` : '#f3f4f6',
-                                          color: moreOpen ? tier.color : '#6B7280',
-                                        }}
+                                        style={moreOpen
+                                          ? { background: `rgba(${hexToRgb(tier.color)},0.15)`, color: tier.color }
+                                          : { background: '#27CAA3', color: 'white', boxShadow: '0 2px 8px rgba(39,202,163,0.45)' }
+                                        }
                                       >
                                         <span className="text-xs font-bold">
                                           {moreOpen ? '▲' : `+${moreApps.length}`}
                                         </span>
                                       </div>
                                       <div className="h-4 flex items-center">
-                                        <span className="text-[9px] text-gray-400">
-                                          {moreOpen ? 'fechar' : 'apps'}
+                                        <span className="text-[9px] font-semibold" style={{ color: moreOpen ? '#6B7280' : '#27CAA3' }}>
+                                          {moreOpen ? 'fechar' : 'ver mais'}
                                         </span>
                                       </div>
                                     </button>

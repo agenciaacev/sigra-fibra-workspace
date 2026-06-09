@@ -64,6 +64,7 @@ export const STREAMING_TIERS: StreamingTier[] = [
     price: 9.90,
     color: '#27CAA3',
     apps: [
+      { name: 'Deezer',            icon: '/img/icons-digitais/deezer.png' },
       { name: 'Sky+',              icon: '/img/icons-digitais/sky+.png' },
       { name: 'Playkids',          icon: '/img/icons-digitais/playkids.png' },
       { name: 'Looke',             icon: '/img/icons-digitais/!looke.webp' },
@@ -76,10 +77,8 @@ export const STREAMING_TIERS: StreamingTier[] = [
       { name: 'Kaspersky 1 Lic',   icon: '/img/icons-digitais/kasperskystandard1lic.png' },
       { name: 'Qnutri',            icon: '/img/icons-digitais/qnutri.png' },
       { name: 'Hub Revistas',      icon: '/img/icons-digitais/revistaria.png' },
-      { name: 'Fluid',             icon: '/img/icons-digitais/fluid.png' },
-      { name: '+Leitura',          icon: '/img/icons-digitais/+LEITURA_ICON.png' },
-      { name: 'Noping' },
-      { name: 'enwellness' },
+      { name: 'Fluid',    icon: '/img/icons-digitais/fluid.png' },
+      { name: '+Leitura', icon: '/img/icons-digitais/+LEITURA_ICON.png' },
     ],
   },
   {
@@ -117,13 +116,11 @@ export const STREAMING_TIERS: StreamingTier[] = [
     price: 46.90,
     color: '#a855f7',
     apps: [
-      { name: 'Disney+',    icon: '/img/icons-digitais/disney+.png' },
-      { name: 'HBO Max',    icon: '/img/icons-digitais/hbo.webp' },
-      { name: 'Kaspersky',  icon: '/img/icons-digitais/Kaspersky_App Icon.png' },
-      { name: 'Leitura 360',icon: '/img/icons-digitais/leitura360.png' },
-      { name: 'Smart Content' },
-      { name: 'Ritual Fit' },
-      { name: 'Queima Diária' },
+      { name: 'Disney+',     icon: '/img/icons-digitais/disney+.png' },
+      { name: 'HBO Max',     icon: '/img/icons-digitais/hbo.webp' },
+      { name: 'Kaspersky',   icon: '/img/icons-digitais/Kaspersky_App Icon.png' },
+      { name: 'Leitura 360', icon: '/img/icons-digitais/leitura360.png' },
+      { name: 'Queima Diária', icon: '/img/icons-digitais/qnutri.png' },
     ],
   },
 ]
@@ -158,6 +155,6 @@ export const CHECKOUT_CATEGORIES: CheckoutAddonCategory[] = [
     name: 'Telefone Fixo',
     description: 'Ligações ilimitadas para qualquer operadora',
     type: 'simple',
-    price: 29.90,
+    price: 39.90,
   },
 ]

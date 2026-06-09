@@ -28,7 +28,7 @@ const plans = [
     priceAfter: 'R$ 119,90/mês',
     benefits: ['Wi-Fi em toda a casa','Suporte prioritário'],
     featured: true,
-    badge: 'MAIS POPULAR',
+    badge: 'MAIS VENDIDO',
   },
   {
     id: 'nitro-1g',

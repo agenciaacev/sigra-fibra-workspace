@@ -11,6 +11,7 @@ const tiers = [
     cor: '#0369a1',
     desc: 'Ideal para quem quer aproveitar o essencial com qualidade.',
     servicos: [
+      { nome: 'Deezer',                    icon: '/img/icons-digitais/deezer.png',               bg: '#1a1a1a', fit: 'cover',   desc: 'Música, podcasts e audiolivros ilimitados.'           },
       { nome: 'Ubook Go',                  icon: '/img/icons-digitais/ubookgo.png',              bg: '#27a89a', fit: 'cover',   desc: 'Audiolivros, e-books e podcasts ilimitados.'          },
       { nome: 'Estuda+',                   icon: '/img/icons-digitais/estuda+.png',              bg: '#7c3aed', fit: 'cover',   desc: 'Plataforma de cursos e conteúdos educacionais.'       },
       { nome: 'Playlist',                  icon: '/img/icons-digitais/playlist.png',             bg: '#4c1d95', fit: 'cover',   desc: 'Música streaming com milhões de faixas.'              },
