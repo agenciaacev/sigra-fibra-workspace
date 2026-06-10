@@ -1,14 +1,11 @@
 'use client'
 
-import React, { useMemo, useState } from 'react'
+import React, { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import StepPedido from './StepPedido'
-import StepConfiguracao from './StepConfiguracao'
 import OrderSidebar from './OrderSidebar'
 import { getPlanById, CHIP_PLANS, CHECKOUT_CATEGORIES, INTERNET_PLANS, type InternetPlan } from '@/lib/plans'
-
-const STEPS = ['Pedido', 'Configuração', 'Verificação', 'Conclusão']
 
 export interface CartAddon {
   id: string
@@ -21,6 +18,7 @@ export interface CartState {
     name: string
     detail: string
     price: number
+    priceAfter: number
   }
   addons: CartAddon[]
   coupon: string
@@ -30,44 +28,6 @@ export interface CartState {
 interface Props {
   planId?: string
   preAddonId?: string
-}
-
-function StepIndicator({ steps, current }: { steps: string[]; current: number }) {
-  return (
-    <div className="flex items-center">
-      {steps.map((label, i) => (
-        <React.Fragment key={i}>
-          <div className="flex flex-col items-center gap-1.5">
-            <div
-              className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all"
-              style={{
-                background: i <= current ? '#03C2C3' : '#e5e7eb',
-                color: i <= current ? 'white' : '#9ca3af',
-              }}
-            >
-              {i < current ? (
-                <svg className="w-3.5 h-3.5" fill="none" stroke="white" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                </svg>
-              ) : i + 1}
-            </div>
-            <span
-              className="text-xs font-semibold whitespace-nowrap"
-              style={{ color: i <= current ? '#03C2C3' : '#9ca3af' }}
-            >
-              {label}
-            </span>
-          </div>
-          {i < steps.length - 1 && (
-            <div
-              className="h-0.5 mx-1 mb-4 transition-all"
-              style={{ width: 36, background: i < current ? '#03C2C3' : '#e5e7eb' }}
-            />
-          )}
-        </React.Fragment>
-      ))}
-    </div>
-  )
 }
 
 export default function CheckoutFlow({ planId, preAddonId }: Props) {
@@ -82,12 +42,12 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
     return []
   }, [preAddonId])
 
-  const [step, setStep] = useState(0)
-  const [cart, setCart] = useState<CartState>({
+  const [cart, setCart] = React.useState<CartState>({
     plan: {
       name: internetPlan.name,
       detail: internetPlan.detail,
       price: internetPlan.price,
+      priceAfter: internetPlan.priceAfter,
     },
     addons: initialAddons,
     coupon: '',
@@ -97,11 +57,10 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
   const changePlan = (plan: InternetPlan) => {
     setCart(prev => ({
       ...prev,
-      plan: { name: plan.name, detail: plan.detail, price: plan.price },
+      plan: { name: plan.name, detail: plan.detail, price: plan.price, priceAfter: plan.priceAfter },
     }))
   }
 
-  // Toggle a simple addon (add/remove)
   const toggleAddon = (addon: CartAddon) => {
     setCart(prev => ({
       ...prev,
@@ -111,7 +70,6 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
     }))
   }
 
-  // Select an exclusive addon within a category (replaces any addon with same prefix)
   const selectExclusive = (addon: CartAddon, prefix: string) => {
     setCart(prev => {
       const alreadySelected = prev.addons.find(a => a.id === addon.id)
@@ -154,45 +112,22 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
         <div className="flex gap-6 items-start">
 
           <div className="flex-1 min-w-0">
-            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-              <h1 className="text-2xl font-extrabold text-gray-900">
-                {step === 0 ? 'Personalize seu pedido' : 'Configure seu pedido'}
-              </h1>
-              <div className="shrink-0">
-                <StepIndicator steps={STEPS} current={step} />
-              </div>
-            </div>
-
-            {step === 0 && (
-              <StepPedido
-                cart={cart}
-                internetPlans={INTERNET_PLANS}
-                categories={CHECKOUT_CATEGORIES}
-                preAddonId={preAddonId}
-                onChangePlan={changePlan}
-                onToggleAddon={toggleAddon}
-                onSelectExclusive={selectExclusive}
-                onNext={() => setStep(1)}
-              />
-            )}
-
-            {step === 1 && (
-              <StepConfiguracao onBack={() => setStep(0)} onNext={() => setStep(2)} />
-            )}
-
-            {step >= 2 && (
-              <div className="bg-white rounded-2xl p-8 text-center text-gray-400 text-sm">
-                Próximos passos em desenvolvimento...
-              </div>
-            )}
+            <h1 className="text-2xl font-extrabold text-gray-900 mb-6">Personalize seu pedido</h1>
+            <StepPedido
+              cart={cart}
+              internetPlans={INTERNET_PLANS}
+              categories={CHECKOUT_CATEGORIES}
+              preAddonId={preAddonId}
+              onChangePlan={changePlan}
+              onToggleAddon={toggleAddon}
+              onSelectExclusive={selectExclusive}
+            />
           </div>
 
           <div className="w-[290px] shrink-0 hidden lg:block sticky top-[72px]">
             <OrderSidebar
               cart={cart}
               total={total}
-              step={step}
-              onCheckout={() => setStep(1)}
               onCouponChange={(coupon) => setCart(prev => ({ ...prev, coupon }))}
             />
           </div>
@@ -202,8 +137,6 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
           <OrderSidebar
             cart={cart}
             total={total}
-            step={step}
-            onCheckout={() => setStep(1)}
             onCouponChange={(coupon) => setCart(prev => ({ ...prev, coupon }))}
           />
         </div>

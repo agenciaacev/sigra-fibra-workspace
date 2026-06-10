@@ -5,14 +5,15 @@ export interface InternetPlan {
   name: string
   detail: string
   price: number
+  priceAfter: number
 }
 
 export const INTERNET_PLANS: InternetPlan[] = [
-  { id: 'nitro-600',  name: 'Internet Hipervelocidade', detail: 'SIGA NITRO 600 Mb',     price: 84.90  },
-  { id: 'nitro-800',  name: 'Internet Hipervelocidade', detail: 'SIGA NITRO 800 Mb',     price: 99.90  },
-  { id: 'nitro-1g',   name: 'Internet Hipervelocidade', detail: 'SIGA NITRO 1 Gb',       price: 109.90 },
-  { id: 'hiper-flow', name: 'Internet Hipervelocidade', detail: 'SIGA HIPER FLOW 2 Gb',  price: 159.90 },
-  { id: 'hiper-max',  name: 'Internet Hipervelocidade', detail: 'SIGA HIPER MAX 2.5 Gb', price: 199.90 },
+  { id: 'nitro-600',  name: 'Internet Hipervelocidade', detail: 'SIGA NITRO 600 Mb',     price: 84.90,  priceAfter: 104.90 },
+  { id: 'nitro-800',  name: 'Internet Hipervelocidade', detail: 'SIGA NITRO 800 Mb',     price: 99.90,  priceAfter: 119.90 },
+  { id: 'nitro-1g',   name: 'Internet Hipervelocidade', detail: 'SIGA NITRO 1 Gb',       price: 109.90, priceAfter: 129.90 },
+  { id: 'hiper-flow', name: 'Internet Hipervelocidade', detail: 'SIGA HIPER FLOW 2 Gb',  price: 159.90, priceAfter: 179.90 },
+  { id: 'hiper-max',  name: 'Internet Hipervelocidade', detail: 'SIGA HIPER MAX 2.5 Gb', price: 199.90, priceAfter: 219.90 },
 ]
 
 export const DEFAULT_PLAN = INTERNET_PLANS[0]

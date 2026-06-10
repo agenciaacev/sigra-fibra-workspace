@@ -63,12 +63,11 @@ interface Props {
   onChangePlan: (plan: InternetPlan) => void
   onToggleAddon: (addon: CartAddon) => void
   onSelectExclusive: (addon: CartAddon, prefix: string) => void
-  onNext: () => void
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function StepPedido({ cart, internetPlans, categories, preAddonId, onChangePlan, onToggleAddon, onSelectExclusive, onNext }: Props) {
+export default function StepPedido({ cart, internetPlans, categories, preAddonId, onChangePlan, onToggleAddon, onSelectExclusive }: Props) {
   const getInitialOpen = () => {
     if (cart.addons.some(a => a.id.startsWith('movel-'))) return 'celular'
     if (cart.addons.some(a => a.id.startsWith('entretenimento-'))) return 'entretenimento'
@@ -545,13 +544,6 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
         </div>
       </div>
 
-      <button
-        onClick={onNext}
-        className="w-full py-4 rounded-xl font-extrabold text-white transition-all duration-200 hover:opacity-90 active:scale-95 mt-2"
-        style={{ background: '#03C2C3' }}
-      >
-        Continuar
-      </button>
     </div>
   )
 }
