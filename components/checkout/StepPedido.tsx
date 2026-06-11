@@ -59,15 +59,15 @@ interface Props {
   cart: CartState
   internetPlans: InternetPlan[]
   categories: CheckoutAddonCategory[]
-  preAddonId?: string
   onChangePlan: (plan: InternetPlan) => void
   onToggleAddon: (addon: CartAddon) => void
   onSelectExclusive: (addon: CartAddon, prefix: string) => void
+  onUpdateAddonApp: (tierId: string, appName: string) => void
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function StepPedido({ cart, internetPlans, categories, preAddonId, onChangePlan, onToggleAddon, onSelectExclusive }: Props) {
+export default function StepPedido({ cart, internetPlans, categories, onChangePlan, onToggleAddon, onSelectExclusive, onUpdateAddonApp }: Props) {
   const getInitialOpen = () => {
     if (cart.addons.some(a => a.id.startsWith('movel-'))) return 'celular'
     if (cart.addons.some(a => a.id.startsWith('entretenimento-'))) return 'entretenimento'
@@ -97,10 +97,13 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
       setSelectedApps(prev => { const next = { ...prev }; delete next[tier.id]; return next })
       onToggleAddon({ id: tier.id, name: `Playhub ${tier.name}`, price: tier.price })
     } else {
-      // novo app selecionado
       setSelectedApps(prev => ({ ...prev, [tier.id]: appName }))
       if (!tierInCart) {
-        onToggleAddon({ id: tier.id, name: `Playhub ${tier.name}`, price: tier.price })
+        // adiciona o tier com o app já selecionado
+        onToggleAddon({ id: tier.id, name: `Playhub ${tier.name}`, price: tier.price, selectedApp: appName })
+      } else {
+        // tier já no carrinho, só atualiza o app
+        onUpdateAddonApp(tier.id, appName)
       }
     }
   }
@@ -247,7 +250,7 @@ export default function StepPedido({ cart, internetPlans, categories, preAddonId
                           style={{ background: 'rgba(3,194,195,0.1)', color: '#03C2C3' }}
                         >
                           {cat.type === 'chip'
-                            ? CHIP_PLANS.find(c => c.id === selectedChipId)?.name.replace('Chip Móvel ', '') + ' GB'
+                            ? CHIP_PLANS.find(c => c.id === selectedChipId)?.name.replace('Chip Móvel ', '')
                             : cat.type === 'streaming'
                             ? selectedStreamingTiers.length === 1
                               ? selectedStreamingTiers[0].name.replace('Playhub ', '') + ' selecionado'

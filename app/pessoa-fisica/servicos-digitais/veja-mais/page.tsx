@@ -40,7 +40,7 @@ const tiers = [
       { nome: 'CurtaOn',                   icon: '/img/icons-digitais/curtaon.png',              bg: '#0a0a0a', fit: 'cover',   desc: 'Curtas e filmes independentes brasileiros.'          },
       { nome: 'Sky+ Light com Globo',      icon: '/img/icons-digitais/sky+.png',                 bg: '#0a0a0a', fit: 'cover',   desc: 'Sky+ com conteúdo GloboPlay integrado.'              },
       { nome: 'HotGo',                     icon: '/img/icons-digitais/hotgo.webp',               bg: '#1a1a1a', fit: 'cover',   desc: 'Filmes e séries nacionais e internacionais.'         },
-      { nome: 'GloboPlay Padrão',          icon: '/img/icons-digitais/globoplay.png',            bg: '#e20014', fit: 'cover',   desc: 'Novelas, jornalismo e séries exclusivas da Globo.'   },
+      { nome: 'GloboPlay Padrão',          icon: '/img/icons-digitais/globoplay.png',            bg: '#e20014', fit: 'cover',   desc: 'Novelas, jornalismo e séries exclusivas da Globo.',   hasAds: true },
     ],
   },
   {
@@ -111,17 +111,25 @@ const SPEEDS = [72, 108, 65, 120, 88, 102, 69, 116, 82, 98]
 
 // ─── Componentes ─────────────────────────────────────────────────────────────
 
-function ServicoCard({ nome, icon, bg, desc, fit, cor }: {
-  nome: string; icon: string; bg: string; desc: string; fit: string; cor: string
+function ServicoCard({ nome, icon, bg, desc, fit, cor, hasAds }: {
+  nome: string; icon: string; bg: string; desc: string; fit: string; cor: string; hasAds?: boolean
 }) {
   const router = useRouter()
   return (
     <div className="flex flex-col gap-4 p-5 rounded-2xl transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"
       style={{ background: 'var(--card-bg)', border: '1px solid rgba(128,128,128,0.12)' }}>
-      <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0"
-        style={{ background: bg, boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}>
-        <img src={icon} alt={nome}
-          style={{ width: '100%', height: '100%', objectFit: fit as 'cover' | 'contain', display: 'block' }} />
+      <div className="flex items-start gap-3">
+        <div className="w-16 h-16 rounded-2xl overflow-hidden flex-shrink-0"
+          style={{ background: bg, boxShadow: '0 4px 16px rgba(0,0,0,0.25)' }}>
+          <img src={icon} alt={nome}
+            style={{ width: '100%', height: '100%', objectFit: fit as 'cover' | 'contain', display: 'block' }} />
+        </div>
+        {hasAds && (
+          <span className="text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap mt-1"
+            style={{ background: 'rgba(239,68,68,0.1)', color: '#ef4444' }}>
+            c/ anúncio
+          </span>
+        )}
       </div>
       <div className="flex-1">
         <p className="font-bold text-sm mb-1" style={{ color: 'var(--text-dark)' }}>{nome}</p>

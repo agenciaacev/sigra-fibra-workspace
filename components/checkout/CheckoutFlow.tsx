@@ -11,6 +11,7 @@ export interface CartAddon {
   id: string
   name: string
   price: number
+  selectedApp?: string
 }
 
 export interface CartState {
@@ -22,7 +23,6 @@ export interface CartState {
   }
   addons: CartAddon[]
   coupon: string
-  autoDebitDiscount: number
 }
 
 interface Props {
@@ -51,7 +51,6 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
     },
     addons: initialAddons,
     coupon: '',
-    autoDebitDiscount: 10,
   })
 
   const changePlan = (plan: InternetPlan) => {
@@ -70,6 +69,13 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
     }))
   }
 
+  const updateAddonApp = (tierId: string, appName: string) => {
+    setCart(prev => ({
+      ...prev,
+      addons: prev.addons.map(a => a.id === tierId ? { ...a, selectedApp: appName } : a),
+    }))
+  }
+
   const selectExclusive = (addon: CartAddon, prefix: string) => {
     setCart(prev => {
       const alreadySelected = prev.addons.find(a => a.id === addon.id)
@@ -84,8 +90,7 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
 
   const total =
     cart.plan.price +
-    cart.addons.reduce((sum, a) => sum + a.price, 0) -
-    cart.autoDebitDiscount
+    cart.addons.reduce((sum, a) => sum + a.price, 0)
 
   return (
     <div style={{ background: '#f4f5f7', minHeight: '100vh' }}>
@@ -117,10 +122,10 @@ export default function CheckoutFlow({ planId, preAddonId }: Props) {
               cart={cart}
               internetPlans={INTERNET_PLANS}
               categories={CHECKOUT_CATEGORIES}
-              preAddonId={preAddonId}
               onChangePlan={changePlan}
               onToggleAddon={toggleAddon}
               onSelectExclusive={selectExclusive}
+              onUpdateAddonApp={updateAddonApp}
             />
           </div>
 

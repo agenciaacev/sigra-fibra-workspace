@@ -9,6 +9,7 @@ export default function HomeBanner() {
   const slides: BannerSlide[] = [
     { image: '/img/banners/residencial/amigoindica.png',   imageAlt: 'Amigo Indica',    onClick: () => router.push('/pessoa-fisica/amigo-indica')    },
     { image: '/img/banners/residencial/internetfibra.png', imageAlt: 'Internet Fibra',  onClick: () => router.push('/pessoa-fisica/internet-fibra')  },
+    { image: '/img/banners/residencial/bannercopa.png',    imageAlt: 'Copa',            onClick: () => router.push('/pessoa-fisica/internet-fibra')  },
   ]
 
   return (

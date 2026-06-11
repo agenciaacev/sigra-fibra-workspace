@@ -89,7 +89,7 @@ export const STREAMING_TIERS: StreamingTier[] = [
     color: '#03C2C3',
     apps: [
       { name: 'Sky+',            icon: '/img/icons-digitais/sky+.png' },
-      { name: 'Globoplay',       icon: '/img/icons-digitais/globoplay.png' },
+      { name: 'Globoplay',       icon: '/img/icons-digitais/globoplay.png', hasAds: true },
       { name: 'HotGo',           icon: '/img/icons-digitais/hotgo.webp' },
       { name: 'Curta On',        icon: '/img/icons-digitais/curtaon.png' },
       { name: 'DocWay',          icon: '/img/icons-digitais/docway-1.webp' },
